@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Devcontainer
+title: Develop in Container
 nav_order: 2
 ---
 
-Content goes here.
+# SSH Setup
+
+[SSH Setup Codelab](/codelabs/ssh-setup)
