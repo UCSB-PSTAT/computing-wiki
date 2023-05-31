@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-05-25T17:06:28Z",
+  "id": "dev-container-management",
+  "duration": 0,
+  "title": "Dev Container Management",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "1oTagNdTuDcQMCT3-2vjtK945VB_sJndbnfhoeSxOK24",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "dev-container-management"
+}

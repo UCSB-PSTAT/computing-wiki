@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-05-25T17:06:15Z",
+  "id": "local-devcontainers",
+  "duration": 0,
+  "title": "Developer Container Setup",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "1nGk9VwBzlPng8lm_7165-hJBXtyRAjDdx1t0fhqv6xE",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "local-devcontainers"
+}

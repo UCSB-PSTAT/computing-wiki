@@ -1,0 +1,208 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>SSH Setup</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="ssh-setup"
+                  title="SSH Setup"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <h2 is-upgraded>Secure Shell - What is it for?</h2>
+<ul>
+<li>Access to remote servers</li>
+<li>Access to remote repositories</li>
+</ul>
+<p>This tutorial will run you through how to generate SSH keys whether your on your local machine or a remote server.  </p>
+<h2 is-upgraded>Prereqs</h2>
+<ul>
+<li>Latest version of <a href="https://git-scm.com/downloads" target="_blank">Git</a></li>
+<li>A <a href="https://github.com/" target="_blank">GitHub</a> account</li>
+<li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
+<li>(Optional) Setup of the <a href="https://www.it.ucsb.edu/ivanti-secure-access-campus-vpn/get-connected-campus-vpn" target="_blank">UCSB VPN</a> for connecting to PSTAT servers</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Generating Keys" duration="0">
+        <h2 is-upgraded>Windows</h2>
+<ol type="1" start="1">
+<li>Press Start and search for &#34;Git Bash&#34;.  Click on it to open a new shell.</li>
+<li>In the terminal either type or copy-paste the following command and replace <code><KEY_NAME></code> with an appropriate name (e.g. <code>laptop</code>, <code>desktop</code>, <code>school_server</code>, etc.):</li>
+</ol>
+<pre>ssh-keygen -t ed25519 -f ~/.ssh/&lt;KEY_NAME&gt; -N &#34;&#34;</pre>
+<p>For example, let&#39;s say that you named your key <code>laptop</code>.  The command above will generate 2 files in the directory <code>C:\Users\<your_name>\.ssh\</code>: <code>laptop</code> (private key) and <code>laptop.pub</code> (public key).</p>
+<aside class="warning"><p>You should keep your private key safe, <strong>do no share it with anyone!  </strong></p>
+</aside>
+<ol type="1" start="3">
+<li>Verify that ssh-agent is running by searching for &#34;Services&#34; in the Start Menu:</li>
+</ol>
+<p class="image-container"><img style="width: 295.00px" src="img/81a9a76344a782a1.png"></p>
+<ol type="1" start="4">
+<li>Search for &#34;OpenSSH Agent&#34; and make sure that the <strong>Status is &#34;Running&#34;</strong> and <strong>Startup Type is &#34;Automatic&#34;</strong>.</li>
+</ol>
+<p class="image-container"><img style="width: 468.00px" src="img/68795008fe4ef0d.png"></p>
+<ol type="1" start="5">
+<li>If this is not the case, right-click on the &#34;OpenSSH Authentication Agent&#34; entry -&gt; select &#34;Properties&#34; -&gt; Under &#34;Service Status&#34; select &#34;Start&#34; -&gt; From the &#34;Startup Type&#34; drop down menu, select &#34;Automatic&#34;.</li>
+</ol>
+<p class="image-container"><img style="width: 312.00px" src="img/445c733d1ca508ee.png"></p>
+<p class="image-container"><img style="width: 312.00px" src="img/6b4c549f6a405fa.png"></p>
+<ol type="1" start="6">
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code><KEY_NAME></code> is the name of the key you created earlier:</li>
+</ol>
+<pre>ssh-add $HOME/.ssh/&lt;KEY_NAME&gt;</pre>
+<h2 is-upgraded>macOS/Linux</h2>
+<ol type="1" start="1">
+<li>Find your terminal application and open up a new shell:</li>
+</ol>
+<ul>
+<li>macOS: cmd + space, then search &#34;terminal&#34;</li>
+<li>Ubuntu: ctrl + alt + t</li>
+</ul>
+<ol type="1" start="2">
+<li>In the terminal either type or copy-paste the following command and replace <code><KEY_NAME></code> with an appropriate name (e.g. <code>laptop</code>, <code>desktop</code>, <code>school_server</code>, etc.):</li>
+</ol>
+<pre>ssh-keygen -t ed25519 -f ~/.ssh/&lt;KEY_NAME&gt; -N &#34;&#34;</pre>
+<p>For example, let&#39;s say that you named your key <code>laptop</code>.  The command above will generate 2 files in the directory <code>~/.ssh/</code>: <code>laptop</code> (private key) and <code>laptop.pub</code> (public key).</p>
+<aside class="warning"><p>You should keep your private key safe, <strong>do no share it with anyone!  </strong></p>
+</aside>
+<ol type="1" start="3">
+<li>Verify that your ssh-agent is running by using the following command:</li>
+</ol>
+<pre>eval &#34;$(ssh-agent -s)&#34;</pre>
+<aside class="warning"><p><strong>Note:</strong> Depending on your shell, you may need to use a different command or use elevated privileges through <code>sudo</code>. More details can be found in this <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux#adding-your-ssh-key-to-the-ssh-agent" target="_blank">link</a>.</p>
+</aside>
+<ol type="1" start="4">
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code><KEY_NAME></code> is the name of the key you created earlier:</li>
+</ol>
+<pre>ssh-add ~/.ssh/&lt;KEY_NAME&gt;</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Transferring Keys to Remote Servers" duration="0">
+        <p>In order to connect to trusted remote servers (such as PSTAT&#39;s Denali) <em>without</em> needing to authenticate using a password, we can use the SSH key(s) that we generated as a form of instant authentication.  In order to do so, we need to send a copy of our public keys to the remote server.</p>
+<p>This can be achieved very easily by using Git Bash (Windows) or your terminal emulator (macOS/Linux) and typing the following command:</p>
+<pre>ssh-copy-id &lt;user&gt;@&lt;host&gt;</pre>
+<aside class="special"><p>For example, if you wished to transfer your public SSH keys to Denali you would type: <code>ssh-copy-id <your_NETID>@denali.pstat.ucsb.edu</code> and authenticate with your NETID password.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Accessing Remote Servers" duration="0">
+        <h2 is-upgraded>Using terminal</h2>
+<p>Using Git Bash (Windows) or your terminal emulator (macOS/Linux) we can directly connect to a remote server using the following command:</p>
+<pre>ssh &lt;remote_user&gt;@&lt;remote_host&gt;</pre>
+<p>This will open an instance of the server within your terminal.</p>
+<aside class="special"><p>For example, if you wished to connect to PSTAT&#39;s Denali you would simply type: <code>ssh <NETID>@denali.pstat.ucsb.edu</code> where <code><NETID></code> is replaced with your NETID and then you would authenticate using your NETID password.</p>
+</aside>
+<h2 is-upgraded>Creating an alias</h2>
+<p>If you want to spend less time typing or remembering the different servers you have access to, you can create aliases for your remote connections.</p>
+<p>To create an alias we can create a <code>config</code> file using Git Bash (Windows) or your terminal emulator (macOS/Linux) using the following steps:</p>
+<ol type="1" start="1">
+<li>Using your terminal (Git Bash or your terminal emulator) on your local machine with VS Code installed type the following command to create and open a config file for editing:</li>
+</ol>
+<pre>code $HOME/.ssh/config 
+
+or for macOS/Linux
+
+code ~/.ssh/config</pre>
+<ol type="1" start="2">
+<li>We can create the following entry for <code>denali.pstat.ucsb.edu</code>:</li>
+</ol>
+<pre>Host research_server
+    Hostname denali.pstat.ucsb.edu
+    User &lt;NETID&gt;</pre>
+<ol type="1" start="3">
+<li> We can now connect to the Denali server using:</li>
+</ol>
+<pre>ssh research_server</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Setting Up Keys on GitHub" duration="0">
+        <p>In order to work and make changes to any remote repositories on GitHub, you must setup your SSH keys on the website.</p>
+<ol type="1" start="1">
+<li>Using Git Bash (Windows) or your terminal emulator (macOS/Linux) type the following command to access the contents of your <strong>public key </strong>(where <code><KEY_NAME></code> is the name of your key you created earlier e.g. <code>laptop.pub</code>)</li>
+</ol>
+<pre>code $HOME/.ssh/&lt;KEY_NAME&gt;.pub
+
+or for macOS/Linux
+
+code ~/.ssh/&lt;KEY_NAME&gt;.pub</pre>
+<aside class="warning"><p><strong>Note:</strong> Make sure that you are accessing your public key denoted by the <strong><code>.pub</code></strong> ending.</p>
+</aside>
+<ol type="1" start="2">
+<li>Copy the contents of the public key to your clipboard.</li>
+<li>Open <a href="https://github.com" target="_blank">github.com</a>, login, navigate to the top right corner and click on your user profile, and enter the settings:</li>
+</ol>
+<p class="image-container"><img style="width: 161.50px" src="img/cb087e5b8f121b12.png"></p>
+<ol type="1" start="4">
+<li>On the left panel under &#34;Access&#34;, click on &#34;SSH and GPG keys&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 237.50px" src="img/450e68b64d960032.png"></p>
+<ol type="1" start="5">
+<li>Click on the &#34;New SSH key&#34; button.</li>
+<li>In the form, </li>
+</ol>
+<ul>
+<li>Fill out the title of the key.  Preferably call it the current machine you&#39;re creating the entry for e.g. &#34;laptop&#34;</li>
+<li>Paste the public key you copied earlier into the &#34;Key&#34; box</li>
+</ul>
+<p class="image-container"><img style="width: 468.00px" src="img/8b240ab2e05a212c.png"></p>
+<ol type="1" start="7">
+<li>Click the &#34;Add SSH key&#34; button.</li>
+<li>Go back to terminal and open up your SSH config file:</li>
+</ol>
+<pre>code $HOME/.ssh/config 
+
+or for macOS/Linux
+
+code ~/.ssh/config</pre>
+<ol type="1" start="9">
+<li>Add a new entry with the following details where <code><KEY_NAME></code> is the key you created earlier. </li>
+</ol>
+<pre># GITHUB
+Host github.com
+   HostName github.com
+   PreferredAuthentications publickey
+   IdentityFile ~/.ssh/&lt;KEY_NAME&gt;</pre>
+<aside class="warning"><p><strong>Note:</strong> This step is <strong>critical</strong> for Windows users otherwise your git configuration will not function.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

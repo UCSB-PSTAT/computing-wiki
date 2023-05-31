@@ -1,0 +1,120 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Dev Container Management</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="dev-container-management"
+                  title="Dev Container Management"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <h2 is-upgraded>Prereqs</h2>
+<ul>
+<li>Completion of SSH Setup (including GitHub)</li>
+<li>Latest version of <a href="https://git-scm.com/downloads" target="_blank">Git</a></li>
+<li>A <a href="https://github.com/" target="_blank">GitHub</a> account</li>
+<li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
+<li>Dev container setup</li>
+</ul>
+<h2 is-upgraded>Requirements for local </h2>
+<ul>
+<li>Latest version of <a href="https://www.docker.com/" target="_blank">Docker</a> (temp link)</li>
+</ul>
+<h2 is-upgraded>Requirements for remote</h2>
+<ul>
+<li>Setup of the <a href="https://www.it.ucsb.edu/ivanti-secure-access-campus-vpn/get-connected-campus-vpn" target="_blank">UCSB VPN</a> for connecting to PSTAT servers</li>
+<li>SSH Setup (key generation and GitHub) on the remote server</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Container: Commands" duration="0">
+        <p>Now that your dev container is built, let&#39;s get familiar with some dev container basics.</p>
+<p>Our dev containers use Docker.  Docker is a container management tool that allows you to download and store &#34;<strong>images</strong>&#34; that can be built and used as &#34;<strong>containers</strong>&#34;.  <em>Images </em>are effectively small installation objects that contain all the necessary components to set up a specific container with a specific environment.  <em>Containers</em> are effectively small environments that have just the base essentials to run all the development tooling that is required.  Containers are built from images.  </p>
+<p>Here are some basic commands that will be useful to use in terminal:</p>
+<ul>
+<li><code>docker images</code> : lists all available images being tracked by Docker</li>
+<li><code>docker ps</code> : lists all <strong>running</strong> containers along with their status</li>
+<li><code>docker ps -a</code> : lists <strong>all </strong>containers even if they are not running</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Container: Basics" duration="0">
+        <p>Once your container is built, you will be able to use it for your research or programming.  The development container setups provided by the department should be a sufficient starting point.  More advanced setups are discussed in the Dev Container Customization tutorial.  Here, we will show how to start up, attach, detach, and stop a container.</p>
+<h2 is-upgraded>Starting a container</h2>
+<p>To start a container, you can do one of the following:</p>
+<ol type="1" start="1">
+<li>Open a file directory that contains your Docker file and you should see and click the following dialogue pop-up:</li>
+</ol>
+<p class="image-container"><img style="width: 410.50px" src="img/607461093e654a5d.png"></p>
+<ol type="1" start="2">
+<li>Or you can click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Reopen in Container&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/fc6df05136dc8107.png"></p>
+<h2 is-upgraded>Detaching from a container</h2>
+<p>To detach from a running container, click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Reopen Folder in SSH&#34; or &#34;Reopen Folder Locally&#34;.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/c9b5f3d52e487ebe.png"></p>
+<p>Clicking this will detach you from the running container.  <strong>However, it will not close the container</strong>.</p>
+<h2 is-upgraded>Attaching to a running container</h2>
+<p>To reattach to a running container, click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Attach to Running Container...&#34;:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/dcbb55d992b7ff68.png"></p>
+<p>From there, you will be given an option to select one of your running containers.</p>
+<h2 is-upgraded>Stopping a running container</h2>
+<p>To stop a running container run the following commands:</p>
+<ol type="1" start="1">
+<li><code>docker ps</code> : run this to figure out which container(s) are running.  You will see a &#34;NAMES&#34; category, this will be the container name to use in the next command.</li>
+<li><code>docker container stop <container_name></code> : replace <code><container_name></code> with the previous commands output.</li>
+</ol>
+<p>Running these 2 commands will stop this container as well as any code or services running in it.</p>
+<h2 is-upgraded>More advanced commands</h2>
+<p>Docker comes with a swathe of terminal commands to manage containers.  More advanced commands will be added in future tutorials.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Container: File Management" duration="0">
+        <p>File management in development containers is made simple through VS Code.  For all intents and purposes, file management in dev containers is no different than in local or SSH setups.  </p>
+<p>In essence:</p>
+<ul>
+<li>For <strong>local </strong>file management, files can be moved around either by File Explorer, drag-and-drop into VS Code, or terminal to the dev container folder as needed.</li>
+<li>For <strong>local/remote </strong>file management, files can be drag-and-dropped from<em> local -&gt; remote </em>straight into VS Code (assuming SSH is properly set up).  To receive files from<em> remote -&gt; local</em> each file must be selected and downloaded by right clicking and selecting &#34;Download...&#34; in the VS Code Explorer pane.</li>
+<li>For <strong>remote/remote</strong> file management, the <code>scp</code> or <code>sftp</code> commands or a GUI tool like WinSCP to transfer between <em>remote &lt;-&gt; remote</em>.</li>
+</ul>
+<p>For more information, see the File Management wiki entry.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

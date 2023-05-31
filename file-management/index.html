@@ -1,0 +1,125 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>File Management</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="file-management"
+                  title="File Management"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <h2 is-upgraded>Prereqs</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
+<li>(Optional) Completion of SSH Setup (including GitHub)</li>
+</ul>
+<h2 is-upgraded>Requirements for remote</h2>
+<ul>
+<li>Setup of the <a href="https://www.it.ucsb.edu/ivanti-secure-access-campus-vpn/get-connected-campus-vpn" target="_blank">UCSB VPN</a> for connecting to PSTAT servers</li>
+<li>SSH Setup (key generation and GitHub) on the remote server</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Local" duration="0">
+        <p>Local file management both inside and outside dev containers can be done through:</p>
+<ul>
+<li>Using a file explorer</li>
+<li>Dragging and dropping files in and out of VS Code&#39;s Explorer</li>
+<li>File management through terminal</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Local ↔ Remote" duration="0">
+        <h2 is-upgraded>Local → Remote</h2>
+<p>To move files from local to remote, we can simply drag and drop files into VS Code&#39;s explorer to transfer them to the remote server we&#39;re working on:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/9510aff575a41ec6.png"></p>
+<h2 is-upgraded>Remote → Local </h2>
+<p>In order to get files from your remote server onto your local machine, first select the files you wish to move and then right-click to &#34;Download...&#34; them into your desired location:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/bfe04568f3116981.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Git/GitHub Repository Management" duration="0">
+        <p>It is recommended to manage your work through a version control tool like <code>git</code>.  You can use <code>git</code> to upload your work to a remote repository hosted on GitHub.  GitHub is also an excellent way to provide reproducible code and manage code bases of teams with multiple researchers.</p>
+<p>This portion of the tutorial will go through setting up a simple git repository that is linked to one hosted on your GitHub.</p>
+<h2 is-upgraded>Initial Setup</h2>
+<p>In our initial setup, we need to configure your git username and email address:</p>
+<pre>git config --global user.name &#34;YOUR_NAME&#34;
+git config --global user.email &#34;YOUR_GITHUB_EMAIL&#34;</pre>
+<p><code>YOUR_NAME</code> and <code>YOUR_GITHUB_EMAIL</code> should be set appropriately.  To verify that they&#39;ve been set, simply use the following commands:</p>
+<pre>git config --global user.name
+git config --global user.email</pre>
+<h2 is-upgraded>Creating your first repository</h2>
+<ol type="1" start="1">
+<li>Navigate either to your GitHub homepage or user page and click to create a new repository:</li>
+</ol>
+<p class="image-container"><img style="width: 294.50px" src="img/a33366a697850435.png"></p>
+<ol type="1" start="2">
+<li>Choose a repository name, description and whether you want it to be public or private:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/23d268943f6fceb2.png"></p>
+<ol type="1" start="3">
+<li>Select &#34;Add a README file&#34;, choose a .gitignore template for the language you will program in (if you wish), and lastly add a license (if you wish):</li>
+</ol>
+<p class="image-container"><img style="width: 472.44px" src="img/69e77b1667633790.png"></p>
+<ol type="1" start="4">
+<li>Click the &#34;Code&#34; button in the new window and select &#34;SSH&#34; copy the link:</li>
+</ol>
+<p class="image-container"><img style="width: 369.50px" src="img/ff0c494052a9f9c8.png"></p>
+<ol type="1" start="5">
+<li>Using the link, open up VS Code and select the &#34;Source Control&#34; pane either by clicking or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>g</code>):</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/75abf58b0e72c69e.png"></p>
+<ol type="1" start="6">
+<li>Click &#34;Clone Repository&#34;.  Paste the GitHub link you copied earlier and press enter.  Follow the prompts and open the repository in VS Code.</li>
+<li>You can now use VS Code to manage your remote repository through the &#34;Source Control&#34; pane:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/c36f6b5504d69edd.png"></p>
+<p>In order to manage your changes, you must first &#34;Stage&#34; them for commit from your &#34;Changes&#34; drop down.  Once you do that, write a commit message, press commit, and lastly press &#34;Sync Changes&#34; to push your changes to the remote repository.  The version control workflow can be summarized as follows:</p>
+<ul>
+<li>Add changes to be staged</li>
+<li>Commit changes</li>
+<li>Push changes to remote</li>
+</ul>
+<p>In addition to this, we can also pull changes that were committed from another computer or another person through a &#34;pull&#34; action of syncing.</p>
+<aside class="warning"><p><strong>Note:</strong> VS Code does a good job of managing most common version control management issues through its GUI interface.  That said, ll the actions described have an equivalent terminal command through git.  It is a good idea to be comfortable with managing your repository through terminal if things go wrong.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
