@@ -13,34 +13,15 @@
 
 ## Build Steps
 
-### Download `claat` tool
-
-Download appropriate binary from https://github.com/googlecodelabs/tools/releases/tag/v2.2.5
-
-```bash
-wget https://github.com/googlecodelabs/tools/releases/download/v2.2.5/claat-linux-amd64
-chmod u+x claat-linux-amd64
-```
-
 ### Build codelabs pages
 
-Following code extracts Google docs file ID from table above and runs the `claat` tool for each match.
+Following bash script extracts Google docs file ID from table above and runs the `claat` tool for each match.  To build all the docs, run the following command from the root directory:
 
 ```bash
-grep '-https://docs.google.com' README.md \
-    | grep 'document' \
-    | cut -d'|' -f2 \
-    | cut -d'/' -f6 \
-    | sed 's/ *$//' \
-    | xargs -i ./claat-linux-amd64 export -o docs {}
+./wiki.sh
 ```
 
-- `grep '-https://docs.google.com' README.md`: extract all lines with `-https://docs.google.com`. (**REMOVE** the '-', this is a fix to avoid grabbing the instructions being talked about here)
-- `grep 'document'`: to exclude lines like the command in previous line, also search for `document` in the same line.
-- `cut -d'|' -f2`: split at `|` to separate markdown table cells
-- `cut -d'/' -f6`: split at `/` to extract the file IDs
-- `sed 's/ *$//'`: remove any whitespace
-- `xargs -i ./claat-linux-amd64 export {}`: run `claat` tool for each matching line
+Make sure that you have bash available (Windows Subsystem for Linux or a bash compatible terminal).
 
 ### Build website
 
@@ -51,3 +32,5 @@ cd docs
 bundle install
 bundle exec jekyll serve --livereload
 ```
+
+Access the website through [http://localhost:4000/](http://localhost:4000/)
