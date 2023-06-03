@@ -41,3 +41,13 @@ grep '-https://docs.google.com' README.md \
 - `cut -d'/' -f6`: split at `/` to extract the file IDs
 - `sed 's/ *$//'`: remove any whitespace
 - `xargs -i ./claat-linux-amd64 export {}`: run `claat` tool for each matching line
+
+### Build website
+
+Requires Ruby Devkit, Jekyll, and Bundler installed.
+
+```
+cd docs
+bundle install
+bundle exec jekyll serve --livereload
+```
