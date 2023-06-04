@@ -1,0 +1,33 @@
+@import url("https://webfonts.brand.ucsb.edu/webfont.min.css");
+
+.side-bar {
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #EEF0F2;
+}
+
+/* body {
+    color: #3d4952;
+    font-family: Avenir, "Century Gothic", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 16px;
+}
+
+h1 { font-family: Produkt, "Century Gothic", sans-serif; font-weight: 600; font-size: 38px; letter-spacing: -0.1pt; }
+ 
+
+h2 { font-family: Produkt, "Century Gothic", sans-serif; font-weight: 600; font-size: 27px; letter-spacing: -0.1pt; margin: 26px 0 10px 0; }
+ 
+
+h3 { font-family: Produkt, "Century Gothic", sans-serif; font-weight: 600; font-size: 21px; margin: 20px 0 10px 0; }
+ 
+
+h4 { font-family: Produkt, "Century Gothic", sans-serif; font-weight: 600; font-size: 16px; margin: 16px 0 8px 0; }
+ 
+
+h5 { font-family: Produkt, "Century Gothic", sans-serif; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+ 
+
+h6 { font-family: Produkt, "Century Gothic", sans-serif; font-weight: 400; font-size: 12px; text-transform: uppercase; } */
