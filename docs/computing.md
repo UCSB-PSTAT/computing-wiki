@@ -4,4 +4,14 @@ title: Computing Resources
 nav_order: 3
 ---
 
-# SSH Setup
+# Computing Resources
+
+## Department
+
+## University
+
+## External
+
+
+
+----

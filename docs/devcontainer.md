@@ -3,6 +3,7 @@ layout: default
 title: Develop in Container
 nav_order: 2
 has_children: true
+has_toc: false
 ---
 
 # Develop in Container
@@ -83,3 +84,5 @@ Coming soon
 This tutorial covers:
 - customizing languages, packages, and system through Dockerfile templates
 - advanced customization of Dockerfile
+
+----
