@@ -25,10 +25,9 @@ Make sure that you have bash available (Windows Subsystem for Linux or a bash co
 
 ### Build website
 
-Requires Ruby Devkit, Jekyll, and Bundler installed.
+Requires Ruby Devkit, Jekyll, and Bundler installed.  From the root directory, run the following commands:
 
 ```
-cd docs
 bundle install
 bundle exec jekyll serve --livereload
 ```
