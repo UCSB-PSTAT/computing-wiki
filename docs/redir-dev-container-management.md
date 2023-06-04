@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Development Container Management
+title: Container Management
 parent: Develop in Container
-nav_order: 1
+nav_order: 3
 redirect_to: docs/dev-container-management
 ---

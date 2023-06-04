@@ -46,6 +46,15 @@ This tutorial covers:
 
 ## Management
 
+### [Containers Usage](./dev-container-management)
+{: .d-inline-block }
+Essential
+{: .label .label-green }
+
+This tutorial covers:
+- basic container commands
+- starting/attaching/detaching/stopping containers
+
 ### [Files](./file-management)
 
 This tutorial covers:
@@ -63,7 +72,7 @@ This tutorial covers:
 
 ## Customization
 
-### [Editing Dockerfile](./devcontainer.html#3-local-setup)
+### [Editing Dockerfile](./devcontainer.html#6)
 {: .d-inline-block }
 
 Coming soon
