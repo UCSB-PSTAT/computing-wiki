@@ -9,6 +9,8 @@ has_children: true
 
 Welcome to the world of development containers! Whether you're a seasoned statistician or just starting your journey, development containers through Docker provides a powerful and flexible solution for creating reproducible and isolated environments for your data analysis and statistical modeling projects. With development containers, you can effortlessly set up and manage pre-configured environments that contain all the necessary dependencies, libraries, and tools, ensuring consistent results across different systems whether on your local laptop or remote server.  The following tutorials provide instructions for development container setup, management, and customization.
 
+----
+
 ## Initial Setup
 
 ### 1. [SSH Setup](./ssh-setup)
