@@ -34,10 +34,19 @@ If you are a student looking to access JupyterHub for your course work, please c
 
 The copier can be found in the mailroom and is accessible through the mailroom computer, any PSTAT office computer, and personal computers with appropriate drivers installed.
 
-### [Installing Windows Drivers]()
+{: .note }
+The printer is accessible only from the department IP's and the Campus VPN. If you get an error that the printer can't be found you will need to first connect to the [Campus VPN](https://www.ets.ucsb.edu/services/campus-vpn/get-connected).
 
-### [Installing MacOS Drivers]()
+### Drivers
 
-### [Using the Printer]()
+#### [Installing Windows Drivers](./printer-driver-win)
+
+#### [Installing MacOS Drivers](./printer-driver-mac)
+
+#### [Linux Driver Download](https://ucsb.box.com/s/3stigbjk8wjbjrhjauqal07ga2nj2l16)
+
+### Usage
+
+#### [Using the Printer](./printer-use)
 
 ----
