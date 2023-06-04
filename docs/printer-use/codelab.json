@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-04T19:06:09Z",
+  "id": "printer-use",
+  "duration": 0,
+  "title": "Using the Printer",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "1WnD7ZmUyZoqdxFuk47FHCdjoTVAfQJxDqoCi-qBqxOQ",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "printer-use"
+}

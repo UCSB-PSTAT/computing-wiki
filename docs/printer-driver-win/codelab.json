@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-04T18:11:04Z",
+  "id": "printer-driver-win",
+  "duration": 0,
+  "title": "Printer Driver Installation - Windows",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "16wWtuBrVarh3kZDWFhoQt3M_pVxf5t6GhvIci9KRyqI",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "printer-driver-win"
+}

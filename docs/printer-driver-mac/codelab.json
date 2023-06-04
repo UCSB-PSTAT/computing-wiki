@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-04T18:31:45Z",
+  "id": "printer-driver-mac",
+  "duration": 0,
+  "title": "Printer Driver Installation - MacOS",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "1qt16tP26RZPOllHIvHCzWWv1KS7-M4Cs4tmr6eU16eU",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "printer-driver-mac"
+}
