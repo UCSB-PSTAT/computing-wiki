@@ -18,3 +18,13 @@ plugins:
 favicon_ico: "/assets/images/favicon.ico"
 logo: "/assets/images/deptlogoblu.png"
 color_scheme: ucsb
+
+callouts:
+  warning:
+    title: Warning
+    color: red
+  note:
+    title: note
+    color: blue
+  highligh:
+    color: yellow
