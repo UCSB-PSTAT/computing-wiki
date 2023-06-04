@@ -1,0 +1,147 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Job Management</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="job-management"
+                  title="Job Management"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <h2 is-upgraded>Prereqs</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
+<li>Dev container setup</li>
+<li>Setup of the <a href="https://www.it.ucsb.edu/ivanti-secure-access-campus-vpn/get-connected-campus-vpn" target="_blank">UCSB VPN</a> for connecting to PSTAT servers</li>
+<li>SSH Setup (key generation and GitHub) on the remote server</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Jobs" duration="0">
+        <p>Running long jobs on your machine of choice can be cumbersome since it requires maintaining an active session (staying logged on, keeping laptop powered on, disabling hibernation, etc.).  Fortunately, this can be alleviated by running jobs on a remote server using tmux (<a href="https://github.com/tmux/tmux/wiki" target="_blank">terminal multiplexer</a>).  tmux allows you to run a job while being able to disconnect from a container <em>and</em> from the server.  You power off your computer, come back, and reattach to your running job.</p>
+<p>Although tmux is used for more than job management, we will discuss the basic usage in regards to job management.  For more advanced features please view the tmux <a href="https://github.com/tmux/tmux/wiki" target="_blank">wiki</a>.</p>
+<aside class="warning"><p><strong>Note:</strong> It is not recommended to use notebooks (Jupyter/RMarkdown) to run long jobs.  There are some basic reasons for this:</p>
+<ul>
+<li>It is difficult to reattach to a notebook session once you disconnect your server connection.</li>
+<li>In the event that reattachment is possible, notebook output and job status (running/stopped/errors/etc.) cannot be recovered.</li>
+</ul>
+<p>As a result, it is highly recommended to use tmux for long job management!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Basics" duration="0">
+        <ol type="1" start="1">
+<li>Open up VS Code, connect to a remote server, and run your docker container.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/156b33cf2bdfa4c1.png"></p>
+<ol type="1" start="2">
+<li>Make sure that a terminal session is open.  Inside terminal type in <code>tmux</code> and press enter.  This will open up a tmux session which is no different than your regular terminal but with additional features.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/9883714db6ff07a1.png"></p>
+<ol type="1" start="3">
+<li>We just created a new tmux session.  We can do tasks in it, run programs, or run code.  For now, we will detach from the session using <code>tmux detach</code> <strong>or</strong> the keyboard shortcut <code>ctrl</code>/⌘ + <code>b</code>, <code>d</code> (2 steps: &#34;control&#34; and &#34;b&#34; together followed by &#34;d&#34; by itself).  Detaching means that we are leaving the tmux session <strong>but</strong> leaving any jobs/programs running in the background within that session.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/4c95477e3ba75503.png"></p>
+<ol type="1" start="4">
+<li>To reattach to the most recent session, we can simply type <code>tmux attach</code>:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/1ea22b2197e5d6a5.png"></p>
+<ol type="1" start="5">
+<li>To view all current running sessions we can use <code>tmux ls</code>. We only have 1 session called &#34;0&#34; with 1 window open: </li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/ba37ab361b8c6cc3.png"></p>
+<ol type="1" start="6">
+<li>If you create more than one tmux session, we can specify which one we wish to connect to by adding the <code>-t</code> flag for the following command: <code>tmux attach -t <name/number></code> where name/number can be found on the left-most output of <code>tmux ls</code>:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/9922b91f21dbe190.png"></p>
+<ol type="1" start="7">
+<li>To kill a specific session and any running jobs within it, we use the <code>kill-session</code> command: <code>tmux kill-session -t <name/number></code>:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/9bb5357f1a1d1ebc.png"></p>
+<ol type="1" start="8">
+<li>To kill all sessions and any running jobs in it we use <code>tmux kill-server</code>.  This will end all tmux sessions.</li>
+<li>Lastly, if you want your session to be named something other than a number you can use <code>tmux new -s <name></code>:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/8e2f6e9527599b5f.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Running Background Jobs" duration="0">
+        <p>Let&#39;s start fresh by running <code>tmux kill-server</code> and running <code>tmux</code> to create a new session:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/174439b04bc2e341.png"></p>
+<p>This will attach us to a new tmux session as discussed. As an example, we will use the <code>simulate_job.R</code> file to run a long job within the tmux session.  This will create an empty file in a folder every 10 seconds:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/73b2484f5eeb27e6.png"></p>
+<p>Now, let&#39;s detach from the tmux session using our keyboard shortcut <code>ctrl</code>/⌘ + <code>b</code>, <code>d</code> as shown in step 3 in the previous page.  This will detach our session back to our main terminal.  From here, we are free to detach from the dev container <em>and</em> from our remote server!</p>
+<aside class="warning"><p><strong>Note:</strong> In order for this to work, you must keep your dev container running on the remote server.  If you kill your dev container session, it will also kill anything that is happening within it.</p>
+</aside>
+<p>We are free to shut down our computer and come back to it whenever we please.  In order to retrieve our job(s), we need to:</p>
+<ol type="1" start="1">
+<li>ssh into the remote server</li>
+</ol>
+<p class="image-container"><img style="width: 448.50px" src="img/35a7f1e56e6f8f3e.png"></p>
+<ol type="1" start="2">
+<li>Attach to the running dev container (or use the &#34;Reopen in dev container&#34; pop-up)</li>
+</ol>
+<p class="image-container"><img style="width: 459.50px" src="img/5c32360a318adb3.png"></p>
+<p class="image-container"><img style="width: 461.00px" src="img/1015a4b5eca5bb11.png"></p>
+<ol type="1" start="3">
+<li>Run either <code>tmux attach</code> (for the most recent session) or <code>tmux ls</code> and <code>tmux attach -t <name/number></code> (to find a specific session and attach to it):</li>
+</ol>
+<p class="image-container"><img style="width: 463.50px" src="img/5246ae935d83a8b3.png"></p>
+<p class="image-container"><img style="width: 462.33px" src="img/3f314b85146ee822.png"></p>
+<aside class="special"><p><strong>Success!</strong> We have accessed our long running job! If we want to kill the job midway through we can use <code>ctrl</code>/⌘ + <code>c</code> to interrupt the job:</p>
+<p class="image-container"><img style="width: 408.11px" src="img/8f48eaa908e2b992.png"></p>
+<p>Otherwise, you are now ready to run jobs in the background using tmux!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Advanced Features" duration="0">
+        <p>tmux is much more than a way to run and recover jobs in the background.  There are many keyboard shortcuts and customizability features that are available.  Specifically, tmux can:</p>
+<ul>
+<li>Run multiple terminal panes in a single window,</li>
+<li>Run multiple windows in a single session. </li>
+</ul>
+<p>This means that instead of needing more than one tmux session, we can add additional windows or additional panes as needed.  Below is an example of 3 panes in a single window of a tmux session: </p>
+<p class="image-container"><img style="width: 456.50px" src="img/ef62592606270164.png"></p>
+<p>These features, as well as additional configuration and customization can be found in the <a href="https://github.com/tmux/tmux/wiki/Getting-Started" target="_blank">tmux wiki</a>.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

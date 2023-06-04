@@ -49,7 +49,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Dev Container: Commands" duration="0">
+      <google-codelab-step label="Commands" duration="0">
         <p>Now that your dev container is built, let&#39;s get familiar with some dev container basics.</p>
 <p>Our dev containers use Docker.  Docker is a container management tool that allows you to download and store &#34;<strong>images</strong>&#34; that can be built and used as &#34;<strong>containers</strong>&#34;.  <em>Images </em>are effectively small installation objects that contain all the necessary components to set up a specific container with a specific environment.  <em>Containers</em> are effectively small environments that have just the base essentials to run all the development tooling that is required.  Containers are built from images.  </p>
 <p>Here are some basic commands that will be useful to use in terminal:</p>
@@ -62,7 +62,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Dev Container: Basics" duration="0">
+      <google-codelab-step label="Basics" duration="0">
         <p>Once your container is built, you will be able to use it for your research or programming.  The development container setups provided by the department should be a sufficient starting point.  More advanced setups are discussed in the Dev Container Customization tutorial.  Here, we will show how to start up, attach, detach, and stop a container.</p>
 <h2 is-upgraded>Starting a container</h2>
 <p>To start a container, you can do one of the following:</p>
@@ -95,7 +95,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Dev Container: File Management" duration="0">
+      <google-codelab-step label="File Management" duration="0">
         <p>File management in development containers is made simple through VS Code.  For all intents and purposes, file management in dev containers is no different than in local or SSH setups.  </p>
 <p>In essence:</p>
 <ul>
@@ -104,6 +104,20 @@
 <li>For <strong>remote/remote</strong> file management, the <code>scp</code> or <code>sftp</code> commands or a GUI tool like WinSCP to transfer between <em>remote &lt;-&gt; remote</em>.</li>
 </ul>
 <p>For more information, see the File Management wiki entry.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Job Management" duration="0">
+        <p>With the <a href="https://github.com/syoh/jupyter-rootless-docker" target="_blank">default setup</a>, it is possible to run Python and R via</p>
+<ul>
+<li>Terminal</li>
+<li>Jupyter Notebooks</li>
+<li>RStudio</li>
+<li>Quatro</li>
+</ul>
+<p>These tools allow for users to run their code and programs while inside the container.  It is recommended to use notebooks (RMarkdown or Jupyter) to run jobs that are possible to complete during a single session.  </p>
+<p>However, for long running job that take many hours or potentially even days to run, it is recommended to use alternative measures to complete these jobs without needing to stay in a dev container session.  More information on this can be found in the Job Management wiki entry.</p>
 
 
       </google-codelab-step>

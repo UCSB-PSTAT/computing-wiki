@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-03T02:13:52Z",
+  "id": "job-management",
+  "duration": 0,
+  "title": "Job Management",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "1yF0US6nskeKtxQ8an5zFTD3OvLwK6Eg2aI2ZcDiqKB0",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "job-management"
+}
