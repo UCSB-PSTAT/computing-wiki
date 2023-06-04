@@ -8,6 +8,10 @@ aux_links:
   Back to PSTAT: https://www.pstat.ucsb.edu/resources/computing
   GitHub: https://github.com/ucsb-pstat/computing
 
+nav_external_links:
+  - title: Computing Wiki on GitHub
+    url: https://github.com/ucsb-pstat/computing
+
 plugins:
   - jekyll-redirect-from
 
