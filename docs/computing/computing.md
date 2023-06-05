@@ -44,13 +44,4 @@ Please be conscious of the resources available on shared systems.  **Do not hog 
 
 Additional information about available parallel computing tools in R can be found on [CRAN](https://cran.r-project.org/web/views/HighPerformanceComputing.html)
 
-### External
-
-ACCESS
-https://allocations.access-ci.org/prepare-requests-overview#comparison-table
-NSF JetStream2
-docs: https://docs.jetstream-cloud.org/general/access/
-
-
-
 ----
