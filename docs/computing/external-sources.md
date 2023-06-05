@@ -2,7 +2,7 @@
 layout: default
 title: External Sources
 nav_order: 3
-permalink: docs/computing/external-sources
+permalink: /docs/computing/external-sources
 parent: Computing Resources
 has_toc: false
 ---

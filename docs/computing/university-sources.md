@@ -2,7 +2,7 @@
 layout: default
 title: University Sources
 nav_order: 2
-permalink: docs/computing/university-sources
+permalink: /docs/computing/university-sources
 parent: Computing Resources
 has_toc: false
 ---

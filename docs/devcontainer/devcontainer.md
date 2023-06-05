@@ -18,7 +18,7 @@ It is enouraged to use dev containers through [remote servers such as Denali](ht
 
 ## Initial Setup
 
-### 1. [SSH Setup](./ssh-setup/)
+### 1. [SSH Setup](/docs/devcontainer/ssh-setup/)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
@@ -29,7 +29,7 @@ This tutorial covers how to:
 - connect to remote servers via terminal
 - set up GitHub SSH keys for repository access
 
-### 2. [VS Code Setup](/docs/devcontainer/vscode-setup)
+### 2. [VS Code Setup](/docs/devcontainer/vscode-setup/)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
@@ -53,7 +53,7 @@ This tutorial covers:
 
 ## Management
 
-### [Containers Usage](/docs/devcontainer/container-management)
+### [Containers Usage](/docs/devcontainer/container-management/)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
@@ -62,14 +62,14 @@ This tutorial covers:
 - basic container commands
 - starting/attaching/detaching/stopping containers
 
-### [Files](/docs/devcontainer/file-management)
+### [Files](/docs/devcontainer/file-management/)
 
 This tutorial covers:
 {: .mt-6}
 - Moving files around between remote and local instances
 - GitHub repository cloning and basic management
 
-### [Jobs](/docs/devcontainer/job-management)
+### [Jobs](/docs/devcontainer/job-management/)
 
 This tutorial covers:
 {: .mt-6}
@@ -79,14 +79,14 @@ This tutorial covers:
 
 ## Additional Features
 
-### [Editing Dockerfile](/docs/devcontainer/editing-dockerfile)
+### [Editing Dockerfile](/docs/devcontainer/editing-dockerfile/)
 
 This tutorial covers:
 {: .mt-6}
 - customizing languages, packages, and system through Dockerfile templates
 - advanced customization of Dockerfile
 
-### [GitHub Codespaces](/docs/devcontainer/github-codespaces)
+### [GitHub Codespaces](/docs/devcontainer/github-codespaces/)
 
 This tutorial covers:
 {: .mt-6}

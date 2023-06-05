@@ -2,7 +2,7 @@
 layout: default
 title: Department Sources
 nav_order: 1
-permalink: docs/computing/department-sources
+permalink: /docs/computing/department-sources
 parent: Computing Resources
 has_toc: false
 ---
