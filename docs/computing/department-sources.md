@@ -45,7 +45,7 @@ Regarding RStudio Stuck Processes: To fix this, login into RStudio server using 
 This system is offline for specific grant use only.
 
 To access:
-- Connect command: `ssh <username>@ wavelet.pstat.ucsb.edu`
+- Connect command: `ssh <username>@wavelet.pstat.ucsb.edu`
 
 ## RAS Cluster
 
