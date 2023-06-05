@@ -2,7 +2,7 @@
 layout: default
 title: Develop in Container
 nav_order: 2
-permalink: /docs/devcontainer
+permalink: docs/devcontainer
 has_children: true
 has_toc: false
 ---
@@ -18,7 +18,7 @@ It is enouraged to use dev containers through [remote servers such as Denali](ht
 
 ## Initial Setup
 
-### 1. [SSH Setup](/docs/devcontainer/ssh-setup/)
+### 1. [SSH Setup](docs/devcontainer/ssh-setup/)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
