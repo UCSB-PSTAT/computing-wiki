@@ -11,6 +11,9 @@ has_toc: false
 
 Welcome to the world of development containers! Whether you're a seasoned statistician or just starting your journey, development containers through Docker provides a powerful and flexible solution for creating reproducible and isolated environments for your data analysis and statistical modeling projects. With development containers, you can effortlessly set up and manage pre-configured environments that contain all the necessary dependencies, libraries, and tools, ensuring consistent results across different systems whether on your local laptop or remote server.  The following tutorials provide instructions for development container setup, management, and customization.
 
+{: .note }
+It is enouraged to use dev containers through [remote servers such as Denali](http://localhost:4000/docs/computing/department-sources#denali).
+
 ----
 
 ## Initial Setup
@@ -76,20 +79,20 @@ This tutorial covers:
 
 ## Additional Features
 
-### [Editing Dockerfile](./#editing-dockerfile)
+### [Editing Dockerfile](./editing-dockerfile)
+
+This tutorial covers:
+{: .mt-6}
+- customizing languages, packages, and system through Dockerfile templates
+- advanced customization of Dockerfile
+
+### [GitHub Codespaces](./#github-codespaces)
 {: .d-inline-block }
 
 Coming soon
 {: .label .label-yellow }
 
 This tutorial covers:
-- customizing languages, packages, and system through Dockerfile templates
-- advanced customization of Dockerfile
-
-### [GitHub Codespaces](./#github-codespaces)
-
-This tutorial covers:
-{: .mt-6}
 - Getting the GitHub Developer Pack
 - Running Codespaces
 - Using dev container with Codespaces

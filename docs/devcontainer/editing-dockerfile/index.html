@@ -1,0 +1,121 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Editing Dockerfile</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="editing-dockerfile"
+                  title="Editing Dockerfile"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <h2 is-upgraded>Prereqs</h2>
+<ul>
+<li>Completion of Dev Container with VS Code or Local Dev Containers</li>
+</ul>
+<h2 is-upgraded>Requirements for local </h2>
+<ul>
+<li>Latest version of <a href="https://www.docker.com/" target="_blank">Docker</a></li>
+</ul>
+<h2 is-upgraded>Requirements for remote</h2>
+<ul>
+<li>Setup of the <a href="https://www.it.ucsb.edu/ivanti-secure-access-campus-vpn/get-connected-campus-vpn" target="_blank">UCSB VPN</a> for connecting to PSTAT servers</li>
+<li>SSH Setup (key generation and GitHub) on the remote server</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Customization Options" duration="0">
+        <p>Although base container configurations are provided by the department, depending on your needs, you may wish to have a more lean or more bulky setup.</p>
+<p>This tutorial will cover the following options:</p>
+<ul>
+<li>Base container images (Task/language specific)</li>
+<li>Adding language packages</li>
+<li>Adding system packages (Ubuntu/Alpine/Alma/etc)</li>
+<li>VS Code extensions and settings</li>
+<li>GitHub dev containers through browser (Codespaces)</li>
+</ul>
+<p><strong>We begin by looking at the following Dockerfile: </strong><a href="https://github.com/syoh/jupyter-rootless-docker/edit/main/.devcontainer/Dockerfile" target="_blank"><strong>https://github.com/syoh/jupyter-rootless-docker/edit/main/.devcontainer/Dockerfile</strong></a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Base Container Images" duration="0">
+        <p>The first part of a Dockerfile contains the base image that should be used to build a container.  In our case it is:</p>
+<pre>FROM jupyter/datascience-notebook:x86_64-2023-03-06</pre>
+<p>This image provides a foundation that includes libraries for data analysis from the Julia, Python, and R communities.  More information about this image can be found on the <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-datascience-notebook" target="_blank">Jupyter Docker Stacks website</a>.</p>
+<p>There are many images out there and all can be found on the <a href="https://hub.docker.com/search?q=" target="_blank">Docker Hub</a>.  You can find additional images there to suit your needs.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Packages" duration="0">
+        <h2 is-upgraded>System</h2>
+<p>System packages are ones that exist globally on the containerized operating system for you to use.  Although Docker images provide most of the essentials, you may find that certain libraries or tools that you use require additional packages to run smoothly.  In order to add these dependencies we use the <code>RUN</code> command in the Dockerfile, which runs a command as if it is being typed into terminal.</p>
+<p>The <code>jupyter/datascience-notebook</code> image uses Ubuntu as its base container OS.  As such, we have access to the <code>apt</code> package manager.</p>
+<p>For instance, the following commands:</p>
+<ol type="1" start="1">
+<li>Download the necessary RStudio package</li>
+<li>Install it without prompt (-y) and without output (-q)</li>
+<li>Remove the downloaded package and clean up the installation cache</li>
+<li>Makes sure that RStudio Server has read, write, execution privileges</li>
+</ol>
+<pre>RUN wget -q https://download2.rstudio.org/server/jammy/amd64/rstudio-server-${R_STUDIO_VERSION}-amd64.deb &amp;&amp; \ # 1.
+    apt-get install -yq --no-install-recommends ./rstudio*.deb &amp;&amp; \ # 2.
+    rm -f ./rstudio*.deb &amp;&amp; \ # 3.
+    apt-get clean &amp;&amp; \ # 3.
+    chmod 777 /var/run/rstudio-server &amp;&amp; \ # 4.
+    chmod +t /var/run/rstudio-server # 4.</pre>
+<p>Some available options with this particular Dockerfile is to remove the lines for Quatro and RStudio if only Python will be used for development.</p>
+<h2 is-upgraded>Language</h2>
+<p>Language specific packages can be installed using the <code>RUN</code> command followed by the specific language package manager (such as pip, mamba, conda).  In the case of R, we must run <code>RUN R -q -e ‘install.packages(‘package-name-here')'</code> inside the Dockerfile.  An example of this can be found on these lines which install packages necessary for RStudio development:</p>
+<pre>RUN pip install radian &amp;&amp; \
+    R -q -e &#39;install.packages(c(&#34;markdown&#34;, &#34;languageserver&#34;, &#34;httpgd&#34;), repos=&#34;cloud.r-project.org&#34;)&#39; &amp;&amp;\
+    R -q -e &#39;remotes::install_github(&#34;ManuelHentschel/vscDebugger&#34;)&#39;</pre>
+<h2 is-upgraded>Environment Variables</h2>
+<p>Sometimes, certain installations require setting PATH variables or other environment variables.  To do so, we use the <code>ENV</code> keyword.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="VS Code Extensions/Settings" duration="0">
+        <p>To add VS Code Extensions and Settings, we use the <a href="https://github.com/syoh/jupyter-rootless-docker/blob/main/.devcontainer/devcontainer.json" target="_blank">devcontainer.json</a> file to specify what we need.  Although we can add extensions manually using VS Code, we can also pre-specify them to be automatically installed when creating a development container.</p>
+<p>To specify them, we need to look them up in the VS Code Extension menu (<code>ctrl</code>/⌘ + <code>shift</code> + <code>X</code>) and look for the &#34;Identifier&#34; tag as seen in the lower right corner below:<br></p>
+<p class="image-container"><img style="width: 513.29px" src="img/7cebf0bbad6d563.png"></p>
+<p>Another option is to open up the command palette (<code>ctrl</code>/⌘ + <code>shift</code> + <code>P</code>) and search for the following:</p>
+<p class="image-container"><img style="width: 564.50px" src="img/603bf6e2362dc4cc.png"></p>
+<p>Which will simply install your favorite extensions from your local machine&#39;s session onto your remote/dev container session.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

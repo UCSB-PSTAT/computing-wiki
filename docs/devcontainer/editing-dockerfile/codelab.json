@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-05T04:09:11Z",
+  "id": "editing-dockerfile",
+  "duration": 0,
+  "title": "Editing Dockerfile",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "10Vav5Ug2YKmD5SSm5aurSyP_faW4IS1jV6P9Ad1rZr8",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "editing-dockerfile"
+}
