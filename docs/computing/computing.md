@@ -13,13 +13,13 @@ has_toc: false
 
 There 3 different levels of remote supercomputing available to PSTAT faculty/staff/students:
 
-#### [**Department**](./department-sources)
+#### [**Department**](/docs/computing/department-sources)
 - Available to everyone with minor caveats
 
-#### [**University**](./university-sources)
+#### [**University**](/docs/computing/university-sources)
 - Available through your research PI
 
-#### [**External**](./external-sources)
+#### [**External**](/docs/computing/external-sources)
 - Available through simple application or external funding
 
 ## Parallel Processing Using R

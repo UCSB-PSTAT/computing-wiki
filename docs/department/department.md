@@ -40,14 +40,14 @@ The printer is accessible only from the department IP's and the Campus VPN. If y
 
 ### Drivers
 
-#### [Installing Windows Drivers](./printer-driver-win)
+#### [Installing Windows Drivers](/docs/department/printer-driver-win)
 
-#### [Installing MacOS Drivers](./printer-driver-mac)
+#### [Installing MacOS Drivers](/docs/department/printer-driver-mac)
 
 #### [Linux Driver Download](https://ucsb.box.com/s/3stigbjk8wjbjrhjauqal07ga2nj2l16)
 
 ### Usage
 
-#### [Using the Printer](./printer-use)
+#### [Using the Printer](/docs/department/printer-use)
 
 ----
