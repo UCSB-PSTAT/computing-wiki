@@ -2,6 +2,7 @@
 layout: default
 title: Develop in Container
 nav_order: 2
+permalink: /docs/devcontainer
 has_children: true
 has_toc: false
 ---
@@ -25,7 +26,7 @@ This tutorial covers how to:
 - connect to remote servers via terminal
 - set up GitHub SSH keys for repository access
 
-### 2. [VS Code Setup](./dev-container-vscode)
+### 2. [VS Code Setup](./vscode-setup)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
@@ -35,7 +36,7 @@ This tutorial covers:
 - connecting to remote servers via VS Code 
 - initial dev container setup
 
-### 3. [Local Setup](./devcontainer.html#3-local-setup) 
+### 3. [Local Setup](./#3-local-setup) 
 {: .d-inline-block }
 Optional
 {: .label }
@@ -49,7 +50,7 @@ This tutorial covers:
 
 ## Management
 
-### [Containers Usage](./dev-container-management)
+### [Containers Usage](./container-management)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
@@ -73,9 +74,9 @@ This tutorial covers:
 - basic terminal multiplexer (`tmux`) usage for persistant terminal sessions
 - running background jobs while disconnected from server and/or container
 
-## Customization
+## Additional Features
 
-### [Editing Dockerfile](./devcontainer.html#6)
+### [Editing Dockerfile](./#editing-dockerfile)
 {: .d-inline-block }
 
 Coming soon
@@ -84,5 +85,13 @@ Coming soon
 This tutorial covers:
 - customizing languages, packages, and system through Dockerfile templates
 - advanced customization of Dockerfile
+
+### [GitHub Codespaces](./#github-codespaces)
+
+This tutorial covers:
+{: .mt-6}
+- Getting the GitHub Developer Pack
+- Running Codespaces
+- Using dev container with Codespaces
 
 ----

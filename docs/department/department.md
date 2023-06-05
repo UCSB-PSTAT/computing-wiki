@@ -2,6 +2,7 @@
 layout: default
 title: Department Management
 nav_order: 4
+permalink: /docs/department
 has_children: true
 has_toc: false
 ---

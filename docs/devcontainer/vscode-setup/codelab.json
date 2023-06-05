@@ -3,8 +3,8 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-05-25T17:06:22Z",
-  "id": "dev-container-vscode",
+  "updated": "2023-06-05T01:13:24Z",
+  "id": "vscode-setup",
   "duration": 0,
   "title": "Dev Containers with VSCode",
   "authors": "Ronald Lencevičius",
@@ -19,5 +19,5 @@
   ],
   "tags": [],
   "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
-  "url": "dev-container-vscode"
+  "url": "vscode-setup"
 }

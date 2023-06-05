@@ -3,5 +3,5 @@ layout: default
 title: Jobs
 parent: Develop in Container
 nav_order: 6
-redirect_to: docs/job-management
+permalink: docs/devcontainer/job-management
 ---
