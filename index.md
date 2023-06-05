@@ -1,5 +1,5 @@
 ---
-title: Computing Wiki Home
+title: Wiki Home
 layout: home
 nav_order: 1
 ---

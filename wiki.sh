@@ -10,4 +10,4 @@ grep ' https://docs.google.com' README.md | # extract all lines with `https://do
     cut -d '|' -f2 | # split at `|` to separate markdown table cells
     cut -d '/' -f6 | # split at `/` to extract the file IDs
     sed 's/ *$//' | # remove any whitespace
-    xargs -i ./claat-linux-amd64 export -o docs {} # run `claat` tool for each matching line
+    xargs -i ./claat-linux-amd64 export -o tmp {} # run `claat` tool for each matching line
