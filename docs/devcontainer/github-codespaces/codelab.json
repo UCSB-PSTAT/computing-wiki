@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-05T05:43:00Z",
+  "id": "github-codespaces",
+  "duration": 0,
+  "title": "GitHub Codespaces",
+  "authors": "Ronald Lencevičius",
+  "summary": "",
+  "source": "13FwlQ6xvDvPmxwy4Xs_DCEc-AdEoiMLyurkk7ymxn9s",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "github-codespaces"
+}

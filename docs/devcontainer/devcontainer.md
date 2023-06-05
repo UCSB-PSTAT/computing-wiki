@@ -86,15 +86,12 @@ This tutorial covers:
 - customizing languages, packages, and system through Dockerfile templates
 - advanced customization of Dockerfile
 
-### [GitHub Codespaces](./#github-codespaces)
-{: .d-inline-block }
-
-Coming soon
-{: .label .label-yellow }
+### [GitHub Codespaces](./github-codespaces)
 
 This tutorial covers:
+{: .mt-6}
 - Getting the GitHub Developer Pack
 - Running Codespaces
-- Using dev container with Codespaces
+- Using Codespaces with VS Code
 
 ----
