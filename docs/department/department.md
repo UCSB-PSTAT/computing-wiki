@@ -29,7 +29,7 @@ Instructional web space is available to each faculty, staff member, and visiting
 ## Course Computing (JupyterHub)
 
 As a faculty member, instructor, or researcher you can request a JupyterHub instance to support your work and facilitate learning. [Please follow this link](https://help.lsit.ucsb.edu/hc/en-us/articles/4925937111323-Requesting-JupyterHub) to request JupyterHub instance.
-If you are a student looking to access JupyterHub for your course work, please check you syllabus, or with your TA or your faculty instructor for how to access the JupyterHub instance that is available to you.
+If you are a student looking to access JupyterHub for your course work, please check your syllabus, or with your TA or your faculty instructor for how to access the JupyterHub instance that is available to you.
 
 ## Printing
 
