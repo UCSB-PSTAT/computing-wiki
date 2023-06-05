@@ -19,13 +19,13 @@
 
 ### Build codelabs pages
 
-Following bash script extracts Google docs file ID from table above and runs the `claat` tool for each match.  To build all the docs, run the following command from the root directory:
+Following bash script extracts Google docs file ID from table above and runs the `claat` tool for each match.  Make sure that you have bash available (Windows Subsystem for Linux or a bash compatible terminal).  To build all the docs, run the following command from the root directory:
 
 ```bash
 ./wiki.sh
 ```
 
-Make sure that you have bash available (Windows Subsystem for Linux or a bash compatible terminal).
+Once the command is run, all the docs will be built inside the `tmp` directory.  Move the docs to their necessary locations.
 
 ### Build website
 
