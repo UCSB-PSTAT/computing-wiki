@@ -12,9 +12,6 @@ nav_external_links:
   - title: Computing Wiki on GitHub
     url: https://github.com/ucsb-pstat/computing
 
-plugins:
-  - jekyll-redirect-from
-
 favicon_ico: "/assets/images/favicon.ico"
 logo: "/assets/images/deptlogoblu.png"
 color_scheme: ucsb
@@ -26,5 +23,7 @@ callouts:
   note:
     title: note
     color: blue
-  highligh:
+  highlight:
     color: yellow
+  important:
+    color: red
