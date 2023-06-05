@@ -39,7 +39,7 @@ This tutorial covers:
 - connecting to remote servers via VS Code 
 - initial dev container setup
 
-### 3. [Local Setup](/docs/devcontainer/#3-local-setup) 
+### 3. [Local Setup](/docs/devcontainer#3-local-setup) 
 {: .d-inline-block }
 Optional
 {: .label }
