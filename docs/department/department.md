@@ -20,7 +20,7 @@ In order to have access to the department server you must have an active account
 In order to change your department server password you must:
 
 - Be connected to the UCSB VPN
-- Complete the [following form](https://kingslanding.pstat.ucsb.edu/setting/changeps.php)
+- Sign onto the [following webpage](https://kingslanding.pstat.ucsb.edu/setting/changeps.php)
 
 ## Websites
 
