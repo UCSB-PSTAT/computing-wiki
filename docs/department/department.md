@@ -49,5 +49,3 @@ The printer is accessible only from the department IP's and the Campus VPN. If y
 ### Usage
 
 #### [Using the Printer](/docs/department/printer-use/)
-
-----

@@ -93,5 +93,3 @@ This tutorial covers:
 - Getting the GitHub Developer Pack
 - Running Codespaces
 - Using Codespaces with VS Code
-
-----

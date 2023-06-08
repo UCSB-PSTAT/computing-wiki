@@ -19,5 +19,3 @@ Some useful information about this system as well as contact information for CSC
 - [Current clusters](https://csc.cnsi.ucsb.edu/clusters)
 - [User account form](https://csc.cnsi.ucsb.edu/forms/user-account)
 - [Documentation](https://csc.cnsi.ucsb.edu/docs)
-
-----

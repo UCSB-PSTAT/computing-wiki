@@ -22,5 +22,3 @@ The wonderful thing about ACCESS is that the the Explore tier is available to *g
 ## Private Options
 
 There are many available computing options such as [Amazon Web Services](https://aws.amazon.com/), [Google Cloud](https://cloud.google.com/), and [Microsoft Azure](https://azure.microsoft.com/).  They all offer some sort of "free tier" that has limited availability and computational capacity.  Paid tiers offer flexible configurations (CPU, GPU, TPU) with various integrations (Jupyter, RStudio, TensorFlow, etc).
-
-----

@@ -13,5 +13,3 @@ Here you will find relevant information on computing resources available at the 
 - Development container setup and usage using Docker
 - Remote computing resources available at the department, through the university, and externally
 - Tools available for department use (webpages, course computing, printers, etc.)
-
-----

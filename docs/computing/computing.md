@@ -43,5 +43,3 @@ registerDoParallel(cores=4)
 Please be conscious of the resources available on shared systems.  **Do not hog resources!**
 
 Additional information about available parallel computing tools in R can be found on [CRAN](https://cran.r-project.org/web/views/HighPerformanceComputing.html).
-
-----
