@@ -11,5 +11,5 @@ Gemfile.lock
 vendor/
 
 # Ignore wiki page build tooling
-claat-linux-amd64
+claat*
 tmp/
