@@ -8,6 +8,8 @@ nav_order: 1
 
 Welcome to the Department of Statistics & Applied Probability's Computing Wiki!
 
+![South Hall](/assets/images/SH.png){:width="75%" style="display:block; margin-left:auto; margin-right:auto; border-radius:15px"}
+
 Here you will find relevant information on computing resources available at the department as well as how to set them up and use them. We cover the following topics:
 
 - Development container setup and usage using Docker
