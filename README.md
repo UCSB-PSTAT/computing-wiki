@@ -12,6 +12,19 @@ Following bash script extracts Google docs file ID from table above and runs the
 
 Once the command is run, all the docs will be built inside the `tmp` directory.  Move the docs to their necessary locations.
 
+**Note:** Every codelab requires a `redirect.md` file with the following format:
+
+```md
+---
+title: CODELAB TITLE HERE
+parent: PARENT MD TITLE HERE
+nav_order: 1
+permalink: /docs/inner-directory/codelab-directory
+---
+
+{% include_relative index.html %}
+```
+
 ### Build website
 
 Requires Ruby Devkit, Jekyll, and Bundler installed.  From the root directory, run the following commands:
@@ -28,7 +41,7 @@ Access the website through [http://localhost:4000/](http://localhost:4000/)
 | Google Docs URL | Page Description |
 | --------------- | ---------------- |
 | https://docs.google.com/document/d/1ADKvlGqyYNsO1GWbC_IMLlUqDtyXbufTBUpS-ogFNYA | "ssh setup" |
-| -https://docs.google.com/document/d/1nGk9VwBzlPng8lm_7165-hJBXtyRAjDdx1t0fhqv6xE | "local dev containers" (incomplete for now) |
+| https://docs.google.com/document/d/1nGk9VwBzlPng8lm_7165-hJBXtyRAjDdx1t0fhqv6xE | "local dev containers" |
 | https://docs.google.com/document/d/195jckkF79ed7KultZlF4CJOO2nda3y3Vjm5ISLy_b1k | "dev container with vscode" |
 | https://docs.google.com/document/d/1oTagNdTuDcQMCT3-2vjtK945VB_sJndbnfhoeSxOK24 | "dev container management" |
 | https://docs.google.com/document/d/10oo_i8PbxfD5mdyqdLdCdvSJ_DFhRi7E5HRG2iagrZU | "file management" |

@@ -1,0 +1,118 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Local Development Container Setup</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="local-setup"
+                  title="Local Development Container Setup"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p>In this tutorial, we will set up Docker for your local machine.</p>
+<h2 is-upgraded>Prereqs</h2>
+<p>Windows users: </p>
+<ul>
+<li>Hyper-V enabled through BIOS</li>
+<li><a href="https://www.microsoft.com/store/productId/9P9TQF7MRM4R" target="_blank">Windows Subsystem for Linux 2</a> (WSL2)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Download and Install" duration="0">
+        <h2 is-upgraded>Download</h2>
+<p>First, we need to download the latest version of <a href="https://www.docker.com/" target="_blank">Docker</a>.  This can be done by visiting the link and downloading an installer for your system.</p>
+<h2 is-upgraded>Install</h2>
+<h3 is-upgraded>MacOS</h3>
+<p>Follow the installation instructions on the .dmg file you downloaded</p>
+<h3 is-upgraded>Linux</h3>
+<p>Follow the instructions found on this <a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">installation page</a>.</p>
+<h3 is-upgraded>Windows</h3>
+<p>Windows requires additional steps prior to the Docker installation. </p>
+<ol type="1" start="1">
+<li><a href="https://www.microsoft.com/store/productId/9P9TQF7MRM4R" target="_blank">Install WSL2</a> (follow this link to the Microsoft Store):</li>
+</ol>
+<p class="image-container"><img style="width: 400.00px" src="img/ebd896fc92a3504a.png"></p>
+<ol type="1" start="2">
+<li>Once the download is complete, click &#34;Open&#34;.  This should launch a terminal session.  You&#39;ve successfully installed WSL2!</li>
+</ol>
+<p class="image-container"><img style="width: 492.57px" src="img/54a98d3dd998e636.png"></p>
+<ol type="1" start="3">
+<li>We can turn our attention to installing Docker Desktop.  Go into your downloads and open up the Docker Desktop Installer.  This will launch a window.  <strong>Make sure that &#34;Use WSL 2 instead of Hyper-V&#34; is selected!</strong>:</li>
+</ol>
+<p class="image-container"><img style="width: 374.51px" src="img/d40bb699f29d9d42.png"></p>
+<aside class="special"><p>Congrats! Docker is now installed on your machine! To verify, you can open terminal and run <code>docker -v</code> to verify that it&#39;s installed:</p>
+<p class="image-container"><img style="width: 472.53px" src="img/86d4d80135d18c5a.png"></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Workarounds (Windows)" duration="0">
+        <p>In case WSL 2 doesn&#39;t work, another option is to enable Hyper-V in your BIOS instead.</p>
+<aside class="warning"><p><strong>Note:</strong> The following instructions will vary a bit depending on your computer&#39;s manufacturer.  The overall process should be similar though.</p>
+</aside>
+<ol type="1" start="1">
+<li>Reboot your PC and pay attention to the boot up screen.  You will need to press a key (usually Enter, Esc, or Delete) to interrupt your startup.  From there, select and enter your BIOS:</li>
+</ol>
+<p class="image-container"><img style="width: 383.50px" src="img/31234fb1082e27db.jpeg"></p>
+<ol type="1" start="2">
+<li>Navigate your BIOS and look for something akin to &#34;Security&#34; or &#34;Features&#34;.  Under that tab you should find an option for &#34;Virtualization&#34; or &#34;Hyper-V&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 577.22px" src="img/e2b52597d0993de4.jpeg"></p>
+<ol type="1" start="3">
+<li>Inside this menu you&#39;ll find options to enable your Hyper-V/Virtualization for your CPU.  Enable them:</li>
+</ol>
+<p class="image-container"><img style="width: 584.07px" src="img/fb77cd9ace619e.jpeg"></p>
+<ol type="1" start="4">
+<li>Make sure to save and reset your computer:</li>
+</ol>
+<p class="image-container"><img style="width: 584.50px" src="img/cc03f492016d725.jpeg"></p>
+<ol type="1" start="5">
+<li>Make sure that when installing Docker Desktop, you <strong>disable the &#34;Use WSL 2 instead of Hyper-V&#34; option!</strong></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusion" duration="0">
+        <p>Now that Docker is installed locally, you can follow the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/" target="_blank">Dev Containers with VS Code</a> to install the necessary extensions (if you haven&#39;t already) and run development containers outside of a remote environment.</p>
+<h2 is-upgraded>Next Steps</h2>
+<ul>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer#management" target="_blank">Learn to manage your containers</a></li>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer#additional-features" target="_blank">Learn more about custom setups</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

@@ -28,11 +28,7 @@
                   feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
     
       <google-codelab-step label="Introduction" duration="0">
-        <h2 is-upgraded>Secure Shell - What is it for?</h2>
-<ul>
-<li>Access to remote servers</li>
-<li>Access to remote repositories</li>
-</ul>
+        <p>Secure shell allows you to access remote servers and remote repositories.  This is done by public-key encryption (or asymmetric cryptography).  It is a very secure and most easy way to interact with remote environments!</p>
 <p>This tutorial will run you through how to generate SSH keys whether your on your local machine or a remote server.  </p>
 <h2 is-upgraded>Prereqs</h2>
 <ul>
@@ -58,16 +54,16 @@
 <ol type="1" start="3">
 <li>Verify that ssh-agent is running by searching for &#34;Services&#34; in the Start Menu:</li>
 </ol>
-<p class="image-container"><img style="width: 295.00px" src="img/81a9a76344a782a1.png"></p>
+<p class="image-container"><img style="width: 295.00px" src="img/bbe1751162acb402.png"></p>
 <ol type="1" start="4">
 <li>Search for &#34;OpenSSH Agent&#34; and make sure that the <strong>Status is &#34;Running&#34;</strong> and <strong>Startup Type is &#34;Automatic&#34;</strong>.</li>
 </ol>
-<p class="image-container"><img style="width: 468.00px" src="img/68795008fe4ef0d.png"></p>
+<p class="image-container"><img style="width: 468.00px" src="img/151a488b0f161c02.png"></p>
 <ol type="1" start="5">
 <li>If this is not the case, right-click on the &#34;OpenSSH Authentication Agent&#34; entry -&gt; select &#34;Properties&#34; -&gt; Under &#34;Service Status&#34; select &#34;Start&#34; -&gt; From the &#34;Startup Type&#34; drop down menu, select &#34;Automatic&#34;.</li>
 </ol>
-<p class="image-container"><img style="width: 312.00px" src="img/445c733d1ca508ee.png"></p>
-<p class="image-container"><img style="width: 312.00px" src="img/6b4c549f6a405fa.png"></p>
+<p class="image-container"><img style="width: 312.00px" src="img/f70a87875e9501a6.png"></p>
+<p class="image-container"><img style="width: 312.00px" src="img/7fed267050670bd.png"></p>
 <ol type="1" start="6">
 <li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code><KEY_NAME></code> is the name of the key you created earlier:</li>
 </ol>
@@ -159,11 +155,11 @@ code ~/.ssh/&lt;KEY_NAME&gt;.pub</pre>
 <li>Copy the contents of the public key to your clipboard.</li>
 <li>Open <a href="https://github.com" target="_blank">github.com</a>, login, navigate to the top right corner and click on your user profile, and enter the settings:</li>
 </ol>
-<p class="image-container"><img style="width: 161.50px" src="img/cb087e5b8f121b12.png"></p>
+<p class="image-container"><img style="width: 161.50px" src="img/6f564f92c4a3b1d4.png"></p>
 <ol type="1" start="4">
 <li>On the left panel under &#34;Access&#34;, click on &#34;SSH and GPG keys&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 237.50px" src="img/450e68b64d960032.png"></p>
+<p class="image-container"><img style="width: 237.50px" src="img/5d6e714fcb278b46.png"></p>
 <ol type="1" start="5">
 <li>Click on the &#34;New SSH key&#34; button.</li>
 <li>In the form, </li>
@@ -172,7 +168,7 @@ code ~/.ssh/&lt;KEY_NAME&gt;.pub</pre>
 <li>Fill out the title of the key.  Preferably call it the current machine you&#39;re creating the entry for e.g. &#34;laptop&#34;</li>
 <li>Paste the public key you copied earlier into the &#34;Key&#34; box</li>
 </ul>
-<p class="image-container"><img style="width: 468.00px" src="img/8b240ab2e05a212c.png"></p>
+<p class="image-container"><img style="width: 468.00px" src="img/bf7c59b30fe53f83.png"></p>
 <ol type="1" start="7">
 <li>Click the &#34;Add SSH key&#34; button.</li>
 <li>Go back to terminal and open up your SSH config file:</li>
@@ -192,6 +188,16 @@ Host github.com
    IdentityFile ~/.ssh/&lt;KEY_NAME&gt;</pre>
 <aside class="warning"><p><strong>Note:</strong> This step is <strong>critical</strong> for Windows users otherwise your git configuration will not function.</p>
 </aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusion" duration="0">
+        <p>This completes the tutorial on SSH! </p>
+<h2 is-upgraded>Next Step</h2>
+<ul>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/" target="_blank">Setting up VS Code for usage with development containers</a></li>
+</ul>
 
 
       </google-codelab-step>

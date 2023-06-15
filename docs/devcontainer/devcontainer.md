@@ -37,15 +37,14 @@ Essential
 This tutorial covers:
 - basic VS Code configuration 
 - connecting to remote servers via VS Code 
+- customizing languages, packages, and system through Dockerfile templates
 - initial dev container setup
 
-### 3. [Local Setup](/docs/devcontainer#3-local-setup) 
+### 3. [Local Setup](/docs/devcontainer/local-setup/) 
 {: .d-inline-block }
 Optional
 {: .label }
 {: .d-inline-block }
-Coming soon
-{: .label .label-yellow }
 
 This tutorial covers:
 - local Docker installation
@@ -53,7 +52,7 @@ This tutorial covers:
 
 ## Management
 
-### [Containers Usage](/docs/devcontainer/container-management/)
+### [Containers Management](/docs/devcontainer/container-management/)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
@@ -66,7 +65,7 @@ This tutorial covers:
 
 This tutorial covers:
 {: .mt-6}
-- Moving files around between remote and local instances
+- moving files around between remote and local instances
 - GitHub repository cloning and basic management
 
 ### [Jobs](/docs/devcontainer/job-management/)
@@ -83,13 +82,12 @@ This tutorial covers:
 
 This tutorial covers:
 {: .mt-6}
-- customizing languages, packages, and system through Dockerfile templates
 - advanced customization of Dockerfile
 
 ### [GitHub Codespaces](/docs/devcontainer/github-codespaces/)
 
 This tutorial covers:
 {: .mt-6}
-- Getting the GitHub Developer Pack
-- Running Codespaces
-- Using Codespaces with VS Code
+- getting the GitHub Developer Pack
+- running Codespaces
+- using Codespaces with VS Code

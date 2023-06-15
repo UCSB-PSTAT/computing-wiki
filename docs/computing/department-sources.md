@@ -12,6 +12,9 @@ has_toc: false
 The following are servers available to the PSTAT department.
 
 ## Denali
+{: .d-inline-block }
+Recommended
+{: .label .label-green }
 
 Denali is our main PSTAT department server.  It contains the following specs:
 - 20x Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz (200 total cores)
@@ -20,8 +23,8 @@ Denali is our main PSTAT department server.  It contains the following specs:
 To access:
 - Connect command: `ssh <username>@denali.pstat.ucsb.edu`
 - Make sure you're connected to the [Campus VPN](https://www.ets.ucsb.edu/network-infrastructure-services/ivanti-secure-access-campus-vpn)
-- Use your [department account login](./department.html#department-server-accounts)
-- Complete the [SSH Setup](./ssh-setup) to generate and transfer your SSH keys
+- Use your [department account login](/docs/department#department-server-accounts)
+- Complete the [SSH Setup](/docs/devcontainer/ssh-setup) to generate and transfer your SSH keys
 
 ## Perelandra
 
@@ -34,7 +37,7 @@ To access:
 - Connect command: `ssh <username>@perelandra.pstat.ucsb.edu`
 - Available via [https://perelandra.pstat.ucsb.edu/rstudio](https://perelandra.pstat.ucsb.edu/rstudio)
 - Make sure you're connected to the [Campus VPN](https://www.ets.ucsb.edu/network-infrastructure-services/ivanti-secure-access-campus-vpn)
-- Complete the [SSH Setup](./ssh-setup) to generate and transfer your SSH keys
+- Complete the [SSH Setup](/docs/devcontainer/ssh-setup) to generate and transfer your SSH keys
 
 {: .note }
 Regarding RStudio Stuck Processes: To fix this, login into RStudio server using the terminal command above and issue the following commands: `rstudio-server active-sessions` and `pkill -u <username>`

@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-14T23:08:38Z",
+  "id": "local-setup",
+  "duration": 0,
+  "title": "Local Development Container Setup",
+  "authors": "Ronald Lencevičius",
+  "summary": "Docker installation for local machines.",
+  "source": "1nGk9VwBzlPng8lm_7165-hJBXtyRAjDdx1t0fhqv6xE",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "local-setup"
+}

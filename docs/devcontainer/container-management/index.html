@@ -28,9 +28,10 @@
                   feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
     
       <google-codelab-step label="Introduction" duration="0">
-        <h2 is-upgraded>Prereqs</h2>
+        <p>Now that we have a development container setup in place, we can manipulate and use this setup to run our code.  This tutorial will cover some basic commands, entering and exiting containers, and shutting down and launching them!</p>
+<h2 is-upgraded>Prereqs</h2>
 <ul>
-<li>Completion of SSH Setup (including GitHub)</li>
+<li>Completion of <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/ssh-setup/" target="_blank">SSH Setup</a> (including GitHub)</li>
 <li>Latest version of <a href="https://git-scm.com/downloads" target="_blank">Git</a></li>
 <li>A <a href="https://github.com/" target="_blank">GitHub</a> account</li>
 <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
@@ -69,18 +70,18 @@
 <ol type="1" start="1">
 <li>Open a file directory that contains your Docker file and you should see and click the following dialogue pop-up:</li>
 </ol>
-<p class="image-container"><img style="width: 410.50px" src="img/607461093e654a5d.png"></p>
+<p class="image-container"><img style="width: 410.50px" src="img/f7d90f08e79f7458.png"></p>
 <ol type="1" start="2">
 <li>Or you can click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Reopen in Container&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/fc6df05136dc8107.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/d5a7938253d2d109.png"></p>
 <h2 is-upgraded>Detaching from a container</h2>
 <p>To detach from a running container, click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Reopen Folder in SSH&#34; or &#34;Reopen Folder Locally&#34;.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/c9b5f3d52e487ebe.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/203d1335fd88106.png"></p>
 <p>Clicking this will detach you from the running container.  <strong>However, it will not close the container</strong>.</p>
 <h2 is-upgraded>Attaching to a running container</h2>
 <p>To reattach to a running container, click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Attach to Running Container...&#34;:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/dcbb55d992b7ff68.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/707ce3bc90a6e8d5.png"></p>
 <p>From there, you will be given an option to select one of your running containers.</p>
 <h2 is-upgraded>Stopping a running container</h2>
 <p>To stop a running container run the following commands:</p>
@@ -103,7 +104,7 @@
 <li>For <strong>local/remote </strong>file management, files can be drag-and-dropped from<em> local -&gt; remote </em>straight into VS Code (assuming SSH is properly set up).  To receive files from<em> remote -&gt; local</em> each file must be selected and downloaded by right clicking and selecting &#34;Download...&#34; in the VS Code Explorer pane.</li>
 <li>For <strong>remote/remote</strong> file management, the <code>scp</code> or <code>sftp</code> commands or a GUI tool like WinSCP to transfer between <em>remote &lt;-&gt; remote</em>.</li>
 </ul>
-<p>For more information, see the File Management wiki entry.</p>
+<p>For more information, see the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/file-management/" target="_blank">File Management wiki entry</a>.</p>
 
 
       </google-codelab-step>
@@ -117,7 +118,7 @@
 <li>Quatro</li>
 </ul>
 <p>These tools allow for users to run their code and programs while inside the container.  It is recommended to use notebooks (RMarkdown or Jupyter) to run jobs that are possible to complete during a single session.  </p>
-<p>However, for long running job that take many hours or potentially even days to run, it is recommended to use alternative measures to complete these jobs without needing to stay in a dev container session.  More information on this can be found in the Job Management wiki entry.</p>
+<p>However, for long running jobs that take many hours or potentially even days to run, it is recommended to use alternative measures to complete these jobs without needing to stay in a dev container session.  More information on this can be found in the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/job-management/" target="_blank">Job Management wiki entry</a>.</p>
 
 
       </google-codelab-step>

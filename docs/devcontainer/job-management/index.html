@@ -28,7 +28,9 @@
                   feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
     
       <google-codelab-step label="Introduction" duration="0">
-        <h2 is-upgraded>Prereqs</h2>
+        <p>It is simple enough to edit and run files while in a remote environment; however, when dealing with big data or computationally intensive procedures you may want to work on something else or even turn off your computer to go to bed.  The worst is when you&#39;re running a program and you disconnect due to connection issues.</p>
+<p>To solve this problem, this tutorial will cover how to run your jobs <em>in the background</em> using <code>tmux</code>!</p>
+<h2 is-upgraded>Prereqs</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
 <li>Dev container setup</li>
@@ -57,45 +59,45 @@
         <ol type="1" start="1">
 <li>Open up VS Code, connect to a remote server, and run your docker container.</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/156b33cf2bdfa4c1.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/21cadda1e3117cfe.png"></p>
 <ol type="1" start="2">
 <li>Make sure that a terminal session is open.  Inside terminal type in <code>tmux</code> and press enter.  This will open up a tmux session which is no different than your regular terminal but with additional features.</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/9883714db6ff07a1.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/f520e434007a1c88.png"></p>
 <ol type="1" start="3">
 <li>We just created a new tmux session.  We can do tasks in it, run programs, or run code.  For now, we will detach from the session using <code>tmux detach</code> <strong>or</strong> the keyboard shortcut <code>ctrl</code>/⌘ + <code>b</code>, <code>d</code> (2 steps: &#34;control&#34; and &#34;b&#34; together followed by &#34;d&#34; by itself).  Detaching means that we are leaving the tmux session <strong>but</strong> leaving any jobs/programs running in the background within that session.</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/4c95477e3ba75503.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/3801979566b56387.png"></p>
 <ol type="1" start="4">
 <li>To reattach to the most recent session, we can simply type <code>tmux attach</code>:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/1ea22b2197e5d6a5.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/987abd882ad4f182.png"></p>
 <ol type="1" start="5">
 <li>To view all current running sessions we can use <code>tmux ls</code>. We only have 1 session called &#34;0&#34; with 1 window open: </li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/ba37ab361b8c6cc3.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/6ea971be2c25ca0c.png"></p>
 <ol type="1" start="6">
 <li>If you create more than one tmux session, we can specify which one we wish to connect to by adding the <code>-t</code> flag for the following command: <code>tmux attach -t <name/number></code> where name/number can be found on the left-most output of <code>tmux ls</code>:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/9922b91f21dbe190.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/16ac4e11cc999724.png"></p>
 <ol type="1" start="7">
 <li>To kill a specific session and any running jobs within it, we use the <code>kill-session</code> command: <code>tmux kill-session -t <name/number></code>:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/9bb5357f1a1d1ebc.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/1ac92e665e3a890c.png"></p>
 <ol type="1" start="8">
 <li>To kill all sessions and any running jobs in it we use <code>tmux kill-server</code>.  This will end all tmux sessions.</li>
 <li>Lastly, if you want your session to be named something other than a number you can use <code>tmux new -s <name></code>:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/8e2f6e9527599b5f.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/6e7047c447d9e6e2.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Running Background Jobs" duration="0">
         <p>Let&#39;s start fresh by running <code>tmux kill-server</code> and running <code>tmux</code> to create a new session:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/174439b04bc2e341.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/cd43161e137ac897.png"></p>
 <p>This will attach us to a new tmux session as discussed. As an example, we will use the <code>simulate_job.R</code> file to run a long job within the tmux session.  This will create an empty file in a folder every 10 seconds:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/73b2484f5eeb27e6.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/66433fb8fb1a9d57.png"></p>
 <p>Now, let&#39;s detach from the tmux session using our keyboard shortcut <code>ctrl</code>/⌘ + <code>b</code>, <code>d</code> as shown in step 3 in the previous page.  This will detach our session back to our main terminal.  From here, we are free to detach from the dev container <em>and</em> from our remote server!</p>
 <aside class="warning"><p><strong>Note:</strong> In order for this to work, you must keep your dev container running on the remote server.  If you kill your dev container session, it will also kill anything that is happening within it.</p>
 </aside>
@@ -103,19 +105,19 @@
 <ol type="1" start="1">
 <li>ssh into the remote server</li>
 </ol>
-<p class="image-container"><img style="width: 448.50px" src="img/35a7f1e56e6f8f3e.png"></p>
+<p class="image-container"><img style="width: 448.50px" src="img/a223d801d30add96.png"></p>
 <ol type="1" start="2">
 <li>Attach to the running dev container (or use the &#34;Reopen in dev container&#34; pop-up)</li>
 </ol>
-<p class="image-container"><img style="width: 459.50px" src="img/5c32360a318adb3.png"></p>
-<p class="image-container"><img style="width: 461.00px" src="img/1015a4b5eca5bb11.png"></p>
+<p class="image-container"><img style="width: 459.50px" src="img/4975adaf728fd862.png"></p>
+<p class="image-container"><img style="width: 461.00px" src="img/73c1b6642f49346.png"></p>
 <ol type="1" start="3">
 <li>Run either <code>tmux attach</code> (for the most recent session) or <code>tmux ls</code> and <code>tmux attach -t <name/number></code> (to find a specific session and attach to it):</li>
 </ol>
-<p class="image-container"><img style="width: 463.50px" src="img/5246ae935d83a8b3.png"></p>
-<p class="image-container"><img style="width: 462.33px" src="img/3f314b85146ee822.png"></p>
+<p class="image-container"><img style="width: 463.50px" src="img/713c5fefb07e13d2.png"></p>
+<p class="image-container"><img style="width: 462.33px" src="img/ae2e053ca275ca8d.png"></p>
 <aside class="special"><p><strong>Success!</strong> We have accessed our long running job! If we want to kill the job midway through we can use <code>ctrl</code>/⌘ + <code>c</code> to interrupt the job:</p>
-<p class="image-container"><img style="width: 408.11px" src="img/8f48eaa908e2b992.png"></p>
+<p class="image-container"><img style="width: 408.11px" src="img/87ac844c8e5a9d38.png"></p>
 <p>Otherwise, you are now ready to run jobs in the background using tmux!</p>
 </aside>
 
@@ -129,7 +131,7 @@
 <li>Run multiple windows in a single session. </li>
 </ul>
 <p>This means that instead of needing more than one tmux session, we can add additional windows or additional panes as needed.  Below is an example of 3 panes in a single window of a tmux session: </p>
-<p class="image-container"><img style="width: 456.50px" src="img/ef62592606270164.png"></p>
+<p class="image-container"><img style="width: 456.50px" src="img/ad64e56ca24ed730.png"></p>
 <p>These features, as well as additional configuration and customization can be found in the <a href="https://github.com/tmux/tmux/wiki/Getting-Started" target="_blank">tmux wiki</a>.</p>
 
 
