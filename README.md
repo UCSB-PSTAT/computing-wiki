@@ -48,6 +48,7 @@ Access the website through [http://localhost:4000/](http://localhost:4000/)
 | https://docs.google.com/document/d/1yF0US6nskeKtxQ8an5zFTD3OvLwK6Eg2aI2ZcDiqKB0 | "job management" |
 | https://docs.google.com/document/d/10Vav5Ug2YKmD5SSm5aurSyP_faW4IS1jV6P9Ad1rZr8 | "editing dockerfile" |
 | https://docs.google.com/document/d/13FwlQ6xvDvPmxwy4Xs_DCEc-AdEoiMLyurkk7ymxn9s | "github codespaces" |
+| https://docs.google.com/document/d/1jmfMKz30vkl2BcTW1tHSaQ1kPkbIwxjjdv2Vc0s4H5k | "ACCESS via Jetstream2" |
 | https://docs.google.com/document/d/16wWtuBrVarh3kZDWFhoQt3M_pVxf5t6GhvIci9KRyqI | "printer driver installation - windows" |
 | https://docs.google.com/document/d/1qt16tP26RZPOllHIvHCzWWv1KS7-M4Cs4tmr6eU16eU | "printer driver installation - macOS" |
 | https://docs.google.com/document/d/1WnD7ZmUyZoqdxFuk47FHCdjoTVAfQJxDqoCi-qBqxOQ | "printer use" |

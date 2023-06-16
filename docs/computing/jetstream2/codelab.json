@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-06-16T02:02:44Z",
+  "id": "jetstream2",
+  "duration": 0,
+  "title": "ACCESS via Jetstream2",
+  "authors": "Ronald Lencevičius",
+  "summary": "Learn how to make use of Jetstream2 supercomputing services.",
+  "source": "1jmfMKz30vkl2BcTW1tHSaQ1kPkbIwxjjdv2Vc0s4H5k",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "url": "jetstream2"
+}

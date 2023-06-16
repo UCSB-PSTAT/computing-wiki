@@ -1,0 +1,268 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>ACCESS via Jetstream2</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="jetstream2"
+                  title="ACCESS via Jetstream2"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p>Jetstream2 is one of the <a href="https://allocations.access-ci.org/resources" target="_blank">many providers</a> of supercomputing services via the ACCESS program.  It provides an easy to use interface to build and create instances in order to make use of your ACCESS Allocation Credits!  In this tutorial we will cover how to access Jetstream2 and get started with basic development container environments in it!</p>
+<aside class="warning"><p><strong>Note:</strong> Before you go through this tutorial, make sure that you <em>or </em>your faculty PI have completed an allocation request via ACCESS.  General information about what is available can be <a href="https://computing.pstat.ucsb.edu/docs/computing/external-sources#nsf-access-program" target="_blank">found here</a>.</p>
+<ul>
+<li><a href="https://allocations.access-ci.org/preparing-your-explore-access-request" target="_blank">Explore Request</a> (400,000 credits) for graduate students with 1 paragraph abstract</li>
+<li><a href="https://allocations.access-ci.org/preparing-your-discover-access-request" target="_blank">Discover Request</a> (1,500,000 credits) for PIs with 1 page description + abstract</li>
+</ul>
+</aside>
+<ul>
+<li>Accessing Jetstream2</li>
+<li>Adding SSH key</li>
+<li>Creating an instance</li>
+<li>Adding instance to VS Code</li>
+</ul>
+<h2 is-upgraded>Prereqs</h2>
+<ul>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/ssh-setup/" target="_blank">SSH Setup</a> tutorial completed</li>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/" target="_blank">Dev Containers with VS Code</a> tutorial completed</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Accessing Jetstream2" duration="0">
+        <ol type="1" start="1">
+<li>Once you have been approved for an allocation request, head over to the <a href="https://jetstream-cloud.org/" target="_blank">Jetstream2 website</a> and click &#34;Jetstream2 Login&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/826ff9edcd14cae1.png"></p>
+<ol type="1" start="2">
+<li>Click on &#34;Add allocation&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 296.15px" src="img/af1a7044a849db95.png"></p>
+<ol type="1" start="3">
+<li>Click &#34;Add ACCESS Account&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 466.00px" src="img/b69275085d6e2d8a.png"></p>
+<ol type="1" start="4">
+<li>Complete the login:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/d31cb59081626d7e.png"></p>
+<ol type="1" start="5">
+<li>At this point, you will either see your allocation or will need to ask your PI to add credit allocations to your account.  You should see something like this:</li>
+</ol>
+<p class="image-container"><img style="width: 520.50px" src="img/ecd15186e1b6a486.png"></p>
+<ol type="1" start="6">
+<li>Click on the Allocation.</li>
+</ol>
+<aside class="special"><p>You are done! You will be greeted with the following window which contains all your compute instance management tools:</p>
+<p class="image-container"><img style="width: 610.00px" src="img/5d0aff8fb9eedf6.png"></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Adding SSH Public Keys" duration="0">
+        <aside class="warning"><p><strong>Note: </strong>This part requires completion of <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/ssh-setup/" target="_blank">SSH Setup</a> in order to generate public keys for your personal computer.</p>
+</aside>
+<p>Before we create our computing instances, it is best to add an SSH key that is associated with your personal computer.  The reason for this is so that authenticating to Jetstream2 is made simpler without needing to use cumbersome passwords.</p>
+<ol type="1" start="1">
+<li>From your allocation menu, click &#34;Create&#34; -&gt; &#34;SSH Public Key&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 309.18px" src="img/347621c7c836d228.png"></p>
+<ol type="1" start="2">
+<li>Name your key (e.g. my-laptop, my-desktop, etc.)</li>
+<li>Open up your terminal and type in <code>code .ssh/<your-key-name>.pub</code> (where <code><your-key-name></code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/<your-key-name>.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
+</ol>
+<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &lt;your-key-name&gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &lt;your-key-name&gt; (no extension) file, this is your private key and should be kept secret!</p>
+</aside>
+<p class="image-container"><img style="width: 547.06px" src="img/91a9c00aeaddc707.png"></p>
+<ol type="1" start="4">
+<li>Click &#34;Create&#34;</li>
+</ol>
+<aside class="special"><p>You will now have your computer&#39;s public key added to Jetstream2.  You will not need to use password authentication when accessing your compute instances!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Creating Compute Instances" duration="0">
+        <p>Jetstream2 makes it easy to create computing instances of various sizes.  It is as simple as clicking &#34;Create&#34; -&gt; &#34;Instance&#34; and selecting from the options provided.  The PSTAT Computing Committee provides a community snapshot that will allow you to get started with an instance and development containers with ease!</p>
+<ol type="1" start="1">
+<li>From your allocation menu, click &#34;Create&#34; -&gt; &#34;Instance&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 356.76px" src="img/8b31bbade6b1180e.png"></p>
+<ol type="1" start="2">
+<li>In the &#34;Choose an Instance Source&#34; window, select &#34;By Image&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/bcfee672037e8590.png"></p>
+<ol type="1" start="3">
+<li>In the &#34;Search by name&#34; box, type &#34;ucsb-pstat&#34;, you will see a <strong>ucsb-pstat-image</strong> community snapshot pop up in the options.  Click on &#34;Create Instance&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/2c8c6f07b0ccf30c.png"></p>
+<ol type="1" start="4">
+<li>From here, select the size of your instance.  <strong>Be aware that bigger sizes will mean more credits spent per hour while in use!</strong></li>
+</ol>
+<p class="image-container"><img style="width: 495.06px" src="img/611d289781b55a6a.png"></p>
+<ol type="1" start="5">
+<li>Select the size of your instance and number of instances if additional are needed.</li>
+<li>Select &#34;Yes&#34; for &#34;Enable web desktop&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 265.00px" src="img/ee62c30e55ddb16d.png"></p>
+<ol type="1" start="7">
+<li>Select the SSH key that you added in the previous tutorial step <em>or </em>click &#34;Upload a new SSH public key&#34; to add a new one:</li>
+</ol>
+<p class="image-container"><img style="width: 378.89px" src="img/26cdb5d6c33de522.png"></p>
+<ol type="1" start="8">
+<li>Lastly, hit create!</li>
+</ol>
+<aside class="special"><p>You will be taken to the homepage where you will see your instance being built!</p>
+<p class="image-container"><img style="width: 342.50px" src="img/53918e487ab7e766.png"></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Navigating Instances" duration="0">
+        <p>Once your instance is built and setup, you will be able to dive straight in.  We will show off some basic items to take note of in the web UI.</p>
+<ol type="1" start="1">
+<li>Click on the Instances box on the main menu:</li>
+</ol>
+<p class="image-container"><img style="width: 372.40px" src="img/633e53b3b0c1fe25.png"></p>
+<ol type="1" start="2">
+<li>Inside you will see all your available instances.  You have an option to immediately connect to the instance by clicking on &#34;Connect to&#34;.  Jetstream2 provides a web shell and desktop that you can access from within your browser to complete tasks.  Feel free to explore these options; however, we will be focusing on using VS Code in the next part of this tutorial.</li>
+</ol>
+<p class="image-container"><img style="width: 588.50px" src="img/6eef399a4e686ce4.png"></p>
+<ol type="1" start="3">
+<li>Click on the name of your instance (e.g. &#34;my awesome research instance&#34;).  This will open up a page with all the details of your instance:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/3e9b5f9666ecb212.png"></p>
+<ol type="1" start="4">
+<li>Scrolling around here, you will find various details and information about your instance.  You can interact, attach volumes, create snapshots, etc. through here.</li>
+<li>To resize an instance to a more powerful/less powerful one, click on &#34;Actions&#34; -&gt; &#34;Resize&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 457.17px" src="img/6753ca7c31db97ab.png"></p>
+<ol type="1" start="6">
+<li>To shut down your instance click on &#34;Actions&#34; -&gt; &#34;Shelve&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 457.00px" src="img/6753ca7c31db97ab.png"></p>
+<aside class="warning"><p><strong>WARNING:</strong> Be sure to <strong>shelve</strong> your instance any time you are not using it to run your code/programs/etc.  If you do not shelve your instance, <strong>it will continue running and consume your allocation credits even if you&#39;re not doing anything!</strong></p>
+</aside>
+<p>More advanced options are detailed in the <a href="https://docs.jetstream-cloud.org/general/instancemgt/" target="_blank">Jetstream2 documentation</a>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Developing with VS Code and Dev Containers" duration="0">
+        <aside class="warning"><p><strong>Note:</strong> This part requires completion of <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/" target="_blank">Dev Containers with VS Code</a> to have some familiarity with development containers.</p>
+</aside>
+<p>Lastly, we will discuss using VS Code with your Jetstream2 instance and getting a quick start with a project development container that is available courtesy of the ucsb-pstat community snapshot image.  Development containers allow you to easily port over your research code to an instance along with <strong>all</strong> the dependencies on languages, packages, and system tools.  This requires minimal setup and no need of trying to get all your required tools installed on your own.</p>
+<h2 is-upgraded>Setting up VS Code</h2>
+<ol type="1" start="1">
+<li>Open up your instance as shown in the previous section:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/8c0add49e0d0d560.png"></p>
+<ol type="1" start="2">
+<li>Scroll down and look for the &#34;Interactions&#34; box.  Look for the &#34;Native SSH&#34; option and click the copy button next to it:</li>
+</ol>
+<p class="image-container"><img style="width: 457.52px" src="img/f928d944faebb303.png"></p>
+<ol type="1" start="3">
+<li>Open up VS Code.  Click on the lower left green button for &#34;Remote Connections&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/79bb2f7cb2af4e82.png"></p>
+<ol type="1" start="4">
+<li>The command palette will open.  Go down the commands and select &#34;Connect Current Window to Host...&#34;</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/7291c42b276403dc.png"></p>
+<ol type="1" start="5">
+<li>Select the 2nd to last option &#34;Add New SSH Host...&#34;</li>
+</ol>
+<p class="image-container"><img style="width: 479.50px" src="img/8a86bb425922ca12.png"></p>
+<ol type="1" start="6">
+<li>In the dialogue box, type in &#34;ssh&#34; and paste the &#34;native ssh&#34; instance that you copied earlier:</li>
+</ol>
+<p class="image-container"><img style="width: 454.50px" src="img/2b6403d15536677c.png"></p>
+<ol type="1" start="7">
+<li>Select your default configuration file to update (under your computers username):</li>
+</ol>
+<p class="image-container"><img style="width: 456.50px" src="img/c0b55d392d697c37.png"></p>
+<ol type="1" start="8">
+<li>Click on &#34;Config&#34; to modify the name of the ssh host to be more user friendly and save it.  Name it whatever you like e.g. my-awesome-jetstream2-instance:</li>
+</ol>
+<p class="image-container"><img style="width: 381.19px" src="img/befbdaf16298f04e.png"></p>
+<ol type="1" start="9">
+<li>Click on the lower left green button again for Remote Connections.  Select &#34;Connect Current Window to Host...&#34;.  Your newly configured host will pop up.  Select it and let your instance load up.</li>
+</ol>
+<p class="image-container"><img style="width: 499.50px" src="img/672dd2295ac369a8.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/79b2e985a84e659c.png"></p>
+<aside class="special"><p>You are now connected!  From here, you can follow the instructions to create a zip file and GitHub repository for your <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#3" target="_blank">initial development container template</a>.  Or you can <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#4" target="_blank">clone an existing GitHub repository</a>.  </p>
+<p><strong>If you are starting a new project, </strong>follow the next part to quickly get started from inside your instance!</p>
+</aside>
+<h2 is-upgraded>Building a Dev Container for R/Python from Inside the Instance</h2>
+<p>This community snapshot contains a bash script that will build a container environment along with example code from <em>within</em> the existing instance.  If you are starting fresh, this is a great way to get started!</p>
+<ol type="1" start="1">
+<li>In your VS Code terminal, type in <code>./build-project.sh</code>.  This will take you through a similar procedure outlined in the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#3" target="_blank">dev container template section</a> and on this <a href="https://github.com/UCSB-PSTAT/devcontainer-template#ucsb-pstat-department-development-container-template" target="_blank">GitHub repository page</a>.  Select the options that you want:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/647a6e3dd8fb6491.png"></p>
+<ol type="1" start="2">
+<li>You now have a new directory in which you can open up a development container!  To do so, click on &#34;Open Folder&#34; in the left menu and navigate to your project folder&#39;s name:</li>
+</ol>
+<p class="image-container"><img style="width: 453.50px" src="img/5c815d8943e2ea69.png"></p>
+<p class="image-container"><img style="width: 470.50px" src="img/6fb1c2b037ea90fe.png"></p>
+<ol type="1" start="3">
+<li>Click OK.  This will open up your project&#39;s folder (in the example, it will open &#34;my-research-project&#34;.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/59f5e7b3d4d16bb4.png"></p>
+<ol type="1" start="4">
+<li>From here, you can click to &#34;Reopen in Container&#34; or click on the bottom left green button and select &#34;Reopen in Container&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/b9d1d8adfef52dd5.png"></p>
+<ol type="1" start="5">
+<li>Your container will be built.  It may take a few minutes so be patient!</li>
+</ol>
+<aside class="special"><p>Your container is now ready to use on Jetstream2!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusion" duration="0">
+        <p>We covered connecting and setting up VS Code on Jetstream2.  You are now ready to continue with your research work using this set up.</p>
+<h2 is-upgraded>Next Steps:</h2>
+<ul>
+<li><a href="https://docs.jetstream-cloud.org/general/instancemgt/" target="_blank">Jetstream2 documentation</a></li>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer#develop-in-container" target="_blank">Develop in Container</a> tutorial lists</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

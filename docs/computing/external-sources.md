@@ -4,6 +4,7 @@ title: External Sources
 nav_order: 3
 permalink: /docs/computing/external-sources
 parent: Computing Resources
+has_children: true
 has_toc: false
 ---
 
@@ -18,6 +19,10 @@ The wonderful thing about ACCESS is that the the Explore tier is available to *g
 - [ACCESS allocation process](https://allocations.access-ci.org/)
 - [Allocation types and comparison table](https://allocations.access-ci.org/prepare-requests-overview)
 - [Explore ACCESS request (**graduate students**)](https://allocations.access-ci.org/preparing-your-explore-access-request)
+
+### [ACCESS via Jetstream2 tutorial](/docs/computing/jetstream2/)
+
+Follow this tutorial to learn how to use the Jetstream2 supercomputing facilities with your ACCESS credits.  Learn to navigate Jetstream2's interface, set up VS Code, and use development containers inside Jetstream2! 
 
 ## Private Options
 
