@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>Dev Container Management</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -25,7 +26,7 @@
                   id="container-management"
                   title="Dev Container Management"
                   environment="web"
-                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+                  feedback-link="https://github.com/UCSB-PSTAT/computing/issues">
     
       <google-codelab-step label="Introduction" duration="0">
         <p>Now that we have a development container setup in place, we can manipulate and use this setup to run our code.  This tutorial will cover some basic commands, entering and exiting containers, and shutting down and launching them!</p>
@@ -70,24 +71,24 @@
 <ol type="1" start="1">
 <li>Open a file directory that contains your Docker file and you should see and click the following dialogue pop-up:</li>
 </ol>
-<p class="image-container"><img style="width: 410.50px" src="img/f7d90f08e79f7458.png"></p>
+<p class="image-container"><img style="width: 410.50px" src="img/607461093e654a5d.png"></p>
 <ol type="1" start="2">
 <li>Or you can click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Reopen in Container&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/d5a7938253d2d109.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/fc6df05136dc8107.png"></p>
 <h2 is-upgraded>Detaching from a container</h2>
 <p>To detach from a running container, click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Reopen Folder in SSH&#34; or &#34;Reopen Folder Locally&#34;.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/203d1335fd88106.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/c9b5f3d52e487ebe.png"></p>
 <p>Clicking this will detach you from the running container.  <strong>However, it will not close the container</strong>.</p>
 <h2 is-upgraded>Attaching to a running container</h2>
 <p>To reattach to a running container, click on the bottom left remotes button or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>p</code> or <code>F1</code>) search for &#34;Attach to Running Container...&#34;:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/707ce3bc90a6e8d5.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/dcbb55d992b7ff68.png"></p>
 <p>From there, you will be given an option to select one of your running containers.</p>
 <h2 is-upgraded>Stopping a running container</h2>
 <p>To stop a running container run the following commands:</p>
 <ol type="1" start="1">
 <li><code>docker ps</code> : run this to figure out which container(s) are running.  You will see a &#34;NAMES&#34; category, this will be the container name to use in the next command.</li>
-<li><code>docker container stop <container_name></code> : replace <code><container_name></code> with the previous commands output.</li>
+<li><code>docker container stop &lt;container_name&gt;</code> : replace <code>&lt;container_name&gt;</code> with the previous commands output.</li>
 </ol>
 <p>Running these 2 commands will stop this container as well as any code or services running in it.</p>
 <h2 is-upgraded>More advanced commands</h2>
@@ -130,6 +131,19 @@
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
-
+  <script>
+    // This is to override the close / done handling on the page
+    // https://github.com/googlecodelabs/tools/issues/103
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("arrow-back").href="../#management"; 
+      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+      document.getElementById("done").href="../#management"; 
+      document.getElementById("done").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+    }, false);
+  </script>
 </body>
 </html>

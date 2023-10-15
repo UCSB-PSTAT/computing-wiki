@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>ACCESS via Jetstream2</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -25,7 +26,7 @@
                   id="jetstream2"
                   title="ACCESS via Jetstream2"
                   environment="web"
-                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+                  feedback-link="https://github.com/UCSB-PSTAT/computing/issues">
     
       <google-codelab-step label="Introduction" duration="0">
         <p>Jetstream2 is one of the <a href="https://allocations.access-ci.org/resources" target="_blank">many providers</a> of supercomputing services via the ACCESS program.  It provides an easy to use interface to build and create instances in order to make use of your ACCESS Allocation Credits!  In this tutorial we will cover how to access Jetstream2 and get started with basic development container environments in it!</p>
@@ -91,9 +92,9 @@
 <p class="image-container"><img style="width: 309.18px" src="img/347621c7c836d228.png"></p>
 <ol type="1" start="2">
 <li>Name your key (e.g. my-laptop, my-desktop, etc.)</li>
-<li>Open up your terminal and type in <code>code .ssh/<your-key-name>.pub</code> (where <code><your-key-name></code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/<your-key-name>.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
+<li>Open up your terminal and type in <code>code .ssh/&lt;KEY_NAME&gt;.pub</code> (where <code>&lt;KEY_NAME&gt;</code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/&lt;KEY_NAME&gt;.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
 </ol>
-<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &lt;your-key-name&gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &lt;your-key-name&gt; (no extension) file, this is your private key and should be kept secret!</p>
+<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &lt;KEY_NAME&gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &lt;KEY_NAME&gt; (no extension) file, this is your private key and should be kept secret!</p>
 </aside>
 <p class="image-container"><img style="width: 547.06px" src="img/91a9c00aeaddc707.png"></p>
 <ol type="1" start="4">
@@ -263,6 +264,19 @@
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
-
+  <script>
+    // This is to override the close / done handling on the page
+    // https://github.com/googlecodelabs/tools/issues/103
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("arrow-back").href="../external-sources#nsf-access-program"; 
+      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+      document.getElementById("done").href="../external-sources#nsf-access-program"; 
+      document.getElementById("done").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+    }, false);
+  </script>
 </body>
 </html>

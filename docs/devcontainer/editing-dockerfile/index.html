@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>Editing Dockerfile</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -25,7 +26,7 @@
                   id="editing-dockerfile"
                   title="Editing Dockerfile"
                   environment="web"
-                  feedback-link="https://github.com/UCSB-PSTAT/wiki/issues">
+                  feedback-link="https://github.com/UCSB-PSTAT/computing/issues">
     
       <google-codelab-step label="Introduction" duration="0">
         <p>This tutorial discusses in more detail, the parts of a Dockerfile.</p>
@@ -117,6 +118,19 @@
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
-
+  <script>
+    // This is to override the close / done handling on the page
+    // https://github.com/googlecodelabs/tools/issues/103
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("arrow-back").href="../#additional-features"; 
+      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+      document.getElementById("done").href="../#additional-features"; 
+      document.getElementById("done").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+    }, false);
+  </script>
 </body>
 </html>
