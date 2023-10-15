@@ -118,11 +118,11 @@
     // This is to override the close / done handling on the page
     // https://github.com/googlecodelabs/tools/issues/103
     document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("arrow-back").href="../#initial-setup"; 
+      document.getElementById("arrow-back").href="/docs/devcontainer#initial-setup"; 
       document.getElementById("arrow-back").addEventListener( 'click', function() { 
         window.history.back();
       }); 
-      document.getElementById("done").href="../#initial-setup"; 
+      document.getElementById("done").href="/docs/devcontainer#initial-setup"; 
       document.getElementById("done").addEventListener( 'click', function() { 
         window.history.back();
       }); 
