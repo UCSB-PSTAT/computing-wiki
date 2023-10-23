@@ -53,30 +53,37 @@
     
       <google-codelab-step label="Accessing Jetstream2" duration="0">
         <ol type="1" start="1">
+<li>Make sure that you have <a href="https://operations.access-ci.org/identity/new-user" target="_blank">created an ACCESS ID</a>.  <strong>For most users</strong>, it is sufficient to &#34;Register Without an Existing ID&#34;.</li>
+</ol>
+<aside class="warning"><p><strong>Note:</strong> It is advised to use your school email when creating an account!</p>
+</aside>
+<aside class="warning"><p><strong>Note:</strong> Be aware, it may take a little while for the ACCESS account creation to complete.  If you run into any issues, contact <a href="https://support.access-ci.org/help-ticket" target="_blank">ACCESS support</a>.</p>
+</aside>
+<ol type="1" start="2">
 <li>Once you have been approved for an allocation request, head over to the <a href="https://jetstream-cloud.org/" target="_blank">Jetstream2 website</a> and click &#34;Jetstream2 Login&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/826ff9edcd14cae1.png"></p>
-<ol type="1" start="2">
+<p class="image-container"><img style="width: 624.00px" src="img/811dd012c8ecd21e.png"></p>
+<ol type="1" start="3">
 <li>Click on &#34;Add allocation&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 296.15px" src="img/af1a7044a849db95.png"></p>
-<ol type="1" start="3">
+<p class="image-container"><img style="width: 296.15px" src="img/54e646aa582c61fb.png"></p>
+<ol type="1" start="4">
 <li>Click &#34;Add ACCESS Account&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 466.00px" src="img/b69275085d6e2d8a.png"></p>
-<ol type="1" start="4">
-<li>Complete the login:</li>
-</ol>
-<p class="image-container"><img style="width: 624.00px" src="img/d31cb59081626d7e.png"></p>
+<p class="image-container"><img style="width: 466.00px" src="img/e09f53c405fbc6ac.png"></p>
 <ol type="1" start="5">
+<li>Complete the login.  In the drop down menu select &#34;University of California, Santa Barbara&#34; (if creating an account with a UCSB email address):</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/4d3563e4107ade76.png"></p>
+<ol type="1" start="6">
 <li>At this point, you will either see your allocation or will need to ask your PI to add credit allocations to your account.  You should see something like this:</li>
 </ol>
-<p class="image-container"><img style="width: 520.50px" src="img/ecd15186e1b6a486.png"></p>
-<ol type="1" start="6">
+<p class="image-container"><img style="width: 520.50px" src="img/1c1ae5606a38e4a9.png"></p>
+<ol type="1" start="7">
 <li>Click on the Allocation.</li>
 </ol>
 <aside class="special"><p>You are done! You will be greeted with the following window which contains all your compute instance management tools:</p>
-<p class="image-container"><img style="width: 610.00px" src="img/5d0aff8fb9eedf6.png"></p>
+<p class="image-container"><img style="width: 610.00px" src="img/c4bfc24d3f73d011.png"></p>
 </aside>
 
 
@@ -89,14 +96,14 @@
 <ol type="1" start="1">
 <li>From your allocation menu, click &#34;Create&#34; -&gt; &#34;SSH Public Key&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 309.18px" src="img/347621c7c836d228.png"></p>
+<p class="image-container"><img style="width: 309.18px" src="img/a8087130b4792a5c.png"></p>
 <ol type="1" start="2">
 <li>Name your key (e.g. my-laptop, my-desktop, etc.)</li>
-<li>Open up your terminal and type in <code>code .ssh/&lt;KEY_NAME&gt;.pub</code> (where <code>&lt;KEY_NAME&gt;</code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/&lt;KEY_NAME&gt;.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
+<li>Open up your terminal and type in <code>code .ssh/&lt;your-key-name&gt;.pub</code> (where <code><your-key-name></code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/&lt;your-key-name&gt;.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
 </ol>
-<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &lt;KEY_NAME&gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &lt;KEY_NAME&gt; (no extension) file, this is your private key and should be kept secret!</p>
+<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &amp;lt;your-key-name&amp;gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &amp;lt;your-key-name&amp;gt; (no extension) file, this is your private key and should be kept secret!</p>
 </aside>
-<p class="image-container"><img style="width: 547.06px" src="img/91a9c00aeaddc707.png"></p>
+<p class="image-container"><img style="width: 547.06px" src="img/f9128a9787458284.png"></p>
 <ol type="1" start="4">
 <li>Click &#34;Create&#34;</li>
 </ol>
@@ -111,33 +118,33 @@
 <ol type="1" start="1">
 <li>From your allocation menu, click &#34;Create&#34; -&gt; &#34;Instance&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 356.76px" src="img/8b31bbade6b1180e.png"></p>
+<p class="image-container"><img style="width: 356.76px" src="img/ec9b312dc593e564.png"></p>
 <ol type="1" start="2">
 <li>In the &#34;Choose an Instance Source&#34; window, select &#34;By Image&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/bcfee672037e8590.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/2892482a5de39a9e.png"></p>
 <ol type="1" start="3">
 <li>In the &#34;Search by name&#34; box, type &#34;ucsb-pstat&#34;, you will see a <strong>ucsb-pstat-image</strong> community snapshot pop up in the options.  Click on &#34;Create Instance&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/2c8c6f07b0ccf30c.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/fe467f2fbfef56fd.png"></p>
 <ol type="1" start="4">
 <li>From here, select the size of your instance.  <strong>Be aware that bigger sizes will mean more credits spent per hour while in use!</strong></li>
 </ol>
-<p class="image-container"><img style="width: 495.06px" src="img/611d289781b55a6a.png"></p>
+<p class="image-container"><img style="width: 495.06px" src="img/644cd15acfed51a2.png"></p>
 <ol type="1" start="5">
 <li>Select the size of your instance and number of instances if additional are needed.</li>
 <li>Select &#34;Yes&#34; for &#34;Enable web desktop&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 265.00px" src="img/ee62c30e55ddb16d.png"></p>
+<p class="image-container"><img style="width: 265.00px" src="img/677a321296ca284d.png"></p>
 <ol type="1" start="7">
 <li>Select the SSH key that you added in the previous tutorial step <em>or </em>click &#34;Upload a new SSH public key&#34; to add a new one:</li>
 </ol>
-<p class="image-container"><img style="width: 378.89px" src="img/26cdb5d6c33de522.png"></p>
+<p class="image-container"><img style="width: 378.89px" src="img/7586f107b2f26ec8.png"></p>
 <ol type="1" start="8">
 <li>Lastly, hit create!</li>
 </ol>
 <aside class="special"><p>You will be taken to the homepage where you will see your instance being built!</p>
-<p class="image-container"><img style="width: 342.50px" src="img/53918e487ab7e766.png"></p>
+<p class="image-container"><img style="width: 342.50px" src="img/fcfac2ff2b94699a.png"></p>
 </aside>
 
 
@@ -148,24 +155,24 @@
 <ol type="1" start="1">
 <li>Click on the Instances box on the main menu:</li>
 </ol>
-<p class="image-container"><img style="width: 372.40px" src="img/633e53b3b0c1fe25.png"></p>
+<p class="image-container"><img style="width: 372.40px" src="img/800c7505dd39e67.png"></p>
 <ol type="1" start="2">
 <li>Inside you will see all your available instances.  You have an option to immediately connect to the instance by clicking on &#34;Connect to&#34;.  Jetstream2 provides a web shell and desktop that you can access from within your browser to complete tasks.  Feel free to explore these options; however, we will be focusing on using VS Code in the next part of this tutorial.</li>
 </ol>
-<p class="image-container"><img style="width: 588.50px" src="img/6eef399a4e686ce4.png"></p>
+<p class="image-container"><img style="width: 588.50px" src="img/cd815fc0b53ad5ac.png"></p>
 <ol type="1" start="3">
 <li>Click on the name of your instance (e.g. &#34;my awesome research instance&#34;).  This will open up a page with all the details of your instance:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/3e9b5f9666ecb212.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/85164574126d524c.png"></p>
 <ol type="1" start="4">
 <li>Scrolling around here, you will find various details and information about your instance.  You can interact, attach volumes, create snapshots, etc. through here.</li>
 <li>To resize an instance to a more powerful/less powerful one, click on &#34;Actions&#34; -&gt; &#34;Resize&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 457.17px" src="img/6753ca7c31db97ab.png"></p>
+<p class="image-container"><img style="width: 457.17px" src="img/62e2b7b18d33940b.png"></p>
 <ol type="1" start="6">
 <li>To shut down your instance click on &#34;Actions&#34; -&gt; &#34;Shelve&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 457.00px" src="img/6753ca7c31db97ab.png"></p>
+<p class="image-container"><img style="width: 457.00px" src="img/62e2b7b18d33940b.png"></p>
 <aside class="warning"><p><strong>WARNING:</strong> Be sure to <strong>shelve</strong> your instance any time you are not using it to run your code/programs/etc.  If you do not shelve your instance, <strong>it will continue running and consume your allocation credits even if you&#39;re not doing anything!</strong></p>
 </aside>
 <p>More advanced options are detailed in the <a href="https://docs.jetstream-cloud.org/general/instancemgt/" target="_blank">Jetstream2 documentation</a>.</p>
@@ -181,40 +188,42 @@
 <ol type="1" start="1">
 <li>Open up your instance as shown in the previous section:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/8c0add49e0d0d560.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/631f8575897379db.png"></p>
 <ol type="1" start="2">
 <li>Scroll down and look for the &#34;Interactions&#34; box.  Look for the &#34;Native SSH&#34; option and click the copy button next to it:</li>
 </ol>
-<p class="image-container"><img style="width: 457.52px" src="img/f928d944faebb303.png"></p>
+<p class="image-container"><img style="width: 457.52px" src="img/2e652f4dd9503fd7.png"></p>
 <ol type="1" start="3">
 <li>Open up VS Code.  Click on the lower left green button for &#34;Remote Connections&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/79bb2f7cb2af4e82.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/3745d21f15691af6.png"></p>
 <ol type="1" start="4">
 <li>The command palette will open.  Go down the commands and select &#34;Connect Current Window to Host...&#34;</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/7291c42b276403dc.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/89a463b7b1064bd7.png"></p>
 <ol type="1" start="5">
 <li>Select the 2nd to last option &#34;Add New SSH Host...&#34;</li>
 </ol>
-<p class="image-container"><img style="width: 479.50px" src="img/8a86bb425922ca12.png"></p>
+<p class="image-container"><img style="width: 479.50px" src="img/c8792d43c3db4362.png"></p>
 <ol type="1" start="6">
 <li>In the dialogue box, type in &#34;ssh&#34; and paste the &#34;native ssh&#34; instance that you copied earlier:</li>
 </ol>
-<p class="image-container"><img style="width: 454.50px" src="img/2b6403d15536677c.png"></p>
+<p class="image-container"><img style="width: 454.50px" src="img/abdbd0f154c2e0fe.png"></p>
 <ol type="1" start="7">
 <li>Select your default configuration file to update (under your computers username):</li>
 </ol>
-<p class="image-container"><img style="width: 456.50px" src="img/c0b55d392d697c37.png"></p>
+<p class="image-container"><img style="width: 456.50px" src="img/d915330540cb7d3d.png"></p>
 <ol type="1" start="8">
 <li>Click on &#34;Config&#34; to modify the name of the ssh host to be more user friendly and save it.  Name it whatever you like e.g. my-awesome-jetstream2-instance:</li>
 </ol>
-<p class="image-container"><img style="width: 381.19px" src="img/befbdaf16298f04e.png"></p>
+<p class="image-container"><img style="width: 381.19px" src="img/b4f5e93901696ad7.png"></p>
 <ol type="1" start="9">
 <li>Click on the lower left green button again for Remote Connections.  Select &#34;Connect Current Window to Host...&#34;.  Your newly configured host will pop up.  Select it and let your instance load up.</li>
 </ol>
-<p class="image-container"><img style="width: 499.50px" src="img/672dd2295ac369a8.png"></p>
-<p class="image-container"><img style="width: 624.00px" src="img/79b2e985a84e659c.png"></p>
+<p class="image-container"><img style="width: 499.50px" src="img/c13cf9fe79b05091.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/bd9587b2adfa4cd4.png"></p>
+<aside class="warning"><p><strong>Note:</strong> You may get a pop-up box asking to choose whether you&#39;re using Linux, Windows, or Mac.  <strong>Select Linux</strong>, since we are connecting to JetStream2 which uses the Linux operating system.</p>
+</aside>
 <aside class="special"><p>You are now connected!  From here, you can follow the instructions to create a zip file and GitHub repository for your <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#3" target="_blank">initial development container template</a>.  Or you can <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#4" target="_blank">clone an existing GitHub repository</a>.  </p>
 <p><strong>If you are starting a new project, </strong>follow the next part to quickly get started from inside your instance!</p>
 </aside>
@@ -223,20 +232,20 @@
 <ol type="1" start="1">
 <li>In your VS Code terminal, type in <code>./build-project.sh</code>.  This will take you through a similar procedure outlined in the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#3" target="_blank">dev container template section</a> and on this <a href="https://github.com/UCSB-PSTAT/devcontainer-template#ucsb-pstat-department-development-container-template" target="_blank">GitHub repository page</a>.  Select the options that you want:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/647a6e3dd8fb6491.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/a30cf241a9001c70.png"></p>
 <ol type="1" start="2">
 <li>You now have a new directory in which you can open up a development container!  To do so, click on &#34;Open Folder&#34; in the left menu and navigate to your project folder&#39;s name:</li>
 </ol>
-<p class="image-container"><img style="width: 453.50px" src="img/5c815d8943e2ea69.png"></p>
-<p class="image-container"><img style="width: 470.50px" src="img/6fb1c2b037ea90fe.png"></p>
+<p class="image-container"><img style="width: 453.50px" src="img/7d334aa7cb097d7f.png"></p>
+<p class="image-container"><img style="width: 470.50px" src="img/53529b61828ab070.png"></p>
 <ol type="1" start="3">
 <li>Click OK.  This will open up your project&#39;s folder (in the example, it will open &#34;my-research-project&#34;.</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/59f5e7b3d4d16bb4.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/b4ae2d328c5f99b7.png"></p>
 <ol type="1" start="4">
 <li>From here, you can click to &#34;Reopen in Container&#34; or click on the bottom left green button and select &#34;Reopen in Container&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/b9d1d8adfef52dd5.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/edf0d8958525864d.png"></p>
 <ol type="1" start="5">
 <li>Your container will be built.  It may take a few minutes so be patient!</li>
 </ol>
