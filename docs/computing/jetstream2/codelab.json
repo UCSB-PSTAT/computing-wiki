@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-06-16T02:02:44Z",
+  "updated": "2023-10-23T18:37:48Z",
   "id": "jetstream2",
   "duration": 0,
   "title": "ACCESS via Jetstream2",
@@ -18,6 +18,6 @@
     "web"
   ],
   "tags": [],
-  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
   "url": "jetstream2"
 }
