@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-11-06T23:28:07Z",
+  "id": "alta-setup",
+  "duration": 0,
+  "title": "Alta Setup",
+  "authors": "Ronald Lencevičius",
+  "summary": "How to set up SSH, access remote servers, and add keys to GitHub.",
+  "source": "1OZoi8dN7lrQDSSvWCPuMv8nvMI7W8OV3j02xwb5M7Fg",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
+  "url": "alta-setup"
+}

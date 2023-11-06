@@ -13,7 +13,7 @@ The following are servers available to the PSTAT department.
 
 ## Alta
 {: .d-inline-block }
-In Alpha
+In Beta
 {: .label .label-yellow }
 
 Alta is the latest and greatest in PSTAT department's research computing offerings geared for usage with Docker and VS Code.  **This system is currently in the alpha stage!**  It contains the following specs:

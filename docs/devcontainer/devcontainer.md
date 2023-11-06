@@ -12,11 +12,24 @@ has_toc: false
 Welcome to the world of development containers! Whether you're a seasoned statistician or just starting your journey, development containers through Docker provides a powerful and flexible solution for creating reproducible and isolated environments for your data analysis and statistical modeling projects. With development containers, you can effortlessly set up and manage pre-configured environments that contain all the necessary dependencies, libraries, and tools, ensuring consistent results across different systems whether on your local laptop or remote server.  The following tutorials provide instructions for development container setup, management, and customization.
 
 {: .note }
-It is enouraged to use dev containers through [remote servers such as Denali](/docs/computing/department-sources#denali).
+It is enouraged to use dev containers through [remote servers such as Alta](/docs/computing/department-sources#alta).
 
 ----
 
-## Initial Setup
+## Setup 
+
+### [Getting Ready to Use Alta](/docs/devcontainer/alta-setup/)
+{: .d-inline-block }
+Alta Beta Testers
+{: .label .label-yellow }
+
+This tutorial covers how to:
+- set up SSH keys
+- set up VS Code (*Coming Soon!*)
+- connect to alta (*Coming Soon!*)
+- configure development containers for alta (*Coming Soon!*)
+
+<!-- ## Initial Setup
 
 ### 1. [SSH Setup](/docs/devcontainer/ssh-setup/)
 {: .d-inline-block }
@@ -48,7 +61,7 @@ Optional
 
 This tutorial covers:
 - local Docker installation
-- Docker configuration
+- Docker configuration -->
 
 ## Management
 
