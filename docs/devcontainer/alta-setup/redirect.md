@@ -1,5 +1,5 @@
 ---
-title: SSH Setup
+title: Alta Setup
 parent: Develop in Container
 nav_order: 1
 permalink: /docs/devcontainer/alta-setup/
