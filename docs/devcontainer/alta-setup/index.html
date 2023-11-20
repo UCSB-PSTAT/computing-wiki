@@ -103,27 +103,142 @@
     
       <google-codelab-step label="User Signup Form" duration="0">
         <p>Now that you have your public and private keys, <a href="https://forms.gle/itW7UYAprEHwc9tr7" target="_blank">complete the following user sign-up form</a>. In the last step where you&#39;re asked to input your <strong><em>public key</em></strong>, do the following (this step uses your installation of VS Code):</p>
-        <ol type="1" start="1">
-          <li>Go back to your terminal and use the following command:</li>
-          </ol>
-          <p><strong>Windows:</strong></p>
-          <pre>code $HOME\.ssh\ed25519.pub</pre>
-          <p><strong>macOS/Linux:</strong></p>
-          <pre>code ~/.ssh/ed25519.pub</pre>
-          <ol type="1" start="2">
-          <li>This will launch a VS Code window containing your public key.  Copy and Paste the key into the last step of the Alta user sign-up form.</li>
-          </ol>
+<ol type="1" start="1">
+<li>Go back to your terminal and use the following command:</li>
+</ol>
+<p><strong>Windows:</strong></p>
+<pre>code $HOME\.ssh\ed25519.pub</pre>
+<p><strong>macOS/Linux:</strong></p>
+<pre>code ~/.ssh/ed25519.pub</pre>
+<ol type="1" start="2">
+<li>This will launch a VS Code window containing your public key.  Copy and Paste the key into the last step of the Alta user sign-up form.</li>
+</ol>
 <aside class="warning"><p><strong>Note:</strong> Make sure that you are selecting your <strong>.pub</strong> key... this is your public key and should look something akin to this: <code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5bbbAIIZu4CLClaJ3Iasdfn+wT61hRJJ1RfnLfkdba6SVISq ron@wheeler</code></p>
+</aside>
+<aside class="special"><p>Congrats! This completes the SSH key creation portion of the tutorial.</p>
+<p><strong>Note:</strong> It will take some time for accounts to be set up so in the meantime hang tight and wait for more details! In the meantime, go onto the next step to install some important VS Code extensions.</p>
 </aside>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="More details coming soon..." duration="0">
-        <aside class="special"><p>Congrats! This completes the SSH key creation portion of the tutorial.</p>
-<p><strong>Note:</strong> It will take some time for accounts to be set up so in the meantime hang tight and wait for more details! </p>
-<p><em> Make sure you&#39;re a part of the </em><a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank"><strong><em>PSTAT Research Computing Users</em></strong></a><em> Google Spaces group to stay up-to-date with the latest beta testing information!</em></p>
+      <google-codelab-step label="VS Code Extensions" duration="0">
+        <p>Before we connect to Alta, we need to install some necessary extensions on VS Code to enable features for dev container and remote development management.  You will need the following extensions:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack" target="_blank">Remote Development Pack</a> - SSH + Dev Containers</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter" target="_blank">Jupyter</a> - Notebook support</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank">Python</a> - Intellisense, linting, debugging</li>
+</ul>
+<p>You can install these by following the links and clicking &#34;Install&#34; on your browser or you can look them up on VS Code Extension search (using <code>ctrl</code>/⌘ + <code>shift</code> + <code>x</code> shortcut).</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Connecting to Alta" duration="0">
+        <p>To run your code remotely you will first need to connect to a remote server such as Alta. For more information about available computing servers, checkout <a href="https://computing.pstat.ucsb.edu/docs/computing#remote-computing-sources" target="_blank">this wiki entry</a>.  </p>
+<p>With our VS Code extensions, remote connections are made simple:</p>
+<ol type="1" start="1">
+<li>Click on the <strong>bottom right button</strong> to &#34;Open a Remote Window&#34;.  This will launch the VS Code command palette for remote connections:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/e7b78f90ed714322.png"></p>
+<ol type="1" start="2">
+<li>Select &#34;Connect Current Window to Host...&#34; option.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/f4f8707f51fa6425.png"></p>
+<ol type="1" start="3">
+<li>From here select the host you wish to connect to.  If the remote host that you want to connect to does not appear in the options, use the &#34;Add New SSH Host...&#34; option.  Type the following command where you replace <code>&lt;NetID&gt;</code> with your own NetID:</li>
+</ol>
+<pre>ssh &lt;NetID&gt;@alta.pstat.ucsb.edu</pre>
+<p class="image-container"><img style="width: 624.00px" src="img/6735872e28d74eab.png"></p>
+<ol type="1" start="4">
+<li>You will be prompted to save the configuration.  Make sure to select either <code>C:\Users\&lt;your_username&gt;\.ssh\config</code> (Windows) or <code>~/.ssh/config</code> (MacOS/Linux).</li>
+<li>From here, VS Code will automatically connect to the host for you.  If this is your first time connecting to any remote server, it may take a few seconds for VS Code to install configurations in the background.  <em>You may also be prompted about the type of operating system your server uses, for Alta select </em><strong><em>&#34;Linux&#34;</em></strong>.  Once the setup is complete you will be greeted with a similar window:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/2280f6e069b54106.png"></p>
+<aside class="special"><p>We are now connected to Alta! In the next steps we will generate your project directory with all the necessary files to develop in a container.</p>
 </aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Setup Development Containers" duration="0">
+        <p>Now that you are connected to Alta, we can set up the development container!</p>
+<ol type="1" start="1">
+<li>In your terminal, run the following code where you should replace <code>&lt;project-name&gt;</code> with the name of your project/directory you wish to create:</li>
+</ol>
+<pre>copier copy gh:UCSB-PSTAT/devcontainer-template &lt;project-name&gt;</pre>
+<ol type="1" start="2">
+<li>Answer the questions by selecting from the options provided.  An example can be seen below:</li>
+</ol>
+<pre>What is your project names?
+my-awesome-project
+What language(s) will you use in this project?
+R and Python
+Do you want to install Visual Studio Code extensions for Jupyter notebooks, R and Python?
+Yes
+Install Jupyter Lab? Jupyter Lab is optional if using VS Code and Python extensions for development.
+No
+Install Rstudio? Rstudio is optional if using VS Code and R extensions for development.
+No
+Install Quarto? Quarto is optional publishing system compatible with R and Python.
+No
+Do you want to include example files?
+Yes
+
+Copying from template version 1.0.0
+        create  .
+        create  example.Rmd
+        create  .devcontainer
+        create  .devcontainer/Dockerfile
+        create  .devcontainer/devcontainer.json</pre>
+<ol type="1" start="3">
+<li>Run the command below to view your new project folder:</li>
+</ol>
+<pre>tree -a starter-code</pre>
+<pre>my-project/
+├── .devcontainer
+│   ├── devcontainer.json
+│   └── Dockerfile
+└── example.Rmd</pre>
+<aside class="special"><p>You&#39;re project is ready to go!  In the next section we will show how to start up the container to run your code!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Starting Your Container" duration="0">
+        <ol type="1" start="1">
+<li>You now have a new directory in which you can open up a development container!  To do so, click on &#34;Open Folder&#34; in the left menu and navigate to your project folder&#39;s name:</li>
+</ol>
+<p class="image-container"><img style="width: 488.50px" src="img/8f06e5cd30270ec9.png"></p>
+<p class="image-container"><img style="width: 495.50px" src="img/2beba4c70637171a.png"></p>
+<ol type="1" start="2">
+<li>Click OK.  This will open up your project&#39;s folder (in the example, it will open &#34;my-research-project&#34;.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/e27ebbeed625981c.png"></p>
+<ol type="1" start="3">
+<li>From here, you can click to &#34;Reopen in Container&#34; or click on the bottom left green button and select &#34;Reopen in Container&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/b7e6d6e2ae249c4f.png"></p>
+<ol type="1" start="4">
+<li>Your container will be built.  It may take a few minutes so be patient!</li>
+</ol>
+<aside class="special"><p>Your container is now ready to use on Alta!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Next Steps" duration="0">
+        <aside class="special"><p>Congrats! You are now ready to work on your project within the Alta server on your own personal development container!  </p>
+<p><em>Make sure you&#39;re a part of the </em><a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank"><strong><em>PSTAT Research Computing Users</em></strong></a><em> Google Spaces group to stay up-to-date with the latest beta testing information!</em></p>
+</aside>
+<p>To get more familiar with how your container works consider the following sets of tutorials:</p>
+<ul>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer#management" target="_blank">Learn to manage your containers</a></li>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer#additional-features" target="_blank">Learn more about custom setups</a></li>
+</ul>
+
 
       </google-codelab-step>
     
