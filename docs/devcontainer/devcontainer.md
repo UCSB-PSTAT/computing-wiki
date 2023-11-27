@@ -25,9 +25,9 @@ Alta Beta Testers
 
 This tutorial covers how to:
 - set up SSH keys
-- set up VS Code (*Coming Soon!*)
-- connect to alta (*Coming Soon!*)
-- configure development containers for alta (*Coming Soon!*)
+- set up VS Code
+- connect to Alta
+- configure development containers for Alta
 
 <!-- ## Initial Setup
 
