@@ -13,24 +13,23 @@ The following are servers available to the PSTAT department.
 
 ## Alta
 {: .d-inline-block }
+Recommended
+{: .label .label-green }
+{: .d-inline-block }
 In Beta
 {: .label .label-yellow }
 
-Alta is the latest and greatest in PSTAT department's research computing offerings geared for usage with Docker and VS Code.  **This system is currently in the alpha stage!**  It contains the following specs:
+Alta is the latest and greatest in PSTAT department's research computing offerings geared for usage with Docker and VS Code.  **This system is currently in the beta stage!**  It contains the following specs:
 - 1x24 Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz (24 total cores)
 - 202 GB RAM
 
 To access:
+- Requires completion of the [department user sign-up process]().
 - Connect command: `ssh <username>@alta.pstat.ucsb.edu`
-- Make sure you're connected to the [Campus VPN](https://www.ets.ucsb.edu/network-infrastructure-services/ivanti-secure-access-campus-vpn)
-- *More details on setup coming soon!*
 
 ## Denali
-{: .d-inline-block }
-Recommended
-{: .label .label-green }
 
-Denali is our main PSTAT department server.  It contains the following specs:
+Denali is the previous iteration of the PSTAT department server with Alta serving as the replacement.  It contains the following specs:
 - 2x10 Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz (20 total cores)
 - 128 GB RAM
 

@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-02-15T20:41:07Z",
+  "id": "new-accounts",
+  "duration": 0,
+  "title": "PSTAT User Account Sign-up",
+  "authors": "Ronald Lencevičius",
+  "summary": "Sign-up process for PSTAT user accounts",
+  "source": "1yNjoAO0xFMkQggEahwrprr5M9XVejFK21hVx1MhzoMc",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
+  "url": "new-accounts"
+}

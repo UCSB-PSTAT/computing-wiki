@@ -3,12 +3,12 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-11-06T23:28:07Z",
-  "id": "alta-setup",
+  "updated": "2024-02-16T01:42:30Z",
+  "id": "basic-usage",
   "duration": 0,
-  "title": "Alta Setup",
+  "title": "Basic Container Usage",
   "authors": "Ronald Lencevičius",
-  "summary": "How to set up SSH, access remote servers, and add keys to GitHub.",
+  "summary": "How to access remote servers, setup devcontainer-template, and use the container",
   "source": "1OZoi8dN7lrQDSSvWCPuMv8nvMI7W8OV3j02xwb5M7Fg",
   "theme": "web",
   "status": [
@@ -19,5 +19,5 @@
   ],
   "tags": [],
   "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
-  "url": "alta-setup"
+  "url": "basic-usage"
 }

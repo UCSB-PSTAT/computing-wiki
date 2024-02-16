@@ -18,16 +18,23 @@ It is enouraged to use dev containers through [remote servers such as Alta](/doc
 
 ## Setup 
 
-### [Getting Ready to Use Alta](/docs/devcontainer/alta-setup/)
+### [PSTAT User Account Sign-up](/docs/devcontainer/new-accounts)
 {: .d-inline-block }
-Alta Beta Testers
+New Users
 {: .label .label-yellow }
 
+New users or users attempting to add new machines, start here.
+
+### [Basic Container Usage on Alta](/docs/devcontainer/basic-usage/)
+{: .d-inline-block }
+Essential
+{: .label .label-green }
+
 This tutorial covers how to:
-- set up SSH keys
-- set up VS Code
 - connect to Alta
-- configure development containers for Alta
+- set up your project files
+- access Jupyterhub and RStudio
+- install packages
 
 <!-- ## Initial Setup
 
