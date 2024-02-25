@@ -35,6 +35,7 @@ This tutorial covers how to:
 - set up your project files
 - access Jupyterhub and RStudio
 - install packages
+- log into GitHub
 
 <!-- ## Initial Setup
 
