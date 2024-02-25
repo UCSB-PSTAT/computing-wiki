@@ -34,25 +34,15 @@
 <h2 is-upgraded>Prereqs</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack" target="_blank">Remote Development Pack</a> Extension</li>
+<li>Install in VS Code by searching the extension shop using <code>ctrl</code>/⌘ + <code>shift</code> + <code>x</code> shortcut.</li>
 <li>PSTAT User Account</li>
 </ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="VS Code Extensions" duration="0">
-        <p>Before we connect to Alta, we need to install some necessary extensions on VS Code to enable features for dev container and remote development management.  You will need the following extensions:</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack" target="_blank">Remote Development Pack</a> - SSH + Dev Containers</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter" target="_blank">Jupyter</a> - Notebook support</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank">Python</a> - Intellisense, linting, debugging</li>
-</ul>
-<p>You can install these by following the links and clicking &#34;Install&#34; on your browser or you can look them up on VS Code Extension search (using <code>ctrl</code>/⌘ + <code>shift</code> + <code>x</code> shortcut).</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Connecting to Alta" duration="0">
+      <google-codelab-step label="Connecting to a server" duration="0">
         <p>To run your code remotely you will first need to connect to a remote server such as Alta. For more information about available computing servers, checkout <a href="https://computing.pstat.ucsb.edu/docs/computing#remote-computing-sources" target="_blank">this wiki entry</a>.  </p>
 <p>With our VS Code extensions, remote connections are made simple:</p>
 <ol type="1" start="1">
@@ -67,10 +57,12 @@
 <li>From here select the host you wish to connect to.  If the remote host that you want to connect to does not appear in the options, use the &#34;Add New SSH Host...&#34; option.  Type the following command where you replace <code>&lt;NetID&gt;</code> with your own NetID:</li>
 </ol>
 <pre>ssh &lt;NetID&gt;@alta.pstat.ucsb.edu</pre>
+<aside class="warning"><p><strong>Note:</strong> This will connect you to Alta. If using another PSTAT server, replace <code>alta.pstat.ucsb.edu</code> with <code>&lt;server-name&gt;.pstat.ucsb.edu</code> where your <code>&lt;server-name&gt;</code> name is replaced with a server such as wavelet, denali, roble, etc.</p>
+</aside>
 <p class="image-container"><img style="width: 624.00px" src="img/6735872e28d74eab.png"></p>
 <ol type="1" start="4">
 <li>You will be prompted to save the configuration.  Make sure to select either <code>C:\Users\&lt;your_username&gt;\.ssh\config</code> (Windows) or <code>~/.ssh/config</code> (MacOS/Linux).</li>
-<li>From here, VS Code will automatically connect to the host for you.  If this is your first time connecting to any remote server, it may take a few seconds for VS Code to install configurations in the background.  <em>You may also be prompted about the type of operating system your server uses, for Alta select </em><strong><em>&#34;Linux&#34;</em></strong>.  Once the setup is complete you will be greeted with a similar window:</li>
+<li>From here, VS Code will automatically connect to the host for you.  If this is your first time connecting to any remote server, it may take a few seconds for VS Code to install configurations in the background.  <em>You may also be prompted about the type of operating system your server uses - select </em><strong><em>&#34;Linux&#34;</em></strong>.  Once the setup is complete you will be greeted with a similar window:</li>
 </ol>
 <p class="image-container"><img style="width: 624.00px" src="img/2280f6e069b54106.png"></p>
 <aside class="special"><p>We are now connected to Alta! In the next steps we will generate your project directory with all the necessary files to develop in a container.</p>
@@ -80,7 +72,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Setup Development Containers" duration="0">
-        <p>Now that you are connected to Alta, we can set up the development container!</p>
+        <p>Now that you are connected to a server, we can set up the development container!</p>
 <ol type="1" start="1">
 <li>In your terminal, run the following code where you should replace <code>&lt;project-name&gt;</code> with the name of your project/directory you wish to create:</li>
 </ol>
@@ -188,14 +180,30 @@ Copying from template version 1.1.0
       </google-codelab-step>
     
       <google-codelab-step label="Installing Packages" duration="0">
-        <aside class="warning"><p><strong>Note on reproducibility:</strong> If you have questions about or wish to get help with including your R/Python language packages as part of your container configuration files, please contact the Computing TA via the <a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank"><strong>PSTAT Research Computing Users</strong></a> group.</p>
+        <aside class="warning"><p><strong>Note on reproducibility:</strong> If you have questions about or wish to get help with including your R/Python language packages as part of your container configuration files (Dockerfile and devcontainer.json, please contact the Computing TA via the <a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank"><strong>PSTAT Research Computing Users</strong></a> group.</p>
 </aside>
 <h2 is-upgraded>Python</h2>
-<p>To install packages using the Anaconda distribution use the <code>mamba</code> command. This follows the same syntax as <code>conda</code> but runs a lot faster.  To install packages using PyPI, it is sufficient to use <code>pip</code>.</p>
+<h3 is-upgraded>Inside Container (immediate)</h3>
+<p><em>This method will install packages immediately in your container but will </em></p>
+<p><strong><em>not</em></strong></p>
+<p><em> get added to your container configuration files for reproducibility by others. </em></p>
+<p>To install packages using the Anaconda distribution use the <code>mamba</code> command. This follows the same syntax as <code>conda</code> but runs a lot faster.  To install packages using PyPI, it is sufficient to use <code>pip</code>. </p>
 <pre>$&gt; mamba install numpy=1.26
 ...
 $&gt; pip install scikit-ntk==1.1.3</pre>
+<h3 is-upgraded>Inside Dockerfile (reproducible)</h3>
+<p><em>This method will build your container with these packages pre-installed. If you share your configuration files with someone else, they will be able to reproduce your installation with no additional steps. </em></p>
+<p><strong><em>You will need to rebuild your container to install packages this way!</em></strong></p>
+<p>To install Python packages in a reproducible way, you will need to add them to your Dockerfile.  Simply add the package name underneath the comment for Anaconda/Pip packages followed by a ‘\&#39;.  </p>
+<p>For example, here I am adding a Anaconda distribution package <code>scikit-learn</code> (using conda/mamba commands): </p>
+<p class="image-container"><img style="width: 624.00px" src="img/e1545980236a4ed2.png"></p>
+<p>And here, I am adding a PyPI package <code>scikit-ntk</code> (using pip command):</p>
+<p class="image-container"><img style="width: 624.00px" src="img/18d4398c83dc216a.png"></p>
 <h2 is-upgraded>R</h2>
+<h3 is-upgraded>Inside Container (immediate)</h3>
+<p><em>This method will install packages immediately in your container but will </em></p>
+<p><strong><em>not</em></strong></p>
+<p><em> get added to your container configuration files for reproducibility by others. </em></p>
 <p>For R, any of your favorite commands for package installation should function out of the box (<code>install.packages(...)</code> being the most common). This can be run in 3 ways:</p>
 <ul>
 <li>Inside VS Code terminal <em>without</em> launching R:</li>
@@ -208,6 +216,13 @@ $&gt; pip install scikit-ntk==1.1.3</pre>
 <ul>
 <li>Inside RStudio server</li>
 </ul>
+<h3 is-upgraded>Inside Dockerfile (reproducible)</h3>
+<p><em>This method will build your container with these packages pre-installed. If you share your configuration files with someone else, they will be able to reproduce your installation with no additional steps. </em></p>
+<p><strong><em>You will need to rebuild your container to install packages this way!</em></strong></p>
+<p>To install R packages in a reproducible way, you will need to add them to your Dockerfile.  You will need to add packages using this type of command underneath the comment for R packages followed by a ‘&amp;&amp; \&#39;:</p>
+<pre>R -e ‘install.packages(&#34;ggplot2&#34;)&#39; &amp;&amp; \</pre>
+<p>For example, here I am adding the <code>dplyr</code> package:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/5031887ad8f83311.png"></p>
 <h2 is-upgraded>System Packages</h2>
 <p>If your language specific packages have additional system related requirements, the easiest way to install them is to directly add them to the Dockerfile found in the .devcontainer directory of your project as shown below:</p>
 <p class="image-container"><img style="width: 624.00px" src="img/a8141b3e9ccef61b.png"></p>
@@ -215,6 +230,34 @@ $&gt; pip install scikit-ntk==1.1.3</pre>
 <aside class="warning"><p><strong>Note:</strong> Modifying container files will require you to rebuild the container! This can be done by using the keyboard shortcut ctrl/cmd + shift + p and typing &#34;Rebuild Container&#34;:</p>
 <p class="image-container"><img style="width: 610.00px" src="img/dc50776a6642114e.png"></p>
 </aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Using GitHub" duration="0">
+        <p>If you wish to clone/push/pull/create repositories, you will need to use <a href="https://cli.github.com/manual/" target="_blank">GitHub CLI</a> to login while inside the container. This can be done using the <code>gh auth login</code> command. During the steps select:</p>
+<ul>
+<li>GitHub.com for your account</li>
+<li>HTTPS for your preferred protocol</li>
+<li>Yes to authenticating with your GitHub credentials</li>
+<li>Lastly, login with your web browser to complete authentication</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/4f89456412ff79a2.png"></p>
+<p>Once completed, you will now be able to manage GitHub repositories using HTTPS.</p>
+<p>If you wish to create a repository on your GitHub account for your freshly minted project container use the following commands:</p>
+<ol type="1" start="1">
+<li>Convert generated files to a repository:</li>
+</ol>
+<pre>cd /home/jovyan/work/
+git init
+git add *
+git commit -m &#34;first commit&#34;
+git branch -M main</pre>
+<ol type="1" start="2">
+<li>Upload local repository to a new GitHub repository. <strong>Be sure to choose, &#34;Push an existing local repository to GitHub&#34;</strong>:</li>
+</ol>
+<pre>cd /home/jovyan/my-awesome-project
+gh repo create</pre>
 
 
       </google-codelab-step>
