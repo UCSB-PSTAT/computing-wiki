@@ -87,7 +87,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Adding SSH Public Keys" duration="0">
-        <aside class="warning"><p><strong>Note: </strong>This part requires completion of <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/ssh-setup/" target="_blank">SSH Setup</a> in order to generate public keys for your personal computer.</p>
+        <aside class="warning"><p><strong>Note: </strong>This part requires completion of Step 2 of the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/new-accounts/#1" target="_blank">this tutorial</a> in order to generate public keys for your personal computer. </p>
 </aside>
 <p>Before we create our computing instances, it is best to add an SSH key that is associated with your personal computer.  The reason for this is so that authenticating to Jetstream2 is made simpler without needing to use cumbersome passwords.</p>
 <ol type="1" start="1">
@@ -98,7 +98,7 @@
 <li>Name your key (e.g. my-laptop, my-desktop, etc.)</li>
 <li>Open up your terminal and type in <code>code .ssh/&lt;your-key-name&gt;.pub</code> (where <code><your-key-name></code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/&lt;your-key-name&gt;.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
 </ol>
-<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &amp;lt;your-key-name&amp;gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &amp;lt;your-key-name&amp;gt; (no extension) file, this is your private key and should be kept secret!</p>
+<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a <code>&lt;your-key-name&gt;</code><strong>.pub</strong> file.  This is your public key.  Do NOT copy the <code>&lt;your-key-name&gt;</code> (no extension) file, this is your private key and should be kept secret!</p>
 </aside>
 <p class="image-container"><img style="width: 547.06px" src="img/f9128a9787458284.png"></p>
 <ol type="1" start="4">
