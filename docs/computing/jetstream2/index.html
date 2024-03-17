@@ -30,11 +30,8 @@
     
       <google-codelab-step label="Introduction" duration="0">
         <p>Jetstream2 is one of the <a href="https://allocations.access-ci.org/resources" target="_blank">many providers</a> of supercomputing services via the ACCESS program.  It provides an easy to use interface to build and create instances in order to make use of your ACCESS Allocation Credits!  In this tutorial we will cover how to access Jetstream2 and get started with basic development container environments in it!</p>
-<aside class="warning"><p><strong>Note:</strong> Before you go through this tutorial, make sure that you <em>or </em>your faculty PI have completed an allocation request via ACCESS.  General information about what is available can be <a href="https://computing.pstat.ucsb.edu/docs/computing/external-sources#nsf-access-program" target="_blank">found here</a>.</p>
-<ul>
-<li><a href="https://allocations.access-ci.org/preparing-your-explore-access-request" target="_blank">Explore Request</a> (400,000 credits) for graduate students with 1 paragraph abstract</li>
-<li><a href="https://allocations.access-ci.org/preparing-your-discover-access-request" target="_blank">Discover Request</a> (1,500,000 credits) for PIs with 1 page description + abstract</li>
-</ul>
+<aside class="warning"><p><strong>Note:</strong> Before you go through this tutorial, make sure that you <em>or </em>your faculty PI have completed an allocation request via ACCESS.  General information about what is available can be found on the <a href="https://allocations.access-ci.org/" target="_blank">NSF ACCESS website</a>.</p>
+<p>If you need help, contact the <a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank">PSTAT Computing Committee</a>.</p>
 </aside>
 <ul>
 <li>Accessing Jetstream2</li>
@@ -44,8 +41,8 @@
 </ul>
 <h2 is-upgraded>Prereqs</h2>
 <ul>
-<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/ssh-setup/" target="_blank">SSH Setup</a> tutorial completed</li>
-<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/" target="_blank">Dev Containers with VS Code</a> tutorial completed</li>
+<li>Have previously completed Step 2 of the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/new-accounts/#1" target="_blank">PSTAT User Account Sign-up</a></li>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/basic-usage/" target="_blank">Basic container usage</a> tutorial completed</li>
 </ul>
 
 
@@ -99,9 +96,9 @@
 <p class="image-container"><img style="width: 309.18px" src="img/a8087130b4792a5c.png"></p>
 <ol type="1" start="2">
 <li>Name your key (e.g. my-laptop, my-desktop, etc.)</li>
-<li>Open up your terminal and type in <code>code .ssh/&lt;your-key-name&gt;.pub</code> (where <code>&lt;your-key-name&gt;</code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/&lt;your-key-name&gt;.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
+<li>Open up your terminal and type in <code>code .ssh/&lt;your-key-name&gt;.pub</code> (where <code><your-key-name></code> is replaced with the name of the key you generated for your device).  This will open up the public key file in VS Code and allow you to easily copy the contents.  Another option is to use <code>cat .ssh/&lt;your-key-name&gt;.pub</code> and using your mouse to select the key and pressing <code>ctrl</code>/⌘ + <code>shift</code> + <code>c</code> to copy the key.</li>
 </ol>
-<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &lt;your-key-name&gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &lt;your-key-name&gt; (no extension) file, this is your private key and should be kept secret!</p>
+<aside class="warning"><p><strong>WARNING:</strong> Make sure that you are copying a &amp;lt;your-key-name&amp;gt;<strong>.pub</strong> file.  This is your public key.  Do NOT copy the &amp;lt;your-key-name&amp;gt; (no extension) file, this is your private key and should be kept secret!</p>
 </aside>
 <p class="image-container"><img style="width: 547.06px" src="img/f9128a9787458284.png"></p>
 <ol type="1" start="4">
@@ -124,9 +121,9 @@
 </ol>
 <p class="image-container"><img style="width: 624.00px" src="img/2892482a5de39a9e.png"></p>
 <ol type="1" start="3">
-<li>In the &#34;Search by name&#34; box, type &#34;ucsb-pstat&#34;, you will see a <strong>ucsb-pstat-image</strong> community snapshot pop up in the options.  Click on &#34;Create Instance&#34;:</li>
+<li>In the &#34;Search by name&#34; box, type &#34;ucsb&#34;, you will see a <strong>UCSB Computing Image</strong> community snapshot pop up in the options.  Click on &#34;Create Instance&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/fe467f2fbfef56fd.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/3b31c77925497c70.png"></p>
 <ol type="1" start="4">
 <li>From here, select the size of your instance.  <strong>Be aware that bigger sizes will mean more credits spent per hour while in use!</strong></li>
 </ol>
@@ -224,32 +221,7 @@
 <p class="image-container"><img style="width: 624.00px" src="img/bd9587b2adfa4cd4.png"></p>
 <aside class="warning"><p><strong>Note:</strong> You may get a pop-up box asking to choose whether you&#39;re using Linux, Windows, or Mac.  <strong>Select Linux</strong>, since we are connecting to JetStream2 which uses the Linux operating system.</p>
 </aside>
-<aside class="special"><p>You are now connected!  From here, you can follow the instructions to create a zip file and GitHub repository for your <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#3" target="_blank">initial development container template</a>.  Or you can <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#4" target="_blank">clone an existing GitHub repository</a>.  </p>
-<p><strong>If you are starting a new project, </strong>follow the next part to quickly get started from inside your instance!</p>
-</aside>
-<h2 is-upgraded>Building a Dev Container for R/Python from Inside the Instance</h2>
-<p>This community snapshot contains a bash script that will build a container environment along with example code from <em>within</em> the existing instance.  If you are starting fresh, this is a great way to get started!</p>
-<ol type="1" start="1">
-<li>In your VS Code terminal, type in <code>./build-project.sh</code>.  This will take you through a similar procedure outlined in the <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/vscode-setup/#3" target="_blank">dev container template section</a> and on this <a href="https://github.com/UCSB-PSTAT/devcontainer-template#ucsb-pstat-department-development-container-template" target="_blank">GitHub repository page</a>.  Select the options that you want:</li>
-</ol>
-<p class="image-container"><img style="width: 624.00px" src="img/a30cf241a9001c70.png"></p>
-<ol type="1" start="2">
-<li>You now have a new directory in which you can open up a development container!  To do so, click on &#34;Open Folder&#34; in the left menu and navigate to your project folder&#39;s name:</li>
-</ol>
-<p class="image-container"><img style="width: 453.50px" src="img/7d334aa7cb097d7f.png"></p>
-<p class="image-container"><img style="width: 470.50px" src="img/53529b61828ab070.png"></p>
-<ol type="1" start="3">
-<li>Click OK.  This will open up your project&#39;s folder (in the example, it will open &#34;my-research-project&#34;.</li>
-</ol>
-<p class="image-container"><img style="width: 624.00px" src="img/b4ae2d328c5f99b7.png"></p>
-<ol type="1" start="4">
-<li>From here, you can click to &#34;Reopen in Container&#34; or click on the bottom left green button and select &#34;Reopen in Container&#34;:</li>
-</ol>
-<p class="image-container"><img style="width: 624.00px" src="img/edf0d8958525864d.png"></p>
-<ol type="1" start="5">
-<li>Your container will be built.  It may take a few minutes so be patient!</li>
-</ol>
-<aside class="special"><p>Your container is now ready to use on Jetstream2!</p>
+<aside class="special"><p>You are now connected!  From here, you can follow the instructions to create a new project using <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/basic-usage/#2" target="_blank">development containers</a>! </p>
 </aside>
 
 
