@@ -25,13 +25,13 @@ New Users
 
 New users or users attempting to add new machines, start here.
 
-### [Basic Container Usage on Alta](/docs/devcontainer/basic-usage/)
+### [Basic Container Usage on a Server](/docs/devcontainer/basic-usage/)
 {: .d-inline-block }
 Essential
 {: .label .label-green }
 
 This tutorial covers how to:
-- connect to Alta
+- connect to a server like Alta
 - set up your project files
 - access Jupyterhub and RStudio
 - install packages

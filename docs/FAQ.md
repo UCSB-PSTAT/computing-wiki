@@ -39,3 +39,25 @@ This is assuming that you are using a dev container or an operating system with 
 7. Your job will either be there running or completed!
 
 For more details, refer to [this step in the job management tutorial](/docs/devcontainer/job-management/#3).
+
+### How do I enable parallel processing for R?
+
+In order to have access to parallel computation for models that can take advantage of it, install the `doParallel` package. This will allow you to enable usage of multiple [CPU cores/threads](https://unix.stackexchange.com/a/88285) with only a couple commands.  
+
+Use this command to detect the total number of cores/threads available on your system:
+
+```
+parallel::detectCores()
+```
+
+Then, use the following library to select a desired number of cores/threads (in this case 4):
+
+```
+library(doParallel)
+registerDoParallel(cores=4)
+```
+
+{: .warning }
+Please be conscious of the resources available on shared systems.  **Do not hog resources!**
+
+Additional information about available parallel computing tools in R can be found on [CRAN](https://cran.r-project.org/web/views/HighPerformanceComputing.html).

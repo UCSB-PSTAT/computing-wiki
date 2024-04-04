@@ -9,10 +9,9 @@ has_toc: false
 
 # University Computing Resources
 
-UCSB has a number of cluster nodes available for research use that are managed by the Center for Scientific Computing (CSC).  These are shared through the whole university where participants buy nodes for the cluster while CSC provides all the infrastructure needed for smooth operations.
-
-{: .note }
-This is a cheaper alternative for private cluster nodes to be used by research labs or individuals through grants or personal funding.  If you need more compute than what PSTAT provides, consider this option!
+UCSB has a number of cluster nodes available for research use that are managed by the Center for Scientific Computing (CSC) at the California NanoSystem Institute (CNSI). These nodes come in two forms:
+- A simple application describing your work that gives you access to a shared batch computing environment
+- A buy-in by a principal investigator at an economical rate (compared to private options)
 
 Some useful information about this system as well as contact information for CSC:
 - [Getting started guide to CSC facilities and contact](https://csc.cnsi.ucsb.edu/get-started)
