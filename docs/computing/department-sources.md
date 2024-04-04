@@ -16,7 +16,7 @@ The following are servers available to the PSTAT department.
 Recommended
 {: .label .label-green }
 
-Alta is the latest and greatest in PSTAT department's research computing offerings geared for usage with Docker and VS Code. It contains the following specs:
+Alta is the latest and greatest in PSTAT department's research computing offerings geared for usage with development containers and VS Code. It contains the following specs:
 - 1x24 Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz (24 total cores)
 - 202 GB RAM
 
