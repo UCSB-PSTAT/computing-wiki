@@ -13,9 +13,12 @@ has_toc: false
 
 ### Access
 
-In order to have access to the department server you must have an active account and SSH set up.  If you do not have a department account, you can request one by [submitting a ticket with LSIT](https://help.lsit.ucsb.edu/hc/en-us/requests/new?ticket_form_id=1260809796629).
+In order to have access to the department server you must have an active account and SSH set up.  If you do not have a department account, you can request one by [following the server setup here](/docs/devcontainer/#setup).
 
 ### Changing Password
+
+{: .important }
+This is deprecated and only relevant to old servers such as Denali
 
 In order to change your department server password you must:
 
