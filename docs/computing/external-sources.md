@@ -16,9 +16,9 @@ has_toc: false
 
 The wonderful thing about ACCESS is that the the Explore tier is available to *graduate students* under the guidance of an advisor.  The Explore application ***only requires an abstract to complete submission***.  Discover is more applicable to multi-person research labs and requires 1 page templated description. Accelerate is for more hefty research objectives which require a thorough 3-5 page description and a review by a board.
 
-- [ACCESS allocation process](https://allocations.access-ci.org/)
-- [Allocation types and comparison table](https://allocations.access-ci.org/prepare-requests-overview)
-- [Explore ACCESS request (**graduate students**)](https://allocations.access-ci.org/preparing-your-explore-access-request)
+- [Getting started with an allocation request](https://allocations.access-ci.org/get-your-first-project)
+- [Allocation types and comparison table](https://allocations.access-ci.org/project-types)
+- [Allocation request requirements](https://allocations.access-ci.org/prepare-requests)
 
 ### [ACCESS via Jetstream2 tutorial](/docs/computing/jetstream2/)
 
