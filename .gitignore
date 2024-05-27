@@ -13,3 +13,7 @@ vendor/
 # Ignore wiki page build tooling
 claat*
 tmp/
+
+# Ignore VS Code files
+.*
+!.github/*

@@ -8,6 +8,7 @@ then
     make
     cd bin/
     mv claat ../../../
+    cd ../../../
     rm -rf tools/
 fi
     

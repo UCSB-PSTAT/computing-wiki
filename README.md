@@ -27,9 +27,19 @@ permalink: /docs/inner-directory/codelab-directory
 
 ### Build website
 
+#### Container
+
+Simply build the Dockerfile via Docker/Podman (or using VS Code). Once built, run the following inside the container:
+
+```sh
+bundle exec jekyll serve --livereload
+```
+
+#### Manual
+
 Requires Ruby Devkit, Jekyll, and Bundler installed.  From the root directory, run the following commands:
 
-```
+```sh
 bundle install
 bundle exec jekyll serve --livereload
 ```
@@ -54,3 +64,4 @@ Access the website through [http://localhost:4000/](http://localhost:4000/)
 | https://docs.google.com/document/d/16wWtuBrVarh3kZDWFhoQt3M_pVxf5t6GhvIci9KRyqI | "printer driver installation - windows" |
 | https://docs.google.com/document/d/1qt16tP26RZPOllHIvHCzWWv1KS7-M4Cs4tmr6eU16eU | "printer driver installation - macOS" |
 | https://docs.google.com/document/d/1WnD7ZmUyZoqdxFuk47FHCdjoTVAfQJxDqoCi-qBqxOQ | "printer use" |
+| https://docs.google.com/document/d/1XDhWE0jqTjqXMU26Vj03zWfl3R6-gjddJ2JvTdTnSA0 | "container shop" |
