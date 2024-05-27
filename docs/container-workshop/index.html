@@ -1,0 +1,462 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Container-driven Reproducible Research Computing Workshop</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="container-workshop"
+                  title="Container-driven Reproducible Research Computing Workshop"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/computing/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p class="image-container"><img style="width: 624.00px" src="img/a1871a1528befb6d.png"></p>
+<p>What we will cover:</p>
+<p>* Connecting to remote servers using SSH</p>
+<p>* Using the Devcontainer Template</p>
+<p>* Using Visual Studio Code with Devcontainers</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Downloading Visual Studio Code" duration="5">
+        <p>Before we begin, we will need to install Visual Studio Code (VS Code for short!) which is a powerful text editor that can be extended to be used as an integrated development environment for many languages.</p>
+<ol type="1" start="1">
+<li>Go to the <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> website.</li>
+<li>Download the executable file for your operating system.</li>
+<li>Open it and run through the installation.</li>
+</ol>
+<p>VS Code will be used as the main interface for various elements of this workshop such as remote computing servers, development containers, and tools found inside the containers!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Connecting to Jetstream2 Instance" duration="15">
+        <p>We have set up some computing instances for you to use on the Jetstream2 cluster that is run by Indiana University. In order to connect to your Jetstream2 compute instance we will need to first make sure that you can access your <em>Secure Shell (SSH)</em>, set up your SSH keys, and then connect to the remote compute instance.</p>
+<aside class="special"><p><strong>Note 1:</strong> SSH works through public key cryptography which uses 2 keys - a public key which is given to a remote server and a private key which is kept locally on your laptop/desktop. To put simply, they are used to communicate between your laptop and server securely.</p>
+</aside>
+<aside class="special"><p><strong>Note 2:</strong> For this workshop, you were sent a public (<code>container_workshop.pub</code>) and a private key (<code>container_workshop</code>) via email. You were also given an instance name (ex. <code>exouser@123.123.123.123</code>) which we will be using in just a little bit!</p>
+</aside>
+<h2 is-upgraded>Setting up SSH agent</h2>
+<p>In order to even get started with connecting to a remote server, we first need to make sure that the tools necessary to do so are up and running. Namely, we need to enable the SSH agent which handles authentication to remote connections. Once we do this, you&#39;ll be able to add the SSH key you&#39;ve been given in order to connect to your computing instance!</p>
+<p>There are 2 different sets of instructions to follow depending on your operating system but the end result will be the same!</p>
+<h3 is-upgraded>Windows</h3>
+<ol type="1" start="1">
+<li>Press Start and search for &#34;Windows Powershell&#34;.  Click on it to open a new shell.</li>
+<li>Next, run the following code to create a directory called <code>.ssh</code> which will exist in <code>C:\Users\your_laptop_username\.ssh</code>:</li>
+</ol>
+<pre>new-item $HOME\.ssh -ItemType Directory</pre>
+<aside class="warning"><p><strong>Note:</strong> You may get an error saying &#34;new-item : An item with the specified name ...\.ssh already exists.&#34;.  If you do, you can proceed to the next step since the directory is already there!</p>
+</aside>
+<ol type="1" start="3">
+<li>Verify that ssh-agent is running by searching for &#34;Services&#34; in the Start Menu:</li>
+</ol>
+<p class="image-container"><img style="width: 295.00px" src="img/81a9a76344a782a1.png"></p>
+<ol type="1" start="4">
+<li>Search for &#34;OpenSSH Agent&#34; and make sure that the <strong>Status is &#34;Running&#34;</strong> and <strong>Startup Type is &#34;Automatic&#34;</strong>.</li>
+</ol>
+<p class="image-container"><img style="width: 468.00px" src="img/68795008fe4ef0d.png"></p>
+<ol type="1" start="5">
+<li>If this is not the case, right-click on the &#34;OpenSSH Authentication Agent&#34; entry -&gt; select &#34;Properties&#34; -&gt; Under &#34;Service Status&#34; select &#34;Start&#34; -&gt; From the &#34;Startup Type&#34; drop down menu, select &#34;Automatic&#34;.</li>
+</ol>
+<p class="image-container"><img style="width: 312.00px" src="img/445c733d1ca508ee.png"></p>
+<p class="image-container"><img style="width: 312.00px" src="img/6b4c549f6a405fa.png"></p>
+<ol type="1" start="6">
+<li>In the penultimate step, you will need to download the <code>container_workshop.pub</code> public key and the <code>container_workshop</code> private key that were sent to you before the workshop. Save them in your &#34;Downloads&#34; folder. Once you&#39;ve downloaded both of the keys, we will move them to the <code>.ssh</code> folder using the following command in powershell:</li>
+</ol>
+<pre>Move-Item -Path $HOME\Downloads\container_workshop.pub -Destination $HOME\.ssh\
+Move-Item -Path $HOME\Downloads\container_workshop -Destination $HOME\.ssh\</pre>
+<ol type="1" start="7">
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in powershell:</li>
+</ol>
+<pre>ssh-add $HOME\.ssh\container_workshop</pre>
+<h3 is-upgraded>macOS/Linux</h3>
+<ol type="1" start="1">
+<li>Find your terminal application and open up a new shell:</li>
+</ol>
+<ul>
+<li>macOS: <code>⌘</code> + <code>space</code>, then search &#34;terminal&#34;</li>
+<li>Ubuntu: <code>ctrl</code> + <code>alt</code> + <code>t</code></li>
+</ul>
+<ol type="1" start="2">
+<li>Verify that your ssh-agent is running by using the following command:</li>
+</ol>
+<pre>eval &#34;$(ssh-agent -s)&#34;</pre>
+<aside class="warning"><p><strong>Note:</strong> Depending on your shell, you may need to use a different command or use elevated privileges through <code>sudo</code>: <code>sudo eval "$(ssh-agent -s)"</code></p>
+</aside>
+<ol type="1" start="4">
+<li>In the penultimate step, you will need to download the <code>container_workshop.pub</code> public key and the <code>container_workshop</code> private key that were sent to you before the workshop. Save them in your &#34;Downloads&#34; folder. Once you&#39;ve downloaded both of the keys, we will move them to the <code>.ssh</code> folder using the following command in terminal:</li>
+</ol>
+<pre>mv ~/Download/container_workshop.pub ~/.ssh/
+mv ~/Download/container_workshop ~/.ssh/</pre>
+<ol type="1" start="5">
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal:</li>
+</ol>
+<pre>ssh-add ~/.ssh/container_workshop</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Connecting to Remote Server" duration="15">
+        <p>Now that we have set up your SSH key and agent, it&#39;s time to connect to your Jetstream2 instance! To start, let&#39;s pull up VS Code again...</p>
+<p>1. Your window should look like this to start. In the bottom left hand corner you should see a <img style="width: 38.22px" src="img/b4ff20c678c044ef.png"> button. This is your remote connections manager. Click on it.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/3745d21f15691af6.png"></p>
+<ol type="1" start="1">
+<li>The command palette will open.  Go down the commands and select &#34;Connect Current Window to Host...&#34;</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/89a463b7b1064bd7.png"></p>
+<ol type="1" start="2">
+<li>Select the 2nd to last option &#34;Add New SSH Host...&#34;</li>
+</ol>
+<p class="image-container"><img style="width: 479.50px" src="img/c8792d43c3db4362.png"></p>
+<ol type="1" start="3">
+<li>In the dialogue box, type in &#34;ssh&#34; and paste the instance name that you were assigned for the workshop:</li>
+</ol>
+<p class="image-container"><img style="width: 454.50px" src="img/abdbd0f154c2e0fe.png"></p>
+<ol type="1" start="4">
+<li>Select your default configuration file to update (under your computers username):</li>
+</ol>
+<p class="image-container"><img style="width: 456.50px" src="img/d915330540cb7d3d.png"></p>
+<ol type="1" start="5">
+<li>Click on &#34;Config&#34; to modify the name of the &#34;Host&#34; to be more user friendly and save it.  Name it whatever you like e.g. my-awesome-jetstream2-instance. In addition specify an <code>IdentityFile</code>. Your final configuration should look like this:</li>
+</ol>
+<pre>Host my-awesome-jetstream2-instance
+   HostName 123.123.123.123
+   User exouser
+   IdentityFile container_workshop</pre>
+<p class="image-container"><img style="width: 381.19px" src="img/b4f5e93901696ad7.png"></p>
+<ol type="1" start="6">
+<li>Click on the <img style="width: 38.22px" src="img/b4ff20c678c044ef.png"> button again for Remote Connections.  Select &#34;Connect Current Window to Host...&#34;.  Your newly configured host will pop up.  Select it and let your instance load up.</li>
+</ol>
+<p class="image-container"><img style="width: 499.50px" src="img/c13cf9fe79b05091.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/bd9587b2adfa4cd4.png"></p>
+<aside class="warning"><p><strong>Note:</strong> You may get a pop-up box asking to choose whether you&#39;re using Linux, Windows, or Mac.  <strong>Select Linux</strong>, since we are connecting to JetStream2 which uses the Linux operating system.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Creating First Project" duration="30">
+        <h2 is-upgraded>Creating our starter files</h2>
+<p>Now that you are connected to a server, we can set up the development container!</p>
+<ol type="1" start="1">
+<li>In your terminal, run the following code where you should replace <code>&lt;project-name&gt;</code> with the name of your project/directory you wish to create:</li>
+</ol>
+<pre>copier copy gh:UCSB-PSTAT/devcontainer-template &lt;project-name&gt;</pre>
+<ol type="1" start="2">
+<li>Answer the questions by selecting from the options provided.  We will be using R in this workshop.</li>
+</ol>
+<pre>🎤 What is the name of your project? (Must be unique and use lowercase, dashes -, underscores _ ONLY)
+   my-awesome-project
+🎤 What language(s) will you use in this project?
+   R
+🎤 Do you want to install Visual Studio Code extensions for Jupyter notebooks using R?
+   Yes
+🎤 Install RStudio Server? This is optional if using VS Code and R extensions for development.
+   Yes
+🎤 Install Quarto? Quarto is optional publishing system compatible with R.
+   Yes
+🎤 Do you want to include example files?
+   Yes
+
+Copying from template version 1.4.1
+    create  .
+    create  .devcontainer
+    create  .devcontainer/Dockerfile
+    create  .devcontainer/devcontainer.json
+    create  README.md
+    create  example.Rmd
+    create  .copier-answers.yml</pre>
+<ol type="1" start="3">
+<li>Run the command below to view your new project folder (again, replace <code>&lt;project-name&gt;</code> with the name of your project/directory you created):</li>
+</ol>
+<pre>tree -a &lt;project-name&gt;</pre>
+<pre>&lt;project-name&gt;
+├── .copier-answers.yml
+├── .devcontainer
+│   ├── devcontainer.json
+│   └── Dockerfile
+├── example.Rmd
+├── example-R.qmd
+└── README.md</pre>
+<aside class="special"><p>You&#39;re project is ready to go!  In the next section we will show how to start up the container to run our reproducible project!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Starting Your Container" duration="0">
+        <ol type="1" start="1">
+<li>You now have a new directory in which you can open up a development container!  To do so, click on &#34;Open Folder&#34; in the left menu and navigate to your project folder&#39;s name:</li>
+</ol>
+<p class="image-container"><img style="width: 494.57px" src="img/e2a9dbad0ad41a41.png"></p>
+<p class="image-container"><img style="width: 496.50px" src="img/1abda9bbc9e2d276.png"></p>
+<ol type="1" start="2">
+<li>Click OK.  This will open up your project&#39;s folder (in the example, it will open &#34;my-awesome-project&#34;.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/e27ebbeed625981c.png"></p>
+<ol type="1" start="3">
+<li>From here, you can click to &#34;Reopen in Container&#34; or click on the bottom left green button and select &#34;Reopen in Container&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/b7e6d6e2ae249c4f.png"></p>
+<ol type="1" start="4">
+<li>Your container will be built.  You can click on the bottom right hand dialogue to view the build process log file.</li>
+</ol>
+<aside class="warning"><p><strong>Note:</strong> The first time build process can take <em>20-30 minutes</em> to complete! Please be patient! After the first build, starting up a container will take less than 10 seconds.<br><br>For now, click on the notification button on the bottom right and click on &#34;(show log)&#34;:</p>
+<p class="image-container"><img style="width: 610.00px" src="img/acbb9c4cc7a52b0c.png"></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Small Interlude..." duration="10">
+        <p>So while the container builds, let&#39;s take a step back and break this down...</p>
+<p class="image-container"><img style="width: 406.50px" src="img/740a4620221ffee1.gif"></p>
+<h2 is-upgraded>Overview of what we have...</h2>
+<p class="image-container"><img style="width: 510.50px" src="img/c4c47ee636b42522.png"></p>
+<p>In essence, we use the VS Code text editor for the following 3 things:</p>
+<ol type="1" start="1">
+<li>Text/Code editing</li>
+<li>Connecting to remote servers in the cloud</li>
+<li>Connecting to containers whether on a remote server or on your local machine</li>
+</ol>
+<p>Today, we are working inside a remote Jetstream2 instance and you can currently watch your container being built on there. Containers help isolate any required system packages, programming language packages, and tools that your project requires from the rest of your system. This means that if your project has specific versioning requirements, these can be baked into your container via the container configuration files. But what are those files? They are...<br></p>
+<ul>
+<li>Dockerfile - the main configuration file that contains all your system, programming language, and tool setup written as code.</li>
+<li>devcontainer.json - a file that integrates the container building and running process with VS Code and is part of the &#34;<a href="https://containers.dev/" target="_blank">Development Container</a>&#34; standard.</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/a062348ce0ceaa1.png"></p>
+<p>On their own, containers are usually managed via terminal using terminal commands of the containerization software in question. However, with the Dev Containers standard, we can easily integrate running and connecting to containers to the VS Code UI. We will discuss how to make adjustments to these files in a little bit.</p>
+<p>We can take a look at the 2 files and note that they can be non-trivial to put together. This is why we created the devcontainer template that we used today to generate the project files. This creates an easily extendable configuration with well documented container files that can be modified to your liking as the complexity of your project develops which we will talk about next.</p>
+<p>By now, your VS Code instances should look a little something like this:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/506b73bb6a32b876.png"></p>
+<aside class="special"><p>Your container is now ready to use on Jetstream2! Note that the bottom left hand corner now says that you are working in a Dev Container.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Accessing JupyterLab and RStudio" duration="15">
+        <p>We can do most of our editing in VS Code with extensions for Python, R, and other languages; however, our container comes with additional tool options that can be more conducive for data analysis such as JupyterLab and RStudio. Here, we will show how to access these container tools.</p>
+<ol type="1" start="1">
+<li>Open up a new VS Code Terminal by pressing the + button as seen below:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/6cc0c4714c23f1d1.png"></p>
+<ol type="1" start="2">
+<li>You will see the following pop up showing a Jupyter server token. Double click it and right-click to &#34;Copy&#34; the token:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/9954ad3db47318d.png"></p>
+<ol type="1" start="3">
+<li>Head into &#34;Ports&#34;.  Look for port 8888 (which will be labeled as &#34;Jupyterlab&#34;).  Mouse over the &#34;Forwarded Address&#34; box and click on &#34;Open in Browser&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/f01f6e0dab5738ab.png"></p>
+<ol type="1" start="4">
+<li>You will be taken to the following login page.  Here you can input your copied Jupyter token. You will only need to do this once, next time it will not ask you for the token!</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/4370c659d6a83292.png"></p>
+<ol type="1" start="5">
+<li>From here, you will be taken to the JupyterLab landing page. You will see a number of options for coding but what we will be using is RStudio Server. You can click on the button to start up the server in a separate window which will have the familiar RStudio interface but inside your browser being run on your Jetstream2 instance!</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/1352b78eade6cb65.png"><img style="width: 624.00px" src="img/1b7314ae8a0f6ef8.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Reproducible Project – Packaging" duration="15">
+        <p>To show off the usage of development containers for reproducibility, we will do a small sentiment analysis on the famous &#34;To be or not to be&#34; speech from William Shakespeare&#39;s Hamlet. Containers give us a lot of flexibility on the type of packages and tools we can install using commands we are familiar with (<code>pip install ..., mamba install ..., install.packages(...)</code>). However, to create a reproducible project that can be shared and easily setup and built we need to make changes to our actual Dockerfile, the file that defines the entire computational environment.</p>
+<ol type="1" start="1">
+<li>Let&#39;s open up the <code>example.Rmd</code> file which has some starter code and functions for us to use. We can do this by selecting &#34;Files&#34; in the bottom right pane and selecting <code>example.Rmd</code>.</li>
+</ol>
+<p class="image-container"><img style="width: 421.50px" src="img/f47b926738c4d271.png"></p>
+<ol type="1" start="2">
+<li>Inside this file you will notice a cell called <code>{r setup ...}</code>. Let&#39;s add a few packages underneath the knitr options:</li>
+</ol>
+<pre>library(ggplot2)
+library(syuzhet)</pre>
+<ol type="1" start="3">
+<li>Once we run this chunk, you&#39;ll notice that we have <code>ggplot2</code> but not <code>syuzhet</code>. We will need to add this package to our container files so that in the future, when this project is shared with others, it can be built and run without additional tweaking. More than that, we will do so in a manner that specifies the exact package version we wish to install. This is because by default, R will install the latest version of packages. There are times when doing so can break an installation due to either specific version requirements, dependency issues, or upstream changes in other packages. </li>
+<li>First, let&#39;s track down the specific package in CRAN: <a href="https://cran.r-project.org/" target="_blank">https://cran.r-project.org/</a> </li>
+<li>Under &#34;Software&#34; click on &#34;Packages&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/7b4ab14c745829cc.png"></p>
+<ol type="1" start="6">
+<li>Click on &#34;Table of available packages, sorted by name&#34;. In the following webpage, scroll or <code>ctrl</code> + <code>f</code> to find syuzhet. Click on the package name.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/764f7f61acb536f5.png"></p>
+<ol type="1" start="7">
+<li>In the following webpage, take note of the latest available version. Depending on your project requirements, you may potentially need to use an older version than that, but for our project we just need to specify the latest stable version that is currently available. </li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/af387b44b29867b6.png"></p>
+<ol type="1" start="8">
+<li>Next, we will include this package version as part of the installation process of the container inside our Dockerfile. The Dockerfile created from our template has annotations for where we can place additional packages to install. Scroll down your Dockerfile and insert an additional package underneath the comment with package instructions:</li>
+</ol>
+<pre>R -q -e &#39;remotes::install_version(&#34;syuzhet&#34;, version=&#34;1.0.7&#34;, repos=&#34;cloud.r-project.org&#34;)&#39; &amp;&amp; \</pre>
+<aside class="special"><p>Let&#39;s break this down:</p>
+<ul>
+<li>R invokes an r-script to run</li>
+<li>-q quiets the R startup message</li>
+<li>-e specifies that an inline expression is going to be executed</li>
+<li>&amp;&amp; is a logical and used to chain installation statements together (bas)</li>
+<li>\ allows for statements to be chained together through separate lines</li>
+</ul>
+</aside>
+<ol type="1" start="9">
+<li>Save your Dockerfile (<code>ctrl</code> + <code>s</code>). You may have a pop-up saying that your configuration files have changed and that you need to rebuild your container. Either click on &#34;Rebuild&#34; in the dialog OR click the bottom left green remotes button and select &#34;Rebuild Container&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/eb18ee33c3bb97fe.png"></p>
+<aside class="special"><p><strong>Note:</strong> Every time you modify your .devcontainer folder files, you will need to rebuild the container. Fortunately, these rebuilds will not take as long as the first one since VS Code caches certain build information.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Reproducible Project – Finishing Up" duration="15">
+        <p>Now that we have included the syuzhet package, we can finish up this little project! Below is the famous &#34;To be or not to be&#34; speech made by Hamlet. We will analyze and plot the sentiment of each line of this speech.</p>
+<pre>To be, or not to be, that is the question: 
+Whether &#39;tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take Arms against a Sea of troubles,
+And by opposing end them: to die, to sleep
+No more; and by a sleep, to say we end
+The heart-ache, and the thousand natural shocks
+That Flesh is heir to? &#39;Tis a consummation
+Devoutly to be wished. To die, to sleep,
+To sleep, perchance to Dream; aye, there&#39;s the rub,
+For in that sleep of death, what dreams may come,
+When we have shuffled off this mortal coil,
+Must give us pause. There&#39;s the respect
+That makes Calamity of so long life:
+For who would bear the Whips and Scorns of time,
+The Oppressor&#39;s wrong, the proud man&#39;s Contumely,
+The pangs of despised Love, the Law&#39;s delay,
+The insolence of Office, and the spurns
+That patient merit of th&#39;unworthy takes,
+When he himself might his Quietus make
+With a bare Bodkin? Who would Fardels bear,
+To grunt and sweat under a weary life,
+But that the dread of something after death,
+The undiscovered country, from whose bourn
+No traveller returns, puzzles the will,
+And makes us rather bear those ills we have,
+Than fly to others that we know not of?
+Thus conscience does make cowards of us all,
+And thus the native hue of Resolution
+Is sicklied o&#39;er, with the pale cast of Thought,
+And enterprises of great pitch and moment,
+With this regard their Currents turn awry,
+And lose the name of Action. Soft you now,
+The fair Ophelia? Nymph, in thy Orisons
+Be all my sins remember&#39;d.</pre>
+<ol type="1" start="1">
+<li>First, let&#39;s make a new cell in R</li>
+</ol>
+<pre>```{r text_processing}
+
+```</pre>
+<ol type="1" start="2">
+<li>Inside the cell, copy/paste Hamlet&#39;s speech as a string:</li>
+</ol>
+<pre>hamlet &lt;- (&#34;To be, or not to be, ...
+...
+Be all my sins remember&#39;d.&#34;)</pre>
+<ol type="1" start="3">
+<li>Now let&#39;s perform a string split along each newline character (<code>\n</code>). We also need to &#34;unlist&#34; the output since it gets processed as a list of lists:</li>
+</ol>
+<pre>hamlet_processed &lt;- strsplit(hamlet, &#34;\n&#34;, perl=TRUE)
+hamlet_processed &lt;- unlist(hamlet_processed)
+hamlet_processed</pre>
+<ol type="1" start="4">
+<li>We can now calculate the sentiment values on each sentence in the character vector using the <code>get_sentiment</code> function from syuzhet:</li>
+</ol>
+<pre>sentiment &lt;- get_sentiment(hamlet_processed)</pre>
+<ol type="1" start="5">
+<li>We will now convert the calculated sentiment values and create a dataframe out of them for plotting:</li>
+</ol>
+<pre>df &lt;- data.frame(lineno=1:length(sentiment), sentiment=sentiment)</pre>
+<ol type="1" start="6">
+<li>Finally, we create a nicely formatted plot using ggplot:</li>
+</ol>
+<pre>ggplot(df) +
+  geom_line(aes(x=lineno, y=sentiment)) +
+  labs(x=&#34;Line Number&#34;, y=&#34;Syuzhet Sentiment&#34;)</pre>
+<aside class="special"><p>This completes our little illustrative project! We can now build this R markdown file into a PDF that is saved as part of our project to further distribute elsewhere!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Remote computing" duration="10">
+        <p>- Short Discussion of NSF ACCESS</p>
+<p>- Using ACCESS credits for Jetstream2</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Distributing Research" duration="10">
+        <p>- Zenodo</p>
+<p>- GitHub</p>
+<p>- Go through process of creating account</p>
+<p>- Create zip</p>
+<p>- Uploading/managing</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="DEVELOPMENT NOTES" duration="0">
+        <h2 is-upgraded>Build log</h2>
+<p>&#34;docker build&#34;</p>
+<p>&#34;docker run&#34;</p>
+<p>packages are pulled at build time, so versions are latest if not specified</p>
+<h2 is-upgraded>[Teaching] While project builds... (15 minutes)</h2>
+<p>- explanation of containerization + remote access</p>
+<p>        - local -&gt; remote access -&gt; container -&gt; project (diagram)</p>
+<p>- R/Python binaries -&gt; installation via Jupyter image (/opt/conda/)</p>
+<p>- Show access to terminal on VS Code (inside container)</p>
+<p>- Rmd/Qmd/ipynb in VS Code</p>
+<p>- Show off web interface like VS Code Notebooks, JupyterLab, RStudio</p>
+<h2 is-upgraded>Installing Packages (15 minutes)</h2>
+<p>- Installing required packages for the task</p>
+<p>- System packages (tree, tmux)</p>
+<p>- include packages as comments</p>
+<h2 is-upgraded>Reproducibility (20 minutes)</h2>
+<p>- Verifying required package versions</p>
+<p>        - For R we talk about using `remotes` for versioning a package</p>
+<p>- Editing Dockerfile to include them</p>
+<p>- Rebuilding</p>
+<h2 is-upgraded>Common issues with local research computing</h2>
+<h2 is-upgraded>Complete task</h2>
+<p>- Run some examples</p>
+<p>- Generate a PDF?</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
