@@ -45,13 +45,13 @@
 <li>Press Start and search for &#34;Windows Powershell&#34;.  Click on it to open a new shell.</li>
 <li>Next, run the following code to create a directory called <code>.ssh</code>.  Replace <code>&lt;your username&gt;</code> with the username your computer uses.</li>
 </ol>
-<pre>new-item C:\Users\&lt;your username&gt;\.ssh -ItemType Directory</pre>
+<pre>new-item $HOME\.ssh -ItemType Directory</pre>
 <aside class="warning"><p><strong>Note:</strong> You may get an error saying &#34;new-item : An item with the specified name ...\.ssh already exists.&#34;.  If you do, you can proceed to the next step since the directory is already there!</p>
 </aside>
 <ol type="1" start="3">
 <li>In the terminal either type or copy-paste the following command:</li>
 </ol>
-<pre>ssh-keygen -t ed25519 -f $HOME\.ssh\ed25519 -N &#34;&#34;</pre>
+<pre>ssh-keygen -t ed25519 -f $HOME\.ssh\ed25519 -N &#39;&#34;&#34;&#39;</pre>
 <p>The command above will generate 2 files in the directory <code>C:\Users\&lt;your username&gt;\.ssh\</code>: <code>ed25519</code> (private key) and <code>ed25519.pub</code> (public key).</p>
 <aside class="warning"><p>You should keep your private key safe, <strong>do not share it with anyone!  </strong></p>
 </aside>
@@ -71,7 +71,7 @@
 <ol type="1" start="7">
 <li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code>&lt;KEY_NAME&gt;</code> is the name of the key you created earlier:</li>
 </ol>
-<pre>ssh-add $HOME/.ssh/ed25519</pre>
+<pre>ssh-add $HOME\.ssh\ed25519</pre>
 <h2 is-upgraded>macOS/Linux</h2>
 <ol type="1" start="1">
 <li>Find your terminal application and open up a new shell:</li>
