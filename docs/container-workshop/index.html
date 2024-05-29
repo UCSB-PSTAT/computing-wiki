@@ -77,7 +77,7 @@
 <aside class="special"><p><strong>Note 1:</strong> SSH works through public key cryptography which uses 2 keys - a public key which is given to a remote server and a private key which is kept locally on your laptop/desktop. To put simply, they are used to communicate between your laptop and server securely.</p>
 </aside>
 <aside class="special"><p><strong>Note 2:</strong> For this workshop, you were sent a public (<code>container_workshop.pub</code>) and a private key (<code>container_workshop</code>). Click on the following buttons and save these keys in your <strong>Downloads</strong> folder:</p>
-<p><a href="https://drive.google.com/file/d/1Cw-jBS0qKG56nLUNrfKnsCgamRsA5JDw/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Public Key</paper-button></a> <a href="https://docs.google.com/document/d/1XDhWE0jqTjqXMU26Vj03zWfl3R6-gjddJ2JvTdTnSA0/edit?usp=sharing" target="_blank"><paper-button class="colored" raised>Private Key</paper-button></a></p>
+<p><a href="https://drive.google.com/file/d/1Cw-jBS0qKG56nLUNrfKnsCgamRsA5JDw/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Public Key</paper-button></a> <a href="https://drive.google.com/file/d/1L243fz2D55btQeFsD1wW2AjUXnemxW8v/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Private Key</paper-button></a></p>
 </aside>
 <h2 is-upgraded>Setting up SSH agent</h2>
 <p>In order to even get started with connecting to a remote server, we first need to make sure that the tools necessary to do so are up and running. Namely, we need to enable the SSH agent which handles authentication to remote connections. Once we do this, you&#39;ll be able to add the SSH key you&#39;ve been given in order to connect to your computing instance!</p>
@@ -271,7 +271,7 @@ Copying from template version 1.4.1
 <li>devcontainer.json - a file that integrates the container building and running process with VS Code and is part of the &#34;<a href="https://containers.dev/" target="_blank">Development Container</a>&#34; standard.</li>
 </ul>
 <p class="image-container"><img style="width: 624.00px" src="img/a062348ce0ceaa1.png"></p>
-<p>On their own, containers are usually managed via terminal using terminal commands of the containerization software in question. However, with the Dev Containers standard, we can easily integrate running and connecting to containers to the VS Code UI. We will discuss how to make adjustments to these files in a little bit.</p>
+<p>On their own, containers are usually managed via terminal using terminal commands of the containerization software in question. However, with the Dev Containers standard, we can easily delegate running and connecting to containers to the VS Code UI. We will discuss how to make adjustments to these files in a little bit.</p>
 <p>We can take a look at the 2 files and note that they can be non-trivial to put together. This is why we created the devcontainer template that we used today to generate the project files. This creates an easily extendable configuration with well documented container files that can be modified to your liking as the complexity of your project develops which we will talk about next.</p>
 <p>By now, your VS Code instances should look a little something like this:</p>
 <p class="image-container"><img style="width: 624.00px" src="img/506b73bb6a32b876.png"></p>
@@ -537,6 +537,19 @@ hamlet_processed</code></pre>
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
-
+  <script>
+    // This is to override the close / done handling on the page
+    // https://github.com/googlecodelabs/tools/issues/103
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("arrow-back").href="/"; 
+      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+      document.getElementById("done").href="/"; 
+      document.getElementById("done").addEventListener( 'click', function() { 
+        window.history.back();
+      }); 
+    }, false);
+  </script>
 </body>
 </html>
