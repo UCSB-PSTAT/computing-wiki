@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>Container-driven Reproducible Research Computing Workshop</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -75,7 +76,8 @@
         <p>We have set up some computing instances for you to use on the Jetstream2 cluster that is run by Indiana University. In order to connect to your Jetstream2 compute instance we will need to first make sure that you can access your <em>Secure Shell (SSH)</em>, set up your SSH keys, and then connect to the remote compute instance.</p>
 <aside class="special"><p><strong>Note 1:</strong> SSH works through public key cryptography which uses 2 keys - a public key which is given to a remote server and a private key which is kept locally on your laptop/desktop. To put simply, they are used to communicate between your laptop and server securely.</p>
 </aside>
-<aside class="special"><p><strong>Note 2:</strong> For this workshop, you were sent a public (<code>container_workshop.pub</code>) and a private key (<code>container_workshop</code>) via email. You were also given an instance name (ex. <code>exouser@123.123.123.123</code>) which we will be using in just a little bit!</p>
+<aside class="special"><p><strong>Note 2:</strong> For this workshop, you were sent a public (<code>container_workshop.pub</code>) and a private key (<code>container_workshop</code>). Click on the following buttons and save these keys in your <strong>Downloads</strong> folder:</p>
+<p><a href="https://drive.google.com/file/d/1Cw-jBS0qKG56nLUNrfKnsCgamRsA5JDw/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Public Key</paper-button></a> <a href="https://docs.google.com/document/d/1XDhWE0jqTjqXMU26Vj03zWfl3R6-gjddJ2JvTdTnSA0/edit?usp=sharing" target="_blank"><paper-button class="colored" raised>Private Key</paper-button></a></p>
 </aside>
 <h2 is-upgraded>Setting up SSH agent</h2>
 <p>In order to even get started with connecting to a remote server, we first need to make sure that the tools necessary to do so are up and running. Namely, we need to enable the SSH agent which handles authentication to remote connections. Once we do this, you&#39;ll be able to add the SSH key you&#39;ve been given in order to connect to your computing instance!</p>
@@ -138,34 +140,37 @@ mv ~/Download/container_workshop ~/.ssh/</pre>
       </google-codelab-step>
     
       <google-codelab-step label="Connecting to Remote Server" duration="15">
-        <p>Now that we have set up your SSH key and agent, it&#39;s time to connect to your Jetstream2 instance! To start, let&#39;s pull up VS Code again...</p>
-<p>1. Your window should look like this to start. In the bottom left hand corner you should see a <img style="width: 38.22px" src="img/b4ff20c678c044ef.png"> button. This is your remote connections manager. Click on it.</p>
-<p class="image-container"><img style="width: 624.00px" src="img/3745d21f15691af6.png"></p>
+        <p>Now that we have set up your SSH key and agent, it&#39;s time to connect to your Jetstream2 instance!</p>
 <ol type="1" start="1">
-<li>The command palette will open.  Go down the commands and select &#34;Connect Current Window to Host...&#34;</li>
+<li>Before we begin, head over to this spreadsheet and claim a Jetstream2 instance by writing your name next to it... Keep the spreadsheet open as you will need to copy the instance information later!: <a href="https://docs.google.com/spreadsheets/d/11hU_z_t9LlG0Nyy34qpNsdAbR1SxPLB6T1DAwG6Yp9o/edit?usp=sharing" target="_blank"><paper-button class="colored" raised>Jetstream2 Instances</paper-button></a></li>
+<li>Your window should look like this to start. In the bottom left hand corner you should see a <img style="width: 38.22px" src="img/b4ff20c678c044ef.png"> button. This is your remote connections manager. Click on it.</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/3745d21f15691af6.png"></p>
+<ol type="1" start="3">
+<li>The command palette will open.  Go down the commands and select &#34;<strong>Connect Current Window to Host...</strong>&#34;</li>
 </ol>
 <p class="image-container"><img style="width: 624.00px" src="img/89a463b7b1064bd7.png"></p>
-<ol type="1" start="2">
+<ol type="1" start="4">
 <li>Select the 2nd to last option &#34;Add New SSH Host...&#34;</li>
 </ol>
 <p class="image-container"><img style="width: 479.50px" src="img/c8792d43c3db4362.png"></p>
-<ol type="1" start="3">
-<li>In the dialogue box, type in &#34;ssh&#34; and paste the instance name that you were assigned for the workshop:</li>
+<ol type="1" start="5">
+<li>In the dialogue box, type in &#34;ssh exouser@&#34; and paste the instance name that you sign-up for in the spreadsheet:</li>
 </ol>
-<p class="image-container"><img style="width: 454.50px" src="img/abdbd0f154c2e0fe.png"></p>
-<ol type="1" start="4">
-<li>Select your default configuration file to update (under your computers username):</li>
+<p class="image-container"><img style="width: 461.23px" src="img/15bf12f9c8762eb0.png"></p>
+<ol type="1" start="6">
+<li>Select your default configuration file to update (under your computer&#39;s username):</li>
 </ol>
 <p class="image-container"><img style="width: 456.50px" src="img/d915330540cb7d3d.png"></p>
-<ol type="1" start="5">
-<li>Click on &#34;Config&#34; to modify the name of the &#34;Host&#34; to be more user friendly and save it.  Name it whatever you like e.g. my-awesome-jetstream2-instance. In addition specify an <code>IdentityFile</code>. Your final configuration should look like this:</li>
+<ol type="1" start="7">
+<li>Click on &#34;Config&#34; to modify the name of the &#34;Host&#34; to be more user friendly and save it.  Name it whatever you like e.g. my-awesome-jetstream2-instance. In addition specify an <code>IdentityFile</code> which will be the name of the private key we saved (<code>container_workshop</code>). Your final configuration should look similar to this:</li>
 </ol>
 <pre>Host my-awesome-jetstream2-instance
-   HostName 123.123.123.123
-   User exouser
-   IdentityFile container_workshop</pre>
-<p class="image-container"><img style="width: 381.19px" src="img/b4f5e93901696ad7.png"></p>
-<ol type="1" start="6">
+    HostName container-workshop.mth230010.projects.jetstream-cloud.org
+    User exouser
+    IdentityFile container_workshop</pre>
+<p class="image-container"><img style="width: 562.50px" src="img/4280b9bd5c597ad.png"></p>
+<ol type="1" start="8">
 <li>Click on the <img style="width: 38.22px" src="img/b4ff20c678c044ef.png"> button again for Remote Connections.  Select &#34;Connect Current Window to Host...&#34;.  Your newly configured host will pop up.  Select it and let your instance load up.</li>
 </ol>
 <p class="image-container"><img style="width: 499.50px" src="img/c13cf9fe79b05091.png"></p>
