@@ -29,11 +29,32 @@
                   feedback-link="https://github.com/UCSB-PSTAT/computing/issues">
     
       <google-codelab-step label="Introduction" duration="0">
-        <p class="image-container"><img style="width: 624.00px" src="img/a1871a1528befb6d.png"></p>
-<p>What we will cover:</p>
-<p>* Connecting to remote servers using SSH</p>
-<p>* Using the Devcontainer Template</p>
-<p>* Using Visual Studio Code with Devcontainers</p>
+        <p class="image-container"><img style="width: 514.47px" src="img/a1871a1528befb6d.png"></p>
+<h2 is-upgraded>Welcome to the Container-Driven Reproducible Research Computing Workshop!</h2>
+<p>In this workshop, we aim to solve common issues in data science like software installation, dependency management, and performance limitations of local machines. We will explore how to create reproducible and user-friendly research environments using development containers from inside a remote computing environment powered by Indiana University&#39;s Jetstream2.</p>
+<h2 is-upgraded>Workshop Overview</h2>
+<p><strong>I. Downloading Visual Studio Code</strong></p>
+<ul>
+<li>Install and set up Visual Studio Code (VS Code) as our main interface.</li>
+</ul>
+<p><strong>II. Accessing a Remote Computing Instance</strong></p>
+<ul>
+<li>Set up SSH keys and connect to a powerful Jetstream2 compute instance.</li>
+</ul>
+<p><strong>III. Creating and Managing Projects</strong></p>
+<ul>
+<li>Use VS Code to create and customize containerized environments.</li>
+<li>Deploy these environments with tools like JupyterLab and RStudio.</li>
+<li>Develop and package a small project using R, demonstrating the power of containerization for reproducibility.</li>
+</ul>
+<p><strong>IV. Remote Computing and Resource Management</strong></p>
+<ul>
+<li>Understand and utilize resources provided by NSF ACCESS and Jetstream2 for your research.</li>
+</ul>
+<p><strong>V. Distributing Research</strong></p>
+<ul>
+<li>Learn how to share your reproducible research environments through platforms like GitHub and Zenodo.</li>
+</ul>
 
 
       </google-codelab-step>
@@ -155,7 +176,7 @@ mv ~/Download/container_workshop ~/.ssh/</pre>
 
       </google-codelab-step>
     
-      <google-codelab-step label="Creating First Project" duration="30">
+      <google-codelab-step label="Creating First Project" duration="5">
         <h2 is-upgraded>Creating our starter files</h2>
 <p>Now that you are connected to a server, we can set up the development container!</p>
 <ol type="1" start="1">
@@ -204,7 +225,7 @@ Copying from template version 1.4.1
 
       </google-codelab-step>
     
-      <google-codelab-step label="Starting Your Container" duration="0">
+      <google-codelab-step label="Starting Your Container" duration="10">
         <ol type="1" start="1">
 <li>You now have a new directory in which you can open up a development container!  To do so, click on &#34;Open Folder&#34; in the left menu and navigate to your project folder&#39;s name:</li>
 </ol>
@@ -228,7 +249,7 @@ Copying from template version 1.4.1
 
       </google-codelab-step>
     
-      <google-codelab-step label="Small Interlude..." duration="10">
+      <google-codelab-step label="Small Interlude..." duration="15">
         <p>So while the container builds, let&#39;s take a step back and break this down...</p>
 <p class="image-container"><img style="width: 406.50px" src="img/740a4620221ffee1.gif"></p>
 <h2 is-upgraded>Overview of what we have...</h2>
@@ -281,7 +302,7 @@ Copying from template version 1.4.1
 
       </google-codelab-step>
     
-      <google-codelab-step label="Reproducible Project – Packaging" duration="15">
+      <google-codelab-step label="Reproducible Project – Packaging" duration="20">
         <p>To show off the usage of development containers for reproducibility, we will do a small sentiment analysis on the famous &#34;To be or not to be&#34; speech from William Shakespeare&#39;s Hamlet. Containers give us a lot of flexibility on the type of packages and tools we can install using commands we are familiar with (<code>pip install ..., mamba install ..., install.packages(...)</code>). However, to create a reproducible project that can be shared and easily setup and built we need to make changes to our actual Dockerfile, the file that defines the entire computational environment.</p>
 <ol type="1" start="1">
 <li>Let&#39;s open up the <code>example.Rmd</code> file which has some starter code and functions for us to use. We can do this by selecting &#34;Files&#34; in the bottom right pane and selecting <code>example.Rmd</code>.</li>
@@ -369,35 +390,35 @@ Be all my sins remember&#39;d.</pre>
 <ol type="1" start="1">
 <li>First, let&#39;s make a new cell in R</li>
 </ol>
-<pre>```{r text_processing}
+<pre><code>```{r text_processing}
 
-```</pre>
+```</code></pre>
 <ol type="1" start="2">
 <li>Inside the cell, copy/paste Hamlet&#39;s speech as a string:</li>
 </ol>
-<pre>hamlet &lt;- (&#34;To be, or not to be, ...
+<pre><code>hamlet &lt;- (&#34;To be, or not to be, ...
 ...
-Be all my sins remember&#39;d.&#34;)</pre>
+Be all my sins remember&#39;d.&#34;)</code></pre>
 <ol type="1" start="3">
 <li>Now let&#39;s perform a string split along each newline character (<code>\n</code>). We also need to &#34;unlist&#34; the output since it gets processed as a list of lists:</li>
 </ol>
-<pre>hamlet_processed &lt;- strsplit(hamlet, &#34;\n&#34;, perl=TRUE)
+<pre><code>hamlet_processed &lt;- strsplit(hamlet, &#34;\n&#34;, perl=TRUE)
 hamlet_processed &lt;- unlist(hamlet_processed)
-hamlet_processed</pre>
+hamlet_processed</code></pre>
 <ol type="1" start="4">
 <li>We can now calculate the sentiment values on each sentence in the character vector using the <code>get_sentiment</code> function from syuzhet:</li>
 </ol>
-<pre>sentiment &lt;- get_sentiment(hamlet_processed)</pre>
+<pre><code>sentiment &lt;- get_sentiment(hamlet_processed)</code></pre>
 <ol type="1" start="5">
 <li>We will now convert the calculated sentiment values and create a dataframe out of them for plotting:</li>
 </ol>
-<pre>df &lt;- data.frame(lineno=1:length(sentiment), sentiment=sentiment)</pre>
+<pre><code>df &lt;- data.frame(lineno=1:length(sentiment), sentiment=sentiment)</code></pre>
 <ol type="1" start="6">
 <li>Finally, we create a nicely formatted plot using ggplot:</li>
 </ol>
-<pre>ggplot(df) +
+<pre><code>ggplot(df) +
   geom_line(aes(x=lineno, y=sentiment)) +
-  labs(x=&#34;Line Number&#34;, y=&#34;Syuzhet Sentiment&#34;)</pre>
+  labs(x=&#34;Line Number&#34;, y=&#34;Syuzhet Sentiment&#34;)</code></pre>
 <aside class="special"><p>This completes our little illustrative project! We can now build this R markdown file into a PDF that is saved as part of our project to further distribute elsewhere!</p>
 </aside>
 
@@ -405,8 +426,53 @@ hamlet_processed</pre>
       </google-codelab-step>
     
       <google-codelab-step label="Remote computing" duration="10">
-        <p>- Short Discussion of NSF ACCESS</p>
-<p>- Using ACCESS credits for Jetstream2</p>
+        <p class="image-container"><img style="width: 624.00px" src="img/cd4177ba1253d87c.png"></p>
+<p class="image-container"><img alt="Jetstream2" style="width: 328.00px" src="img/263d306519e0be42.png"></p>
+<p>Let&#39;s talk a bit about the remote computing we were using today and how you could get access to it. Compute time on these instances is made available through the National Science Foundation&#39;s <a href="https://access-ci.org/" target="_blank">Advanced Cyberinfrastructure Coordination Ecosystem: Services &amp; Support</a> (NSF ACCESS) program which exists &#34;...to help researchers and educators, with or without supporting grants, to utilize the nation&#39;s advanced computing systems and services – at no cost.&#34;</p>
+<p>While NSF ACCESS provides time in the form of credits, the actual compute instances we are using are through Indiana University&#39;s Jetstream2 supercomputing system. Jetstream2 aims to make research computing easy by providing access to instances, remote desktop, and resource management all through the browser. NSF ACCESS is not limited to Jetstream2 as there is a variety of <a href="https://allocations.access-ci.org/resources" target="_blank">resource providers</a> available to choose from. That said, if you want direct support, UCSB PSTAT provides support for Jetstream2 development container images that we used today!</p>
+<p>To get started, visit <a href="https://access-ci.org/about/get-started/" target="_blank">the ACCESS website</a> and then:</p>
+<ol type="1" start="1">
+<li>Sign-up for an ACCESS account.</li>
+<li>Complete required submission paperwork (more on that below).</li>
+<li>Once approved, head over to <a href="https://jetstream-cloud.org/" target="_blank">the Jetstream2 website</a> and submit your approved allocation there.</li>
+<li>From there, you will be able to login and access your Jetstream2 allocation as well as add additional people under your allocation for usage (especially useful for labs/groups with larger units)</li>
+</ol>
+<p>The number of units that you can apply to can be summarized as follows:</p>
+<p>For limited scale projects (dissertations, papers, general grad student work)</p>
+<ul>
+<li>Submission of abstract + sign-off from advisor required</li>
+<li>EXPLORE (400,000 credits)</li>
+</ul>
+<p>For larger scale projects (research labs, classroom work, heavy compute)</p>
+<ul>
+<li>Submission of 1-3 page project proposal</li>
+<li>DISCOVER (1.5 million credits), ACCELERATE (3 million credits)</li>
+<li>MAXIMIZE (unlimited, 10 page proposal, application open twice a year)</li>
+</ul>
+<p>Regardless of initial application, you can always apply for higher tier later!</p>
+<p>Below is a table of various Jetstream2 instance sizes and how long they can be run continuously, without shutting down with 400K credits that graduate students can apply for. Today we were using the <strong>Large CPU</strong> system:</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p><strong>System Type</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Resources</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Days of continuous compute (@ 400K credits)</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>L CPU</p>
+</td><td colspan="1" rowspan="1"><p>16 CPUs, 60 GB RAM</p>
+</td><td colspan="1" rowspan="1"><p>1040 days (16 credits/hour)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>XL CPU</p>
+</td><td colspan="1" rowspan="1"><p>32 CPUs, 125 GB RAM</p>
+</td><td colspan="1" rowspan="1"><p>520 days (32 credits/hour)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>XL GPU</p>
+</td><td colspan="1" rowspan="1"><p>32 CPUs, 125 GB RAM, 40 GB GPU</p>
+</td><td colspan="1" rowspan="1"><p>130 days (128 credits/hour)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>XL RAM</p>
+</td><td colspan="1" rowspan="1"><p>128 CPUs, 1000 GB RAM</p>
+</td><td colspan="1" rowspan="1"><p>65 days (256 credits/hour)</p>
+</td></tr>
+</table>
 
 
       </google-codelab-step>
@@ -414,6 +480,9 @@ hamlet_processed</pre>
       <google-codelab-step label="Distributing Research" duration="10">
         <p>- Zenodo</p>
 <p>- GitHub</p>
+<p>        - Mention GitHub Pro for educators </p>
+<p>        - Spin up the CodeSpaces Demo to test out the tooling</p>
+<p>        - Mention how to make Podman container files Docker friendly</p>
 <p>- Go through process of creating account</p>
 <p>- Create zip</p>
 <p>- Uploading/managing</p>
@@ -446,6 +515,12 @@ hamlet_processed</pre>
 <h2 is-upgraded>Complete task</h2>
 <p>- Run some examples</p>
 <p>- Generate a PDF?</p>
+<p><strong>Instance Deployment</strong></p>
+<ul>
+<li>Deploy the workshop instances with a generated public key attached to it</li>
+<li>Have a excel sheet/document with all the instance names written in and have the workshop attendees choose one and put their name next to the chosen one</li>
+<li>Sending out the keys will happen before the actual workshop via email</li>
+</ul>
 
 
       </google-codelab-step>
