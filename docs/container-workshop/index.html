@@ -66,8 +66,16 @@
 <li>Go to the <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> website.</li>
 <li>Download the executable file for your operating system.</li>
 <li>Open it and run through the installation.</li>
+<li>Once installed, open up VS Code.</li>
+<li>Click on the 4 square button to open up the &#34;Extensions&#34; explorer as seen here (alternatively, press <code>ctrl</code>/<code>⌘</code> + <code>shift</code> + <code>x</code>):</li>
 </ol>
-<p>VS Code will be used as the main interface for various elements of this workshop such as remote computing servers, development containers, and tools found inside the containers!</p>
+<p class="image-container"><img style="width: 248.51px" src="img/389d3ea88f5c320a.png"></p>
+<ol type="1" start="6">
+<li>In the search bar search for &#34;Dev Containers&#34;. Click on the extension authored by Microsoft and install:</li>
+</ol>
+<p class="image-container"><img style="width: 550.50px" src="img/da52f6e1e423e351.png"></p>
+<aside class="special"><p>VS Code will be used as the main interface for various elements of this workshop such as remote computing servers, development containers, and tools found inside the containers!</p>
+</aside>
 
 
       </google-codelab-step>
@@ -76,8 +84,8 @@
         <p>We have set up some computing instances for you to use on the Jetstream2 cluster that is run by Indiana University. In order to connect to your Jetstream2 compute instance we will need to first make sure that you can access your <em>Secure Shell (SSH)</em>, set up your SSH keys, and then connect to the remote compute instance.</p>
 <aside class="special"><p><strong>Note 1:</strong> SSH works through public key cryptography which uses 2 keys - a public key which is given to a remote server and a private key which is kept locally on your laptop/desktop. To put simply, they are used to communicate between your laptop and server securely.</p>
 </aside>
-<aside class="special"><p><strong>Note 2:</strong> For this workshop, you were sent a public (<code>container_workshop.pub</code>) and a private key (<code>container_workshop</code>). Click on the following buttons and save these keys in your <strong>Downloads</strong> folder:</p>
-<p><a href="https://drive.google.com/file/d/1Cw-jBS0qKG56nLUNrfKnsCgamRsA5JDw/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Public Key</paper-button></a> <a href="https://drive.google.com/file/d/1L243fz2D55btQeFsD1wW2AjUXnemxW8v/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Private Key</paper-button></a></p>
+<aside class="special"><p><strong>Note 2:</strong> For this workshop, you were sent a public (<code>container_workshop.pub</code>) and a private key (<code>container_workshop</code>). Click on the following buttons and save these keys in your <strong>Downloads</strong> folder to be used later on in this section:</p>
+<p><a href="https://drive.google.com/file/d/1HyuCh6dM2FGSBLekYw5UmXGAzSQV7DSn/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Public Key</paper-button></a> <a href="https://drive.google.com/file/d/1sQF25kv7uwL1lyZMP3qodA2JA-g_lJRb/view?usp=sharing" target="_blank"><paper-button class="colored" raised>Private Key</paper-button></a></p>
 </aside>
 <h2 is-upgraded>Setting up SSH agent</h2>
 <p>In order to even get started with connecting to a remote server, we first need to make sure that the tools necessary to do so are up and running. Namely, we need to enable the SSH agent which handles authentication to remote connections. Once we do this, you&#39;ll be able to add the SSH key you&#39;ve been given in order to connect to your computing instance!</p>
@@ -85,7 +93,7 @@
 <h3 is-upgraded>Windows</h3>
 <ol type="1" start="1">
 <li>Press Start and search for &#34;Windows Powershell&#34;.  Click on it to open a new shell.</li>
-<li>Next, run the following code to create a directory called <code>.ssh</code> which will exist in <code>C:\Users\your_laptop_username\.ssh</code>:</li>
+<li>Next, run the following code to create a directory called <code>.ssh</code> which will exist at the location found using the command <code>echo $HOME</code> in Powershell:</li>
 </ol>
 <pre>new-item $HOME\.ssh -ItemType Directory</pre>
 <aside class="warning"><p><strong>Note:</strong> You may get an error saying &#34;new-item : An item with the specified name ...\.ssh already exists.&#34;.  If you do, you can proceed to the next step since the directory is already there!</p>
@@ -112,6 +120,12 @@ Move-Item -Path $HOME\Downloads\container_workshop -Destination $HOME\.ssh\</pre
 <li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in powershell:</li>
 </ol>
 <pre>ssh-add $HOME\.ssh\container_workshop</pre>
+<aside class="warning"><p><strong>Note:</strong> The output for this command should simply be &#34;Identity Added ...&#34;. If you receive anything else such as a permissions error, try to run the following:</p>
+<p><strong>Windows: </strong></p>
+<p><code>icacls "$HOME\.ssh\container_workshop" /inheritance:r</code></p>
+<p><code>icacls "$HOME\.ssh\container_workshop" /grant:r "$($env:USERNAME):(R)"</code></p>
+<p><code>icacls "$HOME\.ssh\container_workshop" /remove "Authenticated Users" "BUILTIN\Users"</code></p>
+</aside>
 <h3 is-upgraded>macOS/Linux</h3>
 <ol type="1" start="1">
 <li>Find your terminal application and open up a new shell:</li>
@@ -135,6 +149,10 @@ mv ~/Download/container_workshop ~/.ssh/</pre>
 <li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal:</li>
 </ol>
 <pre>ssh-add ~/.ssh/container_workshop</pre>
+<aside class="warning"><p><strong>Note:</strong> The output for this command should simply be &#34;Identity Added ...&#34;. If you receive anything else such as a permissions error, try to run the following:</p>
+<p><strong>macOS/Linux: </strong></p>
+<p><code>chmod 600 ~/.ssh/container_workshop</code></p>
+</aside>
 
 
       </google-codelab-step>
@@ -275,6 +293,9 @@ Copying from template version 1.4.1
 <p>We can take a look at the 2 files and note that they can be non-trivial to put together. This is why we created the devcontainer template that we used today to generate the project files. This creates an easily extendable configuration with well documented container files that can be modified to your liking as the complexity of your project develops which we will talk about next.</p>
 <p>By now, your VS Code instances should look a little something like this:</p>
 <p class="image-container"><img style="width: 624.00px" src="img/506b73bb6a32b876.png"></p>
+<p>Click on the &#34;+&#34; icon next to the &#34;Dev Containers&#34; dialogue to open up a new terminal instance which will have a &#34;Jupyter Token&#34; pop-up once launched:</p>
+<p class="image-container"><img style="width: 1069.98px" src="img/506b73bb6a32b876.png"></p>
+<p class="image-container"><img style="width: 512.50px" src="img/d23a262a0f2b9114.png"></p>
 <aside class="special"><p>Your container is now ready to use on Jetstream2! Note that the bottom left hand corner now says that you are working in a Dev Container.</p>
 </aside>
 
@@ -316,10 +337,18 @@ Copying from template version 1.4.1
 <ol type="1" start="2">
 <li>Inside this file you will notice a cell called <code>{r setup ...}</code>. Let&#39;s add a few packages underneath the knitr options:</li>
 </ol>
-<pre>library(ggplot2)
-library(syuzhet)</pre>
+<pre>```{r setup, include=FALSE}
+
+library(ggplot2)
+library(syuzhet)
+
+knitr::opts_chunks$set(echo = TRUE)
+```</pre>
 <ol type="1" start="3">
 <li>Once we run this chunk, you&#39;ll notice that we have <code>ggplot2</code> but not <code>syuzhet</code>. We will need to add this package to our container files so that in the future, when this project is shared with others, it can be built and run without additional tweaking. More than that, we will do so in a manner that specifies the exact package version we wish to install. This is because by default, R will install the latest version of packages. There are times when doing so can break an installation due to either specific version requirements, dependency issues, or upstream changes in other packages. </li>
+</ol>
+<p class="image-container"><img style="width: 512.50px" src="img/e4adffeb28754cea.png"></p>
+<ol type="1" start="4">
 <li>First, let&#39;s track down the specific package in CRAN: <a href="https://cran.r-project.org/" target="_blank">https://cran.r-project.org/</a> </li>
 <li>Under &#34;Software&#34; click on &#34;Packages&#34;:</li>
 </ol>
@@ -345,6 +374,7 @@ library(syuzhet)</pre>
 <li>\ allows for statements to be chained together through separate lines</li>
 </ul>
 </aside>
+<p class="image-container"><img style="width: 529.50px" src="img/c8f9517604706ef2.png"></p>
 <ol type="1" start="9">
 <li>Save your Dockerfile (<code>ctrl</code> + <code>s</code>). You may have a pop-up saying that your configuration files have changed and that you need to rebuild your container. Either click on &#34;Rebuild&#34; in the dialog OR click the bottom left green remotes button and select &#34;Rebuild Container&#34;:</li>
 </ol>
@@ -419,11 +449,12 @@ hamlet_processed</code></pre>
 </ol>
 <pre><code>df &lt;- data.frame(lineno=1:length(sentiment), sentiment=sentiment)</code></pre>
 <ol type="1" start="6">
-<li>Finally, we create a nicely formatted plot using ggplot:</li>
+<li>Finally, we create a nicely formatted plot using ggplot which will produce a plot!:</li>
 </ol>
 <pre><code>ggplot(df) +
   geom_line(aes(x=lineno, y=sentiment)) +
   labs(x=&#34;Line Number&#34;, y=&#34;Syuzhet Sentiment&#34;)</code></pre>
+<p class="image-container"><img style="width: 507.50px" src="img/e1adfffd7150867f.png"></p>
 <aside class="special"><p>This completes our little illustrative project! We can now build this R markdown file into a PDF that is saved as part of our project to further distribute elsewhere!</p>
 </aside>
 
@@ -478,14 +509,13 @@ hamlet_processed</code></pre>
 </td><td colspan="1" rowspan="1"><p>65 days (256 credits/hour)</p>
 </td></tr>
 </table>
+<p>For a more thorough breakdown of the available instances and information on credits, check out the <a href="https://docs.jetstream-cloud.org/general/vmsizes/#instance-flavors" target="_blank">Jetstream2 documentation</a>.</p>
 
 
-      </google-codelab-step>  
-      
-    </google-codelab-step>
+      </google-codelab-step>
     
-    <google-codelab-step label="Distributing Research" duration="10">
-      <p class="image-container"><img style="width: 562.50px" src="img/9a4c83e0538f875e.png"></p>
+      <google-codelab-step label="Distributing Research" duration="10">
+        <p class="image-container"><img style="width: 562.50px" src="img/9a4c83e0538f875e.png"></p>
 <p>As the final part of the workshop, we want to draw your attention to some helpful resources for maintaining and publishing your research code. In the digital age, distributing research effectively and efficiently is paramount for ensuring reproducibility, collaboration, and accessibility. This section will discuss how you can leverage GitHub and GitHub Codespaces for code management and execution, along with Zenodo for comprehensive research archiving.</p>
 <h2 is-upgraded>Using GitHub for Code Management</h2>
 <p>GitHub is a powerful platform for version control and collaboration, essential for managing research code. By storing your research code in a GitHub repository, you benefit from features such as issue tracking, pull requests, and continuous integration. These tools enable you to manage contributions from multiple collaborators seamlessly and ensure that changes are tracked meticulously.</p>
@@ -499,17 +529,17 @@ hamlet_processed</code></pre>
 <li><code>devcontainer.json</code> has to modified slightly to function correctly with Codespaces, namely we need to remove the following 3 bits of information:</li>
 </ul>
 <pre><code>&#34;build&#34;: {
-&#34;dockerfile&#34;: &#34;Dockerfile&#34;,
-&#34;options&#34;: [&#34;--format=docker&#34;] // remove for Codespaces (or Docker)
+  &#34;dockerfile&#34;: &#34;Dockerfile&#34;,
+  &#34;options&#34;: [&#34;--format=docker&#34;] // remove for Codespaces (or Docker)
 }
 ...
 // change `type=bind,z` to `type=bind` for Codespaces (or Docker)
 &#34;workspaceMount&#34;: &#34;source=${localWorkspaceFolder},target=/home/jovyan/work,type=bind,z&#34;,
 ...
 &#34;runArgs&#34;: [
-...
-&#34;--userns=keep-id:uid=1000,gid=100&#34;, // remove for Codespaces (or Docker)
-...
+  ...
+  &#34;--userns=keep-id:uid=1000,gid=100&#34;, // remove for Codespaces (or Docker)
+  ...
 ]</code></pre>
 <h2 is-upgraded>Archiving with Zenodo</h2>
 <p>While GitHub is excellent for code management, it is equally important to have a robust system for archiving the entirety of your research output. This is where <a href="https://zenodo.org/" target="_blank">Zenodo</a> comes into play. Zenodo is a research repository managed by CERN that provides a secure and reliable platform for storing a variety of research outputs.</p>
@@ -519,6 +549,7 @@ hamlet_processed</code></pre>
 <li><strong>Research Data</strong>: Zenodo supports the storage of research data, including confidential data that has been anonymized. This ensures that your datasets are preserved and accessible for future studies.</li>
 </ul>
 <p>Lastly, by using Zenodo, you can generate DOI links for your research outputs, which enhances their visibility and citability. This is particularly important for ensuring that your work is easily discoverable and can be referenced by other researchers in the field.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/4276cb607594d7a3.png"></p>
 <h2 is-upgraded>Combining GitHub and Zenodo</h2>
 <p>The combination of GitHub and Zenodo provides a powerful ecosystem for distributing research:</p>
 <ol type="1" start="1">
@@ -529,8 +560,8 @@ hamlet_processed</code></pre>
 <p>This integrated approach not only enhances the reproducibility of your research but also ensures that your work is accessible and can be built upon by the wider research community. By leveraging these tools, you contribute to a more open and collaborative research environment, ultimately advancing scientific discovery.</p>
 
 
-    </google-codelab-step>
-
+      </google-codelab-step>
+    
   </google-codelab>
 
   <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
