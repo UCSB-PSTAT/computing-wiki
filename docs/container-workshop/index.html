@@ -480,7 +480,57 @@ hamlet_processed</code></pre>
 </table>
 
 
-      </google-codelab-step>    
+      </google-codelab-step>  
+      
+    </google-codelab-step>
+    
+    <google-codelab-step label="Distributing Research" duration="10">
+      <p class="image-container"><img style="width: 562.50px" src="img/9a4c83e0538f875e.png"></p>
+<p>As the final part of the workshop, we want to draw your attention to some helpful resources for maintaining and publishing your research code. In the digital age, distributing research effectively and efficiently is paramount for ensuring reproducibility, collaboration, and accessibility. This section will discuss how you can leverage GitHub and GitHub Codespaces for code management and execution, along with Zenodo for comprehensive research archiving.</p>
+<h2 is-upgraded>Using GitHub for Code Management</h2>
+<p>GitHub is a powerful platform for version control and collaboration, essential for managing research code. By storing your research code in a GitHub repository, you benefit from features such as issue tracking, pull requests, and continuous integration. These tools enable you to manage contributions from multiple collaborators seamlessly and ensure that changes are tracked meticulously.</p>
+<h2 is-upgraded>GitHub Codespaces</h2>
+<p>GitHub Codespaces takes collaboration a step further by providing a full development environment in the cloud. This allows researchers to work on their projects from anywhere, without the need to set up local development environments. The key to making this work efficiently is the use of <code>.devcontainer</code> configuration files. This eliminates the &#34;it works on my machine&#34; problem, significantly enhancing reproducibility. </p>
+<p>Here is a <a href="https://github.com/UCSB-PSTAT/devcontainer-demo" target="_blank">demo repository</a> with which we can launch a GitHub Codespaces instance if you have a GitHub account. Simply click on &#34;Code&#34; then &#34;Codespaces&#34; and lastly &#34;Create codespace on main&#34;:</p>
+<p class="image-container"><img style="width: 360.66px" src="img/ec99acf0b097d4ed.png"></p>
+<p>It should be noted that there are 2 caveats to this:</p>
+<ul>
+<li>To use GitHub Codespaces, you need a <a href="https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-pro" target="_blank">GitHub Pro</a> account. Fortunately, GitHub offers GitHub Pro for free to educators, which makes this a cost-effective solution for academic research. </li>
+<li><code>devcontainer.json</code> has to modified slightly to function correctly with Codespaces, namely we need to remove the following 3 bits of information:</li>
+</ul>
+<pre><code>&#34;build&#34;: {
+&#34;dockerfile&#34;: &#34;Dockerfile&#34;,
+&#34;options&#34;: [&#34;--format=docker&#34;] // remove for Codespaces (or Docker)
+}
+...
+// change `type=bind,z` to `type=bind` for Codespaces (or Docker)
+&#34;workspaceMount&#34;: &#34;source=${localWorkspaceFolder},target=/home/jovyan/work,type=bind,z&#34;,
+...
+&#34;runArgs&#34;: [
+...
+&#34;--userns=keep-id:uid=1000,gid=100&#34;, // remove for Codespaces (or Docker)
+...
+]</code></pre>
+<h2 is-upgraded>Archiving with Zenodo</h2>
+<p>While GitHub is excellent for code management, it is equally important to have a robust system for archiving the entirety of your research output. This is where <a href="https://zenodo.org/" target="_blank">Zenodo</a> comes into play. Zenodo is a research repository managed by CERN that provides a secure and reliable platform for storing a variety of research outputs.</p>
+<ul>
+<li><strong>Research Papers</strong>: You can upload preprints or published versions of your research papers, ensuring they are freely accessible and citable.</li>
+<li><strong>Research Code</strong>: Zenodo integrates seamlessly with GitHub allowing you to archive your code alongside your paper.</li>
+<li><strong>Research Data</strong>: Zenodo supports the storage of research data, including confidential data that has been anonymized. This ensures that your datasets are preserved and accessible for future studies.</li>
+</ul>
+<p>Lastly, by using Zenodo, you can generate DOI links for your research outputs, which enhances their visibility and citability. This is particularly important for ensuring that your work is easily discoverable and can be referenced by other researchers in the field.</p>
+<h2 is-upgraded>Combining GitHub and Zenodo</h2>
+<p>The combination of GitHub and Zenodo provides a powerful ecosystem for distributing research:</p>
+<ol type="1" start="1">
+<li><strong>Version Control and Collaboration</strong>: Use GitHub to manage and collaborate on your research code.</li>
+<li><strong>Reproducible Development Environments</strong>: Utilize GitHub Codespaces with .devcontainers to ensure consistent development environments across all contributors.</li>
+<li><strong>Archiving and Citability</strong>: Link your GitHub repositories to Zenodo to archive your code and generate DOI links for all your research outputs, ensuring they are preserved and citable.</li>
+</ol>
+<p>This integrated approach not only enhances the reproducibility of your research but also ensures that your work is accessible and can be built upon by the wider research community. By leveraging these tools, you contribute to a more open and collaborative research environment, ultimately advancing scientific discovery.</p>
+
+
+    </google-codelab-step>
+
   </google-codelab>
 
   <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
