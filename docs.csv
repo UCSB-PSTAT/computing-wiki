@@ -1,0 +1,13 @@
+Google Doc URL,title,parent,grand_parent,nav_order,url_loc,url_name,redirect
+https://docs.google.com/document/d/1yNjoAO0xFMkQggEahwrprr5M9XVejFK21hVx1MhzoMc,PSTAT User Account Sign-up,Develop in Container,,0,/docs/devcontainer/,new-accounts,/docs/devcontainer#setup
+https://docs.google.com/document/d/1OZoi8dN7lrQDSSvWCPuMv8nvMI7W8OV3j02xwb5M7Fg,Basic Container Usage on a Server,Develop in Container,,1,/docs/devcontainer/,basic-usage,/docs/devcontainer#setup
+https://docs.google.com/document/d/1oTagNdTuDcQMCT3-2vjtK945VB_sJndbnfhoeSxOK24,Container Management,Develop in Container,,4,/docs/devcontainer/,container-management,"/docs/devcontainer#management"""
+https://docs.google.com/document/d/10oo_i8PbxfD5mdyqdLdCdvSJ_DFhRi7E5HRG2iagrZU,File Management,Develop in Container,,5,/docs/devcontainer/,file-management,/docs/devcontainer#management
+https://docs.google.com/document/d/1yF0US6nskeKtxQ8an5zFTD3OvLwK6Eg2aI2ZcDiqKB0,Job Management,Develop in Container,,6,/docs/devcontainer/,job-management,/docs/devcontainer#management
+https://docs.google.com/document/d/10Vav5Ug2YKmD5SSm5aurSyP_faW4IS1jV6P9Ad1rZr8,Editing Dockerfile,Develop in Container,,7,/docs/devcontainer/,editing-dockerfile,/docs/devcontainer#additional-features
+https://docs.google.com/document/d/13FwlQ6xvDvPmxwy4Xs_DCEc-AdEoiMLyurkk7ymxn9s,GitHub Codespaces,Develop in Container,,8,/docs/devcontainer/,github-codespaces,/docs/devcontainer#additional-features
+https://docs.google.com/document/d/1jmfMKz30vkl2BcTW1tHSaQ1kPkbIwxjjdv2Vc0s4H5k,ACCESS via Jetstream2,External Sources,Computing Resources,1,/docs/computing/,jetstream2,/docs/computing/external-sources#nsf-access-program
+https://docs.google.com/document/d/16wWtuBrVarh3kZDWFhoQt3M_pVxf5t6GhvIci9KRyqI,,,,,/docs/department/,printer-driver-win,/docs/department#printing
+https://docs.google.com/document/d/1qt16tP26RZPOllHIvHCzWWv1KS7-M4Cs4tmr6eU16eU,,,,,/docs/department/,printer-driver-mac,/docs/department#printing
+https://docs.google.com/document/d/1WnD7ZmUyZoqdxFuk47FHCdjoTVAfQJxDqoCi-qBqxOQ,Using the Printer,Department Management,,2,/docs/department/,printer-use,/docs/department#printing
+https://docs.google.com/document/d/1ocxp6zUY1p7BprscQii7zyyu0F0jJx281MC5JOXvSVg,Troubleshooting Common Issues,Develop in Container,,9,/docs/devcontainer/,troubleshooting,/docs/devcontainer#setup

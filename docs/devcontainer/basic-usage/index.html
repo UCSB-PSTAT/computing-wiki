@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Basic Container Usage</title>
   <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
+  <title>Basic Container Usage</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -21,8 +21,9 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
                   id="basic-usage"
                   title="Basic Container Usage"
                   environment="web"
@@ -34,7 +35,7 @@
 <h2 is-upgraded>Prereqs</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack" target="_blank">Remote Development Pack</a> Extension. Install in VS Code by searching the extension shop using <code>ctrl</code>/⌘ + <code>shift</code> + <code>x</code> shortcut.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" target="_blank">Dev Containers</a> and <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank">Remote - SSH</a> Extensions. Install in VS Code by searching the extension shop using <code>ctrl</code>/⌘ + <code>shift</code> + <code>x</code> shortcut.</li>
 <li>PSTAT User Account</li>
 </ul>
 
@@ -281,18 +282,19 @@ gh repo create</pre>
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
+
   <script>
     // This is to override the close / done handling on the page
     // https://github.com/googlecodelabs/tools/issues/103
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("arrow-back").href="/docs/devcontainer#setup"; 
-      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("arrow-back").href="/docs/devcontainer#setup";
+      document.getElementById("arrow-back").addEventListener( "click", function() {
         window.history.back();
-      }); 
-      document.getElementById("done").href="/docs/devcontainer#setup"; 
-      document.getElementById("done").addEventListener( 'click', function() { 
+      });
+      document.getElementById("done").href="/docs/devcontainer#setup";
+      document.getElementById("done").addEventListener( "click", function() {
         window.history.back();
-      }); 
+      });
     }, false);
   </script>
 </body>

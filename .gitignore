@@ -12,7 +12,7 @@ vendor/
 
 # Ignore wiki page build tooling
 claat*
-tmp/
+test/
 
 # Ignore VS Code files
 .*
