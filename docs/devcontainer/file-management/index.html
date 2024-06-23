@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>File Management</title>
   <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
+  <title>File Management</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -21,8 +21,9 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
                   id="file-management"
                   title="File Management"
                   environment="web"
@@ -33,13 +34,15 @@
 <h2 is-upgraded>Prereqs</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
-<li>(Optional) Completion of SSH Setup (including GitHub)</li>
+<li>(Optional) Completion of <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/new-accounts/#1" target="_blank">SSH Setup</a> (<a href="https://computing.pstat.ucsb.edu/docs/devcontainer/basic-usage/#6" target="_blank">including GitHub</a>)</li>
 </ul>
 <h2 is-upgraded>Requirements for remote</h2>
 <ul>
-<li>Setup of the <a href="https://www.it.ucsb.edu/ivanti-secure-access-campus-vpn/get-connected-campus-vpn" target="_blank">UCSB VPN</a> for connecting to PSTAT servers</li>
-<li>SSH Setup (key generation and GitHub) on the remote server</li>
+<li><a href="https://computing.pstat.ucsb.edu/docs/devcontainer/new-accounts/#1" target="_blank">SSH Setup</a> (key generation and <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/basic-usage/#6" target="_blank">GitHub</a>) on the remote server</li>
 </ul>
+<h2 is-upgraded>Useful Links</h2>
+<p><a href="https://docs.google.com/document/d/1OZoi8dN7lrQDSSvWCPuMv8nvMI7W8OV3j02xwb5M7Fg" target="_blank">Google Docs Version of Tutorial</a></p>
+<p class="image-container"><img style="width: 317.50px" src="img/2ba8463b328120da.png"></p>
 
 
       </google-codelab-step>
@@ -58,10 +61,10 @@
       <google-codelab-step label="Local ↔ Remote" duration="0">
         <h2 is-upgraded>Local → Remote</h2>
 <p>To move files from local to remote, we can simply drag and drop files into VS Code&#39;s explorer to transfer them to the remote server we&#39;re working on:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/32e3440d624df12e.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/9510aff575a41ec6.png"></p>
 <h2 is-upgraded>Remote → Local </h2>
 <p>In order to get files from your remote server onto your local machine, first select the files you wish to move and then right-click to &#34;Download...&#34; them into your desired location:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/3036802a61ec459e.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/bfe04568f3116981.png"></p>
 
 
       </google-codelab-step>
@@ -80,28 +83,28 @@ git config --global user.email</pre>
 <ol type="1" start="1">
 <li>Navigate either to your GitHub homepage or user page and click to create a new repository:</li>
 </ol>
-<p class="image-container"><img style="width: 294.50px" src="img/e98aa40bee950722.png"></p>
+<p class="image-container"><img style="width: 294.50px" src="img/a33366a697850435.png"></p>
 <ol type="1" start="2">
 <li>Choose a repository name, description and whether you want it to be public or private:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/8de3619d1e081f30.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/23d268943f6fceb2.png"></p>
 <ol type="1" start="3">
 <li>Select &#34;Add a README file&#34;, choose a .gitignore template for the language you will program in (if you wish), and lastly add a license (if you wish):</li>
 </ol>
-<p class="image-container"><img style="width: 472.44px" src="img/f1a3be06add9da7f.png"></p>
+<p class="image-container"><img style="width: 472.44px" src="img/69e77b1667633790.png"></p>
 <ol type="1" start="4">
 <li>Click the &#34;Code&#34; button in the new window and select &#34;SSH&#34; copy the link:</li>
 </ol>
-<p class="image-container"><img style="width: 369.50px" src="img/9344ff1530881771.png"></p>
+<p class="image-container"><img style="width: 369.50px" src="img/ff0c494052a9f9c8.png"></p>
 <ol type="1" start="5">
 <li>Using the link, open up VS Code and select the &#34;Source Control&#34; pane either by clicking or using the keyboard shortcut (<code>ctrl</code>/⌘ + <code>shift</code> + <code>g</code>):</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/7be24493fcde55.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/75abf58b0e72c69e.png"></p>
 <ol type="1" start="6">
 <li>Click &#34;Clone Repository&#34;.  Paste the GitHub link you copied earlier and press enter.  Follow the prompts and open the repository in VS Code.</li>
 <li>You can now use VS Code to manage your remote repository through the &#34;Source Control&#34; pane:</li>
 </ol>
-<p class="image-container"><img style="width: 624.00px" src="img/1cfcd8b56c089806.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/c36f6b5504d69edd.png"></p>
 <p>In order to manage your changes, you must first &#34;Stage&#34; them for commit from your &#34;Changes&#34; drop down.  Once you do that, write a commit message, press commit, and lastly press &#34;Sync Changes&#34; to push your changes to the remote repository.  The version control workflow can be summarized as follows:</p>
 <ul>
 <li>Add changes to be staged</li>
@@ -122,18 +125,19 @@ git config --global user.email</pre>
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
+
   <script>
     // This is to override the close / done handling on the page
     // https://github.com/googlecodelabs/tools/issues/103
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("arrow-back").href="/docs/devcontainer#management"; 
-      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("arrow-back").href="/docs/devcontainer#management";
+      document.getElementById("arrow-back").addEventListener( "click", function() {
         window.history.back();
-      }); 
-      document.getElementById("done").href="/docs/devcontainer#management"; 
-      document.getElementById("done").addEventListener( 'click', function() { 
+      });
+      document.getElementById("done").href="/docs/devcontainer#management";
+      document.getElementById("done").addEventListener( "click", function() {
         window.history.back();
-      }); 
+      });
     }, false);
   </script>
 </body>

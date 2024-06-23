@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-06-14T23:09:25Z",
+  "updated": "2024-06-23T00:33:03Z",
   "id": "editing-dockerfile",
   "duration": 0,
   "title": "Editing Dockerfile",
@@ -18,6 +18,6 @@
     "web"
   ],
   "tags": [],
-  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
   "url": "editing-dockerfile"
 }

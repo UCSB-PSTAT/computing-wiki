@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>GitHub Codespaces</title>
   <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
+  <title>GitHub Codespaces</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -21,8 +21,9 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
                   id="github-codespaces"
                   title="GitHub Codespaces"
                   environment="web"
@@ -34,6 +35,9 @@
 <ul>
 <li>Installation of <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces" target="_blank">GitHub Codespaces</a> extension on VSCode</li>
 </ul>
+<h2 is-upgraded>Useful Links</h2>
+<p><a href="https://docs.google.com/document/d/13FwlQ6xvDvPmxwy4Xs_DCEc-AdEoiMLyurkk7ymxn9s" target="_blank">Google Docs Version of Tutorial</a></p>
+<p class="image-container"><img style="width: 317.50px" src="img/2ba8463b328120da.png"></p>
 
 
       </google-codelab-step>
@@ -49,15 +53,15 @@
 <ol type="1" start="1">
 <li>Click on the &#34;Code&#34; button</li>
 </ol>
-<p class="image-container"><img style="width: 114.00px" src="img/eececd14af52832b.png"></p>
+<p class="image-container"><img style="width: 114.00px" src="img/9c28fa64c7c3b91c.png"></p>
 <ol type="1" start="2">
 <li>Inside, select &#34;Codespaces&#34;:</li>
 </ol>
-<p class="image-container"><img style="width: 364.66px" src="img/1b0126a372e1dd5f.png"></p>
+<p class="image-container"><img style="width: 364.66px" src="img/e0559711219d4c18.png"></p>
 <ol type="1" start="3">
 <li>Click &#34;Create codespace on &lt;branch-name&gt;&#34;.  This will take you to a separate page which will setup a browser instance of VS Code and potentially install any dependencies that repository has for you automatically!</li>
 </ol>
-<p class="image-container"><img style="width: 560.86px" src="img/c2406d35c82d5359.png"></p>
+<p class="image-container"><img style="width: 560.86px" src="img/64932b2bd4949c19.png"></p>
 <aside class="special"><p>You can now make changes to the repository and run code as you see fit!</p>
 </aside>
 
@@ -66,18 +70,18 @@
     
       <google-codelab-step label="Transferring to VS Code" duration="0">
         <p>We can transfer our browser session to our local VS Code installation and edit a repository from a codespace contained in our local development environment.  This is done by clicking on the hamburger menu on the browser and clicking &#34;Open in VS Code Desktop&#34;:</p>
-<p class="image-container"><img style="width: 263.49px" src="img/867fcaed765b8c53.png"></p>
+<p class="image-container"><img style="width: 263.49px" src="img/d8701006bfc18fd2.png"></p>
 <p>This may launch a dialogue box in the browser.  Confirm and allow access on VS Code and any firewall application that pops up.  This will then launch your remote codespace from within your local VS Code installation which can be seen on the bottom left corner:</p>
-<p class="image-container"><img style="width: 591.42px" src="img/b309b842191f45d5.png"></p>
+<p class="image-container"><img style="width: 591.42px" src="img/93c369fdf7a871fe.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Opening Codespaces from VS Code" duration="0">
         <p>We can also open codespaces from inside VS Code.  <strong>This will only work if you have previously created a codespace.</strong>  Simply hit <code>ctrl</code>/⌘ + <code>shift</code> + <code>P</code> to open the command palette and search for &#34;Connect to Codespace&#34;:</p>
-<p class="image-container"><img style="width: 520.50px" src="img/574d340aabe90cce.png"></p>
+<p class="image-container"><img style="width: 520.50px" src="img/aeba3c013bf39ea7.png"></p>
 <p>This will open a selection of available codespaces.  Select one to run it in VS Code:</p>
-<p class="image-container"><img style="width: 510.73px" src="img/c2e03b9aa3f3c5cd.png"></p>
+<p class="image-container"><img style="width: 510.73px" src="img/8ae4959cd0213c05.png"></p>
 
 
       </google-codelab-step>
@@ -96,18 +100,19 @@
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
+
   <script>
     // This is to override the close / done handling on the page
     // https://github.com/googlecodelabs/tools/issues/103
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("arrow-back").href="/docs/devcontainer#additional-features"; 
-      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("arrow-back").href="/docs/devcontainer#additional-features";
+      document.getElementById("arrow-back").addEventListener( "click", function() {
         window.history.back();
-      }); 
-      document.getElementById("done").href="/docs/devcontainer#additional-features"; 
-      document.getElementById("done").addEventListener( 'click', function() { 
+      });
+      document.getElementById("done").href="/docs/devcontainer#additional-features";
+      document.getElementById("done").addEventListener( "click", function() {
         window.history.back();
-      }); 
+      });
     }, false);
   </script>
 </body>

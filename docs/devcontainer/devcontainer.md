@@ -18,12 +18,19 @@ It is enouraged to use dev containers through [remote servers such as Alta](/doc
 
 ## Setup 
 
-### [PSTAT User Account Sign-up](/docs/devcontainer/new-accounts)
+**New users or users attempting to add new machines, start here.**
+
+### [PSTAT User Account Sign-up](/docs/devcontainer/new-accounts/)
 {: .d-inline-block }
 New Users
 {: .label .label-yellow }
+- Sign-up for a NEW account!
 
-New users or users attempting to add new machines, start here.
+### [Adding a New Device](/docs/devcontainer/new-devices/)
+{: .d-inline-block}
+Returning Users
+{: .label .label-blue }
+- Add a device to an EXISTING account!
 
 ### [Basic Container Usage on a Server](/docs/devcontainer/basic-usage/)
 {: .d-inline-block }
@@ -72,6 +79,11 @@ This tutorial covers:
 - Docker configuration -->
 
 ## Management
+
+### [Troubleshooting Common Issues](/docs/devcontainer/troubleshooting/)
+
+If you run into any problems, the following set of tutorials might have an answer! These are updated regularly.
+
 
 ### [Containers Management](/docs/devcontainer/container-management/)
 {: .d-inline-block }
