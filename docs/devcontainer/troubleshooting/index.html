@@ -1,0 +1,106 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
+  <title>Troubleshooting Common Issues</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="troubleshooting"
+                  title="Troubleshooting Common Issues"
+                  environment="web"
+                  feedback-link="https://github.com/UCSB-PSTAT/computing/issues">
+    
+      <google-codelab-step label="Troubleshooting Connection Issues" duration="0">
+        <aside class="warning"><p><strong>If you run into any problems connecting, try the following steps!</strong></p>
+</aside>
+<h2 is-upgraded>Useful Links</h2>
+<p><a href="https://docs.google.com/document/d/1ocxp6zUY1p7BprscQii7zyyu0F0jJx281MC5JOXvSVg" target="_blank">Google Docs Version of Tutorial</a></p>
+<p class="image-container"><img style="width: 317.50px" src="img/2ba8463b328120da.png"></p>
+<h2 is-upgraded>Connecting to Host Asks for a &#34;Password&#34;</h2>
+<p>This may mean that your ssh-agent was configured incorrectly. Use the following commands inside your terminal to determine any errors and report back to the <a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank">PSTAT Research Computing User Group</a> for further assistance.</p>
+<ol type="1" start="1">
+<li>Verify that ssh-agent is running. This will return something like <code>Agent pid ...</code>:</li>
+</ol>
+<pre>eval $(ssh-agent)</pre>
+<ol type="1" start="2">
+<li>Now verify that your private ssh key is added to your ssh keyring. This will return something like <code>Identity added: ...</code>:</li>
+</ol>
+<pre>ssh-add $HOME/.ssh/ed25519</pre>
+<aside class="warning"><p><strong>Note:</strong> Depending on how you setup your SSH keys, you may need to enter a passphrase. If you set a passphrase, enter it at this step.</p>
+</aside>
+<ol type="1" start="3">
+<li>Double check that your <code>ed25519</code> was added to your keyring. This will return something like <code>256 SHA256: ... user@host (ED25519)</code>:</li>
+</ol>
+<pre>ssh-add -l</pre>
+<ol type="1" start="4">
+<li>Lastly run this oneliner where <code>user</code> and <code>hostname</code> are the respective values for the server you are trying to connect to (e.g. for Alta it would be <code>NETID@alta.pstat.ucsb.edu</code>) which should return <strong>nothing</strong>.</li>
+</ol>
+<pre>ssh user@hostname exit</pre>
+<ol type="1" start="5">
+<li>If all of these options worked and you are still having trouble connecting to your server, you may need to add an <code>IdentityFile</code> section to your ssh config as follows by first &#34;Connecting Current Window to Host&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 624.00px" src="img/f4f8707f51fa6425.png"></p>
+<ol type="1" start="6">
+<li>Select &#34;Configure SSH Hosts...&#34;</li>
+</ol>
+<p class="image-container"><img style="width: 479.50px" src="img/c8792d43c3db4362.png"></p>
+<ol type="1" start="7">
+<li>Select your default configuration file to update (under your computer&#39;s username):</li>
+</ol>
+<p class="image-container"><img style="width: 456.50px" src="img/d915330540cb7d3d.png"></p>
+<ol type="1" start="8">
+<li>Specify an <code>IdentityFile</code> which will be the name of the private key (<code>ed25519</code>). An example of your final configuration for Alta should look similar to this:</li>
+</ol>
+<pre>Host alta
+    HostName alta.pstat.ucsb.edu
+    User YOUR_NETID_HERE
+    IdentityFile ed25519</pre>
+<aside class="warning"><p><strong>Note:</strong> For <code>IdentityFile</code> you may need to enter a more complete path such as a relative path (<code>$HOME/.ssh/ed25519</code>) or your full path (<code>/home/your_user_name/.ssh/ed25519</code> (mac/linux) or <code>C:\Users\your_user_name\.ssh\ed25519</code> (Windows))</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+  <script>
+    // This is to override the close / done handling on the page
+    // https://github.com/googlecodelabs/tools/issues/103
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("arrow-back").href="/docs/devcontainer#setup";
+      document.getElementById("arrow-back").addEventListener( "click", function() {
+        window.history.back();
+      });
+      document.getElementById("done").href="/docs/devcontainer#setup";
+      document.getElementById("done").addEventListener( "click", function() {
+        window.history.back();
+      });
+    }, false);
+  </script>
+</body>
+</html>
