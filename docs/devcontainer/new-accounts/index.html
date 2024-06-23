@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>PSTAT User Account Sign-up</title>
   <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
+  <title>PSTAT User Account Sign-up</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -21,8 +21,9 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
                   id="new-accounts"
                   title="PSTAT User Account Sign-up"
                   environment="web"
@@ -35,15 +36,18 @@
 <ul>
 <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a> text editor</li>
 </ul>
+<h2 is-upgraded>Useful Links</h2>
+<p><a href="https://docs.google.com/document/d/1yNjoAO0xFMkQggEahwrprr5M9XVejFK21hVx1MhzoMc" target="_blank">Google Docs Version of Tutorial</a></p>
+<p class="image-container"><img style="width: 317.50px" src="img/2ba8463b328120da.png"></p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Generating Keys" duration="0">
-        <h2 is-upgraded>Windows</h2>
+      <google-codelab-step label="Generating Keys - Windows" duration="0">
+        <p><strong>These steps are for Windows machines only.</strong></p>
 <ol type="1" start="1">
 <li>Press Start and search for &#34;Windows Powershell&#34;.  Click on it to open a new shell.</li>
-<li>Next, run the following code to create a directory called <code>.ssh</code>.  Replace <code>&lt;your username&gt;</code> with the username your computer uses.</li>
+<li>Next, run the following code to create a directory called <code>.ssh</code>. </li>
 </ol>
 <pre>new-item $HOME\.ssh -ItemType Directory</pre>
 <aside class="warning"><p><strong>Note:</strong> You may get an error saying &#34;new-item : An item with the specified name ...\.ssh already exists.&#34;.  If you do, you can proceed to the next step since the directory is already there!</p>
@@ -51,8 +55,8 @@
 <ol type="1" start="3">
 <li>In the terminal either type or copy-paste the following command:</li>
 </ol>
-<pre>ssh-keygen -t ed25519 -f $HOME\.ssh\ed25519 -N &#39;&#34;&#34;&#39;</pre>
-<p>The command above will generate 2 files in the directory <code>C:\Users\&lt;your username&gt;\.ssh\</code>: <code>ed25519</code> (private key) and <code>ed25519.pub</code> (public key).</p>
+<pre>ssh-keygen -t ed25519 -f $HOME\.ssh\ed25519</pre>
+<p><strong>You will be prompted to add a password to this key... Use something that is secure and memorable (or ideally something you can store in your password manager)! </strong>The command above will generate 2 files in the directory <code>C:\Users\&lt;your username&gt;\.ssh\</code>: <code>ed25519</code> (private key) and <code>ed25519.pub</code> (public key).</p>
 <aside class="warning"><p>You should keep your private key safe, <strong>do not share it with anyone!  </strong></p>
 </aside>
 <ol type="1" start="4">
@@ -69,10 +73,15 @@
 <p class="image-container"><img style="width: 312.00px" src="img/445c733d1ca508ee.png"></p>
 <p class="image-container"><img style="width: 312.00px" src="img/6b4c549f6a405fa.png"></p>
 <ol type="1" start="7">
-<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code>&lt;KEY_NAME&gt;</code> is the name of the key you created earlier:</li>
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code>&lt;KEY_NAME&gt;</code> is the name of the key you created earlier. <strong>Enter the password that you created earlier!</strong>:</li>
 </ol>
 <pre>ssh-add $HOME\.ssh\ed25519</pre>
-<h2 is-upgraded>macOS/Linux</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Generating Keys - macOS/Linux" duration="0">
+        <p><strong>These steps are for macOS/Linux machines only.</strong></p>
 <ol type="1" start="1">
 <li>Find your terminal application and open up a new shell:</li>
 </ol>
@@ -83,8 +92,8 @@
 <ol type="1" start="2">
 <li>In the terminal either type or copy-paste the following command:</li>
 </ol>
-<pre>ssh-keygen -t ed25519 -f ~/.ssh/ed25519 -N &#34;&#34;</pre>
-<p>The command above will generate 2 files in the directory <code>~/.ssh/</code>: <code>ed25519</code> (private key) and <code>ed25519.pub</code> (public key).</p>
+<pre>ssh-keygen -t ed25519 -f ~/.ssh/ed25519</pre>
+<p><strong>You will be prompted to add a password to this key... Use something that is secure and memorable (or ideally something you can store in your password manager)! </strong>The command above will generate 2 files in the directory <code>~/.ssh/</code>: <code>ed25519</code> (private key) and <code>ed25519.pub</code> (public key).</p>
 <aside class="warning"><p>You should keep your private key safe, <strong>do not share it with anyone!  </strong></p>
 </aside>
 <ol type="1" start="3">
@@ -94,9 +103,34 @@
 <aside class="warning"><p><strong>Note:</strong> Depending on your shell, you may need to use a different command or use elevated privileges through <code>sudo</code>. More details can be found in this <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux#adding-your-ssh-key-to-the-ssh-agent" target="_blank">link</a>.</p>
 </aside>
 <ol type="1" start="4">
-<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal where <code>ed25519</code> is the name of the private key you created earlier:</li>
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in the terminal where <code>ed25519</code> is the name of the private key you created earlier. <strong>Enter the password that you created earlier!</strong>:</li>
 </ol>
 <pre>ssh-add ~/.ssh/ed25519</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Saving the Keys" duration="0">
+        <p>Once you have generated your keys, you should upload them onto Google Drive. This way, you can add new devices or update device access if you ever lose access to your original keys stored on this laptop/desktop.</p>
+<ol type="1" start="1">
+<li>Create a folder on your Google Drive. You can name it whatever you wish, in this case I named mine &#34;SSH&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 436.72px" src="img/5233860618f0355.png"></p>
+<ol type="1" start="2">
+<li>Enter the folder and hit the &#34;+ New&#34; button on the left handside of your screen and select &#34;File Upload&#34;:</li>
+</ol>
+<p class="image-container"><img style="width: 469.74px" src="img/bc8c388f05f8037c.png"></p>
+<ol type="1" start="3">
+<li>Go to your &#34;Home&#34; directory. For Windows users this should be the location <code>C:\Users\your_user_name\</code> and for Linux/Mac users it will be <code>/home/your_user_name/</code>. <strong>You may need to select a &#34;Show Hidden Files&#34; option regardless of your operating system in order to use the .ssh folder!</strong></li>
+</ol>
+<p class="image-container"><img style="width: 471.50px" src="img/3fef491abebf473b.png"><img style="width: 468.00px" src="img/80097d6bf9084e73.png"></p>
+<ol type="1" start="4">
+<li>Go inside the &#34;.ssh&#34; directory. Select the ed25519 and ed25519.pub files and upload them:</li>
+</ol>
+<p class="image-container"><img style="width: 481.50px" src="img/7ff596570d798faa.png"></p>
+<p class="image-container"><img style="width: 352.00px" src="img/e3eec3642e46a3c2.png"></p>
+<aside class="special"><p>You will use these keys in the event that you need to add new devices or lose access to your SSH keys via <a href="https://computing.pstat.ucsb.edu/docs/devcontainer/new-devices//" target="_blank">the steps found here</a>.</p>
+</aside>
 
 
       </google-codelab-step>
@@ -132,18 +166,19 @@
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
+
   <script>
     // This is to override the close / done handling on the page
     // https://github.com/googlecodelabs/tools/issues/103
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("arrow-back").href="/docs/devcontainer#setup"; 
-      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("arrow-back").href="/docs/devcontainer#setup";
+      document.getElementById("arrow-back").addEventListener( "click", function() {
         window.history.back();
-      }); 
-      document.getElementById("done").href="/docs/devcontainer#setup"; 
-      document.getElementById("done").addEventListener( 'click', function() { 
+      });
+      document.getElementById("done").href="/docs/devcontainer#setup";
+      document.getElementById("done").addEventListener( "click", function() {
         window.history.back();
-      }); 
+      });
     }, false);
   </script>
 </body>

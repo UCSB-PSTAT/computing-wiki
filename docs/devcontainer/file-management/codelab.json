@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-06-14T23:09:13Z",
+  "updated": "2024-06-23T00:30:08Z",
   "id": "file-management",
   "duration": 0,
   "title": "File Management",
@@ -18,6 +18,6 @@
     "web"
   ],
   "tags": [],
-  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
   "url": "file-management"
 }

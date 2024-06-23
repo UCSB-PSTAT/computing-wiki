@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-06-04T19:06:09Z",
+  "updated": "2024-06-23T00:53:43Z",
   "id": "printer-use",
   "duration": 0,
   "title": "Using the Printer",
@@ -18,6 +18,6 @@
     "web"
   ],
   "tags": [],
-  "feedback": "https://github.com/UCSB-PSTAT/wiki/issues",
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
   "url": "printer-use"
 }

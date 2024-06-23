@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Printer Driver Installation - Windows</title>
   <link rel="icon" type="image/png" href="/assets/images/favicon.ico"/>
+  <title>Printer Driver Installation - Windows</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
@@ -21,8 +21,9 @@
   </style>
 </head>
 <body>
-  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
   <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
                   id="printer-driver-win"
                   title="Printer Driver Installation - Windows"
                   environment="web"
@@ -34,6 +35,9 @@
 <ul>
 <li>Download of <a href="https://ucsb.box.com/s/opjn0xehgpadi4zh86zr20dh868dqnbf" target="_blank">Kyocera TASKalfa 8001i Windows driver</a></li>
 </ul>
+<h2 is-upgraded>Useful Links</h2>
+<p><a href="https://docs.google.com/document/d/16wWtuBrVarh3kZDWFhoQt3M_pVxf5t6GhvIci9KRyqI" target="_blank">Google Docs Version of Tutorial</a></p>
+<p class="image-container"><img style="width: 317.50px" src="img/2ba8463b328120da.png"></p>
 
 
       </google-codelab-step>
@@ -112,18 +116,19 @@
   <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
   <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
   <script src="//support.google.com/inapp/api.js"></script>
+
   <script>
     // This is to override the close / done handling on the page
     // https://github.com/googlecodelabs/tools/issues/103
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("arrow-back").href="/docs/department#printing"; 
-      document.getElementById("arrow-back").addEventListener( 'click', function() { 
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("arrow-back").href="/docs/department#printing";
+      document.getElementById("arrow-back").addEventListener( "click", function() {
         window.history.back();
-      }); 
-      document.getElementById("done").href="/docs/department#printing"; 
-      document.getElementById("done").addEventListener( 'click', function() { 
+      });
+      document.getElementById("done").href="/docs/department#printing";
+      document.getElementById("done").addEventListener( "click", function() {
         window.history.back();
-      }); 
+      });
     }, false);
   </script>
 </body>
