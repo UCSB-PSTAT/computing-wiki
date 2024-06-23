@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-06-23T00:34:51Z",
+  "id": "troubleshooting",
+  "duration": 0,
+  "title": "Troubleshooting Common Issues",
+  "authors": "Ronald Lencevičius",
+  "summary": "Troubleshooting common connection or container issues.",
+  "source": "1ocxp6zUY1p7BprscQii7zyyu0F0jJx281MC5JOXvSVg",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
+  "url": "troubleshooting"
+}
