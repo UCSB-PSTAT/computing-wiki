@@ -16,4 +16,5 @@ test/
 
 # Ignore VS Code files
 .*
+!.devcontainer
 !.github/*

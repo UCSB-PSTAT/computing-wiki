@@ -5,13 +5,13 @@ import argparse
 
 # Command line arg
 parser = argparse.ArgumentParser(description='Build Codelabs')
-parser.add_argument('--test', type=bool, default=True, help='Enabled to build in a test directory prior to overwriting root. Default behavior is to ALWAYS build in a test directory. Disable to add to root /docs dir.')
+parser.add_argument('--test', action=argparse.BooleanOptionalAction, help='Enabled to build in a test directory prior to overwriting root. Default behavior is to ALWAYS build in a test directory. Disable to add to root /docs dir.')
 
 args = parser.parse_args()
 if args.test:
-    root="test"
+    root="./test"
 else:
-    root=""
+    root="."
 
 # claat build and CSV information
 def run(row):
