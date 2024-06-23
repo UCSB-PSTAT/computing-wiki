@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-06-23T01:46:16Z",
+  "id": "new-devices",
+  "duration": 0,
+  "title": "New Device Access",
+  "authors": "Ronald Lencevičius",
+  "summary": "Adding a new device in order to access the server",
+  "source": "1thskdRPZvwvL-bhyiI3_VxCRAutCms1xQ_mwOis6pkQ",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
+  "url": "new-devices"
+}
