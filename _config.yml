@@ -2,8 +2,8 @@ title: Computing Wiki
 description: Department of Statistics & Applied Probability Computing Wiki
 theme: just-the-docs
 
-baseurl: ""
-url: "https://ucsb-pstat.github.io/computing-wiki"
+baseurl: "/computing-wiki"
+url: "https://ucsb-pstat.github.io"
 
 plugins:
   - jekyll-redirect-from
