@@ -1,7 +1,7 @@
 ---
 title: Basic Container Usage on a Server
 parent: Develop in Container
-nav_order: 1
+nav_order: 2
 permalink: /docs/devcontainer/basic-usage/
 ---
 
