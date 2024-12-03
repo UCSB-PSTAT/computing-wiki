@@ -193,7 +193,7 @@ Copying from template version 1.1.0
 <p>In order to activate GPU in container, some additional lines must be added to <code>devcontainer.json</code>:</p>
 <pre>&#34;runArgs&#34;: [
       ...
-            &#34;--hostname=container&#34;, // note the comma!
+      &#34;--hostname=container&#34;, // note the comma!
       &#34;--security-opt=label=disable&#34;, // required for GPU
       &#34;--device=nvidia.com/gpu=all&#34; 
       // or gpu=0,1,2,... based on nvidia-smi output
