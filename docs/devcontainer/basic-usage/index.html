@@ -187,6 +187,21 @@ Copying from template version 1.1.0
 
       </google-codelab-step>
     
+      <google-codelab-step label="GPU in Container" duration="0">
+        <aside class="warning"><p><strong>Note:</strong> GPUs are only available on certain servers such as Tesla1, Roble, and SciFi. </p>
+</aside>
+<p>In order to activate GPU in container, some additional lines must be added to <code>devcontainer.json</code>:</p>
+<pre>&#34;runArgs&#34;: [
+      ...
+            &#34;--hostname=container&#34;, // note the comma!
+      &#34;--security-opt=label=disable&#34;, // required for GPU
+      &#34;--device=nvidia.com/gpu=all&#34; 
+      // or gpu=0,1,2,... based on nvidia-smi output
+],</pre>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Installing Packages" duration="0">
         <aside class="warning"><p><strong>Note on reproducibility:</strong> If you have questions about or wish to get help with including your R/Python language packages as part of your container configuration files (Dockerfile and devcontainer.json, please contact the Computing TA via the <a href="https://chat.google.com/room/AAAAR6wMcN0?cls=7" target="_blank"><strong>PSTAT Research Computing Users</strong></a> group.</p>
 </aside>

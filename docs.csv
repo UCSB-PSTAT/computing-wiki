@@ -1,6 +1,6 @@
 Google Doc URL,title,parent,grand_parent,nav_order,url_loc,url_name,redirect
 https://docs.google.com/document/d/1yNjoAO0xFMkQggEahwrprr5M9XVejFK21hVx1MhzoMc,PSTAT User Account Sign-up,Develop in Container,,0,/docs/devcontainer/,new-accounts,/docs/devcontainer#setup
-https://docs.google.com/document/d/1OZoi8dN7lrQDSSvWCPuMv8nvMI7W8OV3j02xwb5M7Fg,Basic Container Usage on a Server,Develop in Container,,1,/docs/devcontainer/,basic-usage,/docs/devcontainer#setup
+https://docs.google.com/document/d/1OZoi8dN7lrQDSSvWCPuMv8nvMI7W8OV3j02xwb5M7Fg,Basic Container Usage on a Server,Develop in Container,,2,/docs/devcontainer/,basic-usage,/docs/devcontainer#setup
 https://docs.google.com/document/d/1oTagNdTuDcQMCT3-2vjtK945VB_sJndbnfhoeSxOK24,Container Management,Develop in Container,,4,/docs/devcontainer/,container-management,"/docs/devcontainer#management"""
 https://docs.google.com/document/d/10oo_i8PbxfD5mdyqdLdCdvSJ_DFhRi7E5HRG2iagrZU,File Management,Develop in Container,,5,/docs/devcontainer/,file-management,/docs/devcontainer#management
 https://docs.google.com/document/d/1yF0US6nskeKtxQ8an5zFTD3OvLwK6Eg2aI2ZcDiqKB0,Job Management,Develop in Container,,6,/docs/devcontainer/,job-management,/docs/devcontainer#management
@@ -11,4 +11,4 @@ https://docs.google.com/document/d/16wWtuBrVarh3kZDWFhoQt3M_pVxf5t6GhvIci9KRyqI,
 https://docs.google.com/document/d/1qt16tP26RZPOllHIvHCzWWv1KS7-M4Cs4tmr6eU16eU,,,,,/docs/department/,printer-driver-mac,/docs/department#printing
 https://docs.google.com/document/d/1WnD7ZmUyZoqdxFuk47FHCdjoTVAfQJxDqoCi-qBqxOQ,Using the Printer,Department Management,,2,/docs/department/,printer-use,/docs/department#printing
 https://docs.google.com/document/d/1ocxp6zUY1p7BprscQii7zyyu0F0jJx281MC5JOXvSVg,Troubleshooting Common Issues,Develop in Container,,9,/docs/devcontainer/,troubleshooting,/docs/devcontainer#setup
-https://docs.google.com/document/d/1thskdRPZvwvL-bhyiI3_VxCRAutCms1xQ_mwOis6pkQ,New Device Access,Develop in Container,,2,/docs/devcontainer/,new-devices,/docs/devcontainer#setup
+https://docs.google.com/document/d/1thskdRPZvwvL-bhyiI3_VxCRAutCms1xQ_mwOis6pkQ,New Device Access,Develop in Container,,1,/docs/devcontainer/,new-devices,/docs/devcontainer#setup
