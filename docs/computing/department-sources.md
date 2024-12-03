@@ -24,6 +24,32 @@ To access:
 - Requires completion of the [department user sign-up process]().
 - Connect command: `ssh <username>@alta.pstat.ucsb.edu`
 
+## Tesla1
+
+{: .highlight }
+This system is for testing and available at request.
+
+A GPU powered server with a Nvidia Tesla V100. Uses the same development container configuration as Alta.
+
+To access:
+- Connect command: `ssh <username>@tesla1.pstat.ucsb.edu`
+
+## Roble
+
+{: .highlight }
+This system is for specific grant use only.
+
+To access:
+- Connect command: `ssh <username>@roble.pstat.ucsb.edu`
+
+## SciFi
+
+{: .highlight }
+This system is for specific grant use only.
+
+To access:
+- Connect command: `ssh <username>@scifi.pstat.ucsb.edu`
+
 ## Denali
 
 Denali is the previous iteration of the PSTAT department server with Alta serving as the replacement.  It contains the following specs:
