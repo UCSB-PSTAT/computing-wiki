@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-02-01T01:43:32Z",
+  "id": "container-workshop-w2025",
+  "duration": 145,
+  "title": "Container-driven Reproducible Research Computing Workshop",
+  "authors": "Ronald Lencevičius",
+  "summary": "Do you enjoy working on data science but not installing the software environment? Do you have nightmares about software library dependencies? Is your laptop slowing you down and want to use a more powerful remote server or cloud platform? In this workshop, we will show a reproducible and user-friendly approach to creating research environments using development containers. You will learn how to use Visual Studio Code to create containerized R and/or Python environments, customize them with extensions, Jupyterlab, and RStudio, and deploy them on NSF supported cloud instances like Jetstream2... All at the click of a button!",
+  "source": "1dvfi_TXIHPQZWPL8JzjoKbE3Rej4w-WW7g8q2w0hwPo",
+  "theme": "web",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "web"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/UCSB-PSTAT/computing/issues",
+  "url": "container-workshop-w2025"
+}
