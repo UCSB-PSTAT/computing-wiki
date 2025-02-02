@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY Gemfile ./
 
 # Install Bundler and Jekyll dependencies
-RUN gem install bundler && bundle install
+RUN gem install bundler -v 2.5.10 && bundle install
 
 # Copy the rest of the application code
 COPY . .

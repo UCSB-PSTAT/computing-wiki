@@ -176,6 +176,47 @@ Move-Item -Path %USERPROFILE%\Downloads\container_workshop -Destination %USERPRO
 <p class="image-container"><img style="width: 624.00px" src="img/bd9587b2adfa4cd4.png"></p>
 <aside class="warning"><p><strong>Note:</strong> You may get a pop-up box asking to choose whether you&#39;re using Linux, Windows, or Mac.  <strong>Select Linux</strong>, since we are connecting to JetStream2 which uses the Linux operating system.</p>
 </aside>
+<h2 is-upgraded>Troubleshooting Connections</h2>
+<h3 is-upgraded>macOS/Linux</h3>
+<ol type="1" start="1">
+<li>First try the following command in terminal and reconnect. This will make sure that the SSH key has permissions that are permissible for the SSH agent:</li>
+</ol>
+<pre>chmod 600 ~/.ssh/container_workshop</pre>
+<ol type="1" start="2">
+<li>If that doesn&#39;t work, verify that your ssh-agent is running by using the following command:</li>
+</ol>
+<pre>eval &#34;$(ssh-agent -s)&#34;</pre>
+<aside class="warning"><p><strong>Note:</strong> Depending on your shell, you may need to use a different command or use elevated privileges through <code>sudo</code>: <code>sudo eval "$(ssh-agent -s)"</code></p>
+</aside>
+<ol type="1" start="3">
+<li>Verify that your private key is added to your ssh-agent keyring by typing the following commands in terminal:</li>
+</ol>
+<pre>ssh-add ~/.ssh/container_workshop
+ssh-add -l</pre>
+<h3 is-upgraded>Windows</h3>
+<ol type="1" start="1">
+<li>First try the following commands in Powershell and reconnect. This will make sure that the SSH key has permissions that are permissible for the SSH agent:</li>
+</ol>
+<pre>icacls &#34;$HOME\.ssh\container_workshop&#34; /inheritance:r
+icacls &#34;$HOME\.ssh\container_workshop&#34; /grant:r &#34;$($env:USERNAME):(R)&#34;
+icacls &#34;$HOME\.ssh\container_workshop&#34; /remove &#34;Authenticated Users&#34; &#34;BUILTIN\Users&#34;</pre>
+<ol type="1" start="2">
+<li>If that doesn&#39;t work, verify that ssh-agent is running by searching for &#34;Services&#34; in the Start Menu:</li>
+</ol>
+<p class="image-container"><img style="width: 295.00px" src="img/81a9a76344a782a1.png"></p>
+<ol type="1" start="3">
+<li>Search for &#34;OpenSSH Agent&#34; and make sure that the <strong>Status is &#34;Running&#34;</strong> and <strong>Startup Type is &#34;Automatic&#34;</strong>.</li>
+</ol>
+<p class="image-container"><img style="width: 468.00px" src="img/68795008fe4ef0d.png"></p>
+<ol type="1" start="4">
+<li>If this is not the case, right-click on the &#34;OpenSSH Authentication Agent&#34; entry -&gt; select &#34;Properties&#34; -&gt; Under &#34;Service Status&#34; select &#34;Start&#34; -&gt; From the &#34;Startup Type&#34; drop down menu, select &#34;Automatic&#34;.</li>
+</ol>
+<p class="image-container"><img style="width: 312.00px" src="img/445c733d1ca508ee.png"></p>
+<p class="image-container"><img style="width: 312.00px" src="img/6b4c549f6a405fa.png"></p>
+<ol type="1" start="5">
+<li>Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in powershell:</li>
+</ol>
+<pre>ssh-add $HOME\.ssh\container_workshop</pre>
 
 
       </google-codelab-step>

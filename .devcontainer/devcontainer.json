@@ -2,7 +2,7 @@
     "name": "ruby-computing-wiki",
     "build": {
         "dockerfile": "Dockerfile",
-        "options": ["--format=docker"],        // required for Podman, remove line if using Docker
+        // "options": ["--format=docker"],        // required for Podman, remove line if using Docker
         "context": ".."
     },
 
