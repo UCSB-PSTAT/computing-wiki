@@ -50,6 +50,7 @@
 </ul>
 <p><strong>IV. Remote Computing and Resource Management</strong></p>
 <ul>
+<li>Basic management of Docker containers and images via the Docker extension.</li>
 <li>Understand and utilize resources provided by NSF ACCESS and Jetstream2 for your research.</li>
 </ul>
 <p><strong>V. Distributing Research</strong></p>
@@ -513,7 +514,7 @@ hamlet_processed</code></pre>
 
       </google-codelab-step>
     
-      <google-codelab-step label="Remote computing" duration="10">
+      <google-codelab-step label="Remote Computing" duration="10">
         <p class="image-container"><img style="width: 624.00px" src="img/cd4177ba1253d87c.png"></p>
 <p class="image-container"><img alt="Jetstream2" style="width: 328.00px" src="img/263d306519e0be42.png"></p>
 <p>Let&#39;s talk a bit about the remote computing we were using today and how you could get access to it. Compute time on these instances is made available through the National Science Foundation&#39;s <a href="https://access-ci.org/" target="_blank">Advanced Cyberinfrastructure Coordination Ecosystem: Services &amp; Support</a> (NSF ACCESS) program which exists &#34;...to help researchers and educators, with or without supporting grants, to utilize the nation&#39;s advanced computing systems and services – at no cost.&#34;</p>
@@ -611,13 +612,11 @@ hamlet_processed</code></pre>
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("arrow-back").href="https://ucsbcarpentry.github.io/workshop/2025/02/05/ucsb-containers.html";
       document.getElementById("arrow-back").addEventListener( "click", function() {
-        event.preventDefault(); // Prevent the default link behavior
-        window.location.href = "https://ucsbcarpentry.github.io/workshop/2025/02/05/ucsb-containers.html";
+        window.history.back();
       });
       document.getElementById("done").href="https://ucsbcarpentry.github.io/workshop/2025/02/05/ucsb-containers.html";
       document.getElementById("done").addEventListener( "click", function() {
-        event.preventDefault(); // Prevent the default link behavior
-        window.location.href = "https://ucsbcarpentry.github.io/workshop/2025/02/05/ucsb-containers.html";
+        window.history.back();
       });
     }, false);
   </script>
