@@ -188,15 +188,12 @@ Copying from template version 1.1.0
       </google-codelab-step>
     
       <google-codelab-step label="GPU in Container" duration="0">
-        <aside class="warning"><p><strong>Note:</strong> GPUs are only available on certain servers such as Tesla1, Roble, and SciFi. </p>
+        <aside class="warning"><p><strong>Note:</strong> GPUs are only available on certain servers such as Tesla1, Roble, and SciFi. Additionally GPU access is only available when using <em>Python</em> as the primary language. R and R and Python are not supported.</p>
 </aside>
-<p>In order to activate GPU in container, some additional lines must be added to <code>devcontainer.json</code>:</p>
+<p>To enable GPU access, use terminal command <code>nvidia-smi -L</code> outside of container to view available GPUs. From there, uncomment the <code>--device...</code> line in the <code>runArgs</code> section of <code>devcontainer.json</code>, set the device number(s), and rebuild the container.</p>
 <pre>&#34;runArgs&#34;: [
       ...
-      &#34;--hostname=container&#34;, // note the comma!
-      &#34;--security-opt=label=disable&#34;, // required for GPU
-      &#34;--device=nvidia.com/gpu=all&#34; 
-      // or gpu=0,1,2,... based on nvidia-smi output
+      // &#34;--device=nvidia.com/gpu=device=&#34; // uncomment and modify this line.
 ],</pre>
 
 
@@ -242,12 +239,21 @@ $&gt; pip install scikit-ntk==1.1.3</pre>
 <h3 is-upgraded>Inside Dockerfile (reproducible)</h3>
 <p><em>This method will build your container with these packages pre-installed. If you share your configuration files with someone else, they will be able to reproduce your installation with no additional steps. </em></p>
 <p><strong><em>You will need to rebuild your container to install packages this way!</em></strong></p>
-<p>To install R packages in a reproducible way, you will need to add them to your Dockerfile.  You will need to add packages using this type of command underneath the comment for R packages followed by a ‘&amp;&amp; \&#39;:</p>
-<pre>R -e ‘install.packages(&#34;ggplot2&#34;)&#39; &amp;&amp; \</pre>
-<p>For example, here I am adding the <code>dplyr</code> package:</p>
-<p class="image-container"><img style="width: 624.00px" src="img/5031887ad8f83311.png"></p>
+<p>To install R packages in a reproducible way, you will need to add them to your Dockerfile.  You will need to add packages using this type of command underneath the comment for R packages:</p>
+<pre>RUN R -q -e ‘install.packages(&#34;ggplot2&#34;)&#39;</pre>
+<p>For example, here I am adding the <code>syuzhet</code> package:</p>
+<p class="image-container"><img style="width: 1061.31px" src="img/cc21db6775153173.png"></p>
 <h2 is-upgraded>System Packages</h2>
-<p>If your language specific packages have additional system related requirements, the easiest way to install them is to directly add them to the Dockerfile found in the .devcontainer directory of your project as shown below:</p>
+<h3 is-upgraded>Inside Container (immediate)</h3>
+<p><em>This method will install packages immediately in your container but will </em></p>
+<p><strong><em>not</em></strong></p>
+<p><em> get added to your container configuration files for reproducibility by others. </em></p>
+<p>To install system packages the <code>apt</code> command in combination with super user privileges (<code>sudo</code>):</p>
+<pre>$&gt; sudo apt install package-name</pre>
+<h3 is-upgraded>Inside Dockerfile (reproducible)</h3>
+<p><em>This method will build your container with these packages pre-installed. If you share your configuration files with someone else, they will be able to reproduce your installation with no additional steps. </em></p>
+<p><strong><em>You will need to rebuild your container to install packages this way!</em></strong></p>
+<p>To install system packages in a reproducible way, you will need add them to the Dockerfile found in the .devcontainer directory of your project as shown below:</p>
 <p class="image-container"><img style="width: 624.00px" src="img/a8141b3e9ccef61b.png"></p>
 <p>Here I am installing an additional package called &#34;neofetch&#34;. <strong>Make sure that each package is on its own separate line and ends with a backslash!</strong></p>
 <aside class="warning"><p><strong>Note:</strong> Modifying container files will require you to rebuild the container! This can be done by using the keyboard shortcut ctrl/cmd + shift + p and typing &#34;Rebuild Container&#34;:</p>
