@@ -21,7 +21,7 @@ Alta is the latest and greatest in PSTAT department's research computing offerin
 - 202 GB RAM
 
 To access:
-- Requires completion of the [department user sign-up process]().
+- Requires completion of the [department user sign-up process](https://computing.pstat.ucsb.edu/docs/devcontainer#setup).
 - Connect command: `ssh <username>@alta.pstat.ucsb.edu`
 
 ## Sandbox
@@ -30,7 +30,7 @@ To access:
 This system is for testing and available at request.
 
 A GPU powered server with a Nvidia Tesla V100. Uses the same development container configuration as Alta.
-- 1x16 Intel Xeon @ 2Ghz
+- 1x16 Intel Xeon @ 2Ghz (16 total cores)
 - Tesla V100-SXM2-32GB
 - 64 GB RAM
 
