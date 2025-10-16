@@ -17,22 +17,25 @@ Recommended
 {: .label .label-green }
 
 Alta is the latest and greatest in PSTAT department's research computing offerings geared for usage with development containers and VS Code. It contains the following specs:
-- 1x24 Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz (24 total cores)
+- 1x24 Intel Xeon @ 2.90GHz (24 total cores)
 - 202 GB RAM
 
 To access:
 - Requires completion of the [department user sign-up process]().
 - Connect command: `ssh <username>@alta.pstat.ucsb.edu`
 
-## Tesla1
+## Sandbox
 
 {: .highlight }
 This system is for testing and available at request.
 
 A GPU powered server with a Nvidia Tesla V100. Uses the same development container configuration as Alta.
+- 1x16 Intel Xeon @ 2Ghz
+- Tesla V100-SXM2-32GB
+- 64 GB RAM
 
 To access:
-- Connect command: `ssh <username>@tesla1.pstat.ucsb.edu`
+- Connect command: `ssh <username>@sandbox.pstat.ucsb.edu`
 
 ## Roble
 
