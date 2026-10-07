@@ -1,4 +1,7 @@
-# Documentation with Codelabs
+# Documentation
+
+This is the PSTAT department computing wiki, built with Jekyll and the
+[just-the-docs](https://just-the-docs.github.io/just-the-docs/) theme.
 
 ## Build Steps
 
@@ -14,7 +17,7 @@ bundle exec jekyll serve --livereload
 
 #### Manual
 
-Requires Ruby Devkit, Jekyll, and Bundler installed.  From the root directory, run the following commands:
+Requires Ruby, Jekyll, and Bundler installed. From the root directory, run the following commands:
 
 ```sh
 bundle install
@@ -23,42 +26,39 @@ bundle exec jekyll serve --livereload
 
 Access the website through [http://localhost:4000/](http://localhost:4000/)
 
-### Build codelabs pages
+### Codelab (tutorial) pages
 
-Following bash script extracts Google docs file ID from table above and runs the `claat` tool for each match. To build all the docs **inside a `test` directory**, run the following command from the root directory while inside the container:
+Tutorial pages are plain Markdown. Each codelab directory contains:
+
+- `index.html` — the exported [Google Codelab](https://github.com/googlecodelabs/tools)
+  source (kept for reference and for regenerating the markdown),
+- `redirect.md` (or `index.md`) — the standard just-the-docs page that is
+  actually served, and
+- `img/` — the images referenced by the markdown.
+
+The codelab `index.html` / `codelab.json` source files are listed under
+`exclude:` in `_config.yml`, so Jekyll does **not** publish them — only the
+generated `.md` page is served at each codelab's URL.
+
+To regenerate the Markdown from a codelab's `index.html`, run:
 
 ```bash
-python3 wiki.py
+python3 codelab2md.py
 ```
 
-If you're happy with the changes, to build inside `docs` run the following command while inside the container:
+The script reads the frontmatter metadata (title, parent, nav order, etc.) from
+its internal `META` table and rewrites each codelab's markdown page. It is
+idempotent — it never deletes the source `index.html`, `codelab.json`, or
+`img/` files, so it can be re-run safely.
 
-```bash
-python3 wiki.py --no-test
-```
+To add a new codelab:
 
-**Note:** Every codelab requires a `redirect.md` file with the following format:
+1. Export the Google Doc as a codelab `index.html` into a new `docs/<area>/<name>/`
+   directory (with its `img/` folder and `codelab.json`).
+2. Add an entry for it to the `META` table in `codelab2md.py`.
+3. Add its `index.html` and `codelab.json` to the `exclude:` list in
+   `_config.yml`.
+4. Run `python3 codelab2md.py`.
 
-```md
----
-title: CODELAB TITLE HERE
-parent: PARENT MD TITLE HERE
-nav_order: 1
-permalink: /docs/inner-directory/codelab-directory
----
-
-{% include_relative index.html %}
-```
-
-This directory structure is setup automatically via the script which reads the `docs.csv` file. When adding new Codelabs, add a new line to the file containing the following comma separated information:
-
-- Google Doc URL,
-- title (optional if no redirect is necessary)
-- parent (optional if no redirect is necessary)
-- grand_parent (optional in general)
-- nav_order (order that link shows up in the sidebar)
-- url_loc (root dir where codelab is stored -- do not include url_name!)
-- url_name (name of codelab)
-- redirect (which page user should be dropped in after exiting or pressing "Done")
-
-For more information about building individual Codelabs, [visit the Codelabs documentation](https://github.com/googlecodelabs/tools#ok-how-do-i-use-it).
+For more information about building individual Codelabs, [visit the
+Codelabs documentation](https://github.com/googlecodelabs/tools#ok-how-do-i-use-it).

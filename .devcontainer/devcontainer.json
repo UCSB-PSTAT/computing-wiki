@@ -10,6 +10,11 @@
         "--name=ruby-computing-wiki" // needs to be unique
     ],
 
+    // Auto-start Jekyll on (re)connect. `setsid` + full I/O redirection
+    // detaches the server into its own session so the Dev Containers
+    // extension does not kill it when the command's process group is cleaned
+    // up (the cause of the previous exit-code 143 / SIGTERM).
+    "postStartCommand": "pkill -f 'jekyll serve' 2>/dev/null; setsid bundle exec jekyll serve --host 0.0.0.0 > /tmp/jekyll.log 2>&1 < /dev/null & sleep 1; exit 0",
     "forwardPorts": [4000, 35729],
     "portsAttributes": {
         "4000": {

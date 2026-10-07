@@ -1,18 +1,26 @@
 General doc URL structure
 
-`docs.csv` is separated into 7 parts:
-- Google Doc URL
-- title
-- parent
-- grand_parent
-- nav_order
-- url_loc
-- url_name
-- redirect
+Tutorial (codelab) pages are plain Markdown generated from each codelab's
+exported `index.html` by `codelab2md.py`. The per-page frontmatter (title,
+parent, grand_parent, nav_order, permalink, read_time) is driven by the `META`
+table at the top of `codelab2md.py`.
 
-Excluding **title** will NOT build a redirect.md with `yaml` redirects.
+To regenerate all tutorial pages from their `index.html` sources:
 
+    python3 codelab2md.py
 
-**NOTE:** Parents/Grandparents for *NEW* tutorials requires manual updates to their `yaml` heading in order to properly include the tutorial. Specifically `parent`/`grand_parent` and `has_children: true` must be included. See `/docs/computing/jetstream2/redirect.md`, `/docs/computing/computing.md`, and `/docs/computing/external-sources.md` for details.
+The codelab source files (`index.html`, `codelab.json`) are kept in the repo
+for regeneration but are listed under `exclude:` in `_config.yml` so Jekyll
+does not publish them — only the generated `.md` page is served.
 
-The script only handles automated generation of tutorial docs and not upper level management of links.
+Notes:
+- The script is idempotent and never deletes the source `index.html`,
+  `codelab.json`, or `img/` files.
+- Parents/Grandparents for *NEW* tutorials require manual updates to their
+  `yaml` heading in order to properly include the tutorial. Specifically
+  `parent`/`grand_parent` (and `has_children: true` on the parent page) must be
+  included. See `/docs/computing/jetstream2/redirect.md`,
+  `/docs/computing/computing.md`, and `/docs/computing/external-sources.md` for
+  details.
+- The script only handles automated generation of the tutorial page body and
+  not upper-level management of links.
