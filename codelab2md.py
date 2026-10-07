@@ -431,10 +431,19 @@ def step_to_md(body_el, body_raw: str, label: str, skip_label: bool) -> str:
 
 
 def restore(cdir: str) -> None:
-    """Restore any deleted codelab sources from git (idempotency for re-runs)."""
-    r = subprocess.run(
-        ["git", "ls-files", "--", cdir], capture_output=True, text=True, check=False
-    )
+    """Restore any deleted codelab sources from git (idempotency for re-runs).
+
+    No-op when git is unavailable (e.g. inside the slim ruby:3.1 container),
+    which is fine because the codelab sources are already present in the build
+    context via `COPY . .`.
+    """
+    try:
+        r = subprocess.run(
+            ["git", "ls-files", "--", cdir], capture_output=True, text=True,
+            check=False, timeout=30,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return
     files = r.stdout.split()
     if not files:
         return

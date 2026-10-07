@@ -21,8 +21,10 @@ RUN gem install bundler -v 2.5.10 && bundle install
 # Copy the rest of the application code
 COPY . .
 
-# Install claat
-RUN ./wiki.sh
+# Generate codelab markdown from the codelab HTML sources (idempotent;
+# the converted .md pages are already committed, so this is a no-op that
+# simply keeps the converter available inside the container).
+RUN python3 codelab2md.py
 
 # Expose port 4000 to view the site
 EXPOSE 4000
