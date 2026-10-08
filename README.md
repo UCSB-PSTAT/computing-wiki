@@ -28,44 +28,22 @@ Access the website through [http://localhost:4000/](http://localhost:4000/)
 > `baseurl` is `/computing-wiki` (for GitHub Pages), so without this flag a
 > local build is served under `http://localhost:4000/computing-wiki/`.
 
-### Codelab (tutorial) pages
+### Codelab pages (migration reference)
 
-Tutorial pages are plain Markdown. Each codelab is a self-contained folder:
+The tutorial pages under `docs/` (e.g. `docs/devcontainer/`,
+`docs/computing/jetstream2/`) were converted from **Google Codelabs** into
+standard just-the-docs Markdown. Each is a self-contained folder:
 
 ```
 docs/<area>/<name>/
   ├── <name>.md        # the just-the-docs page that is served
-  └── img/             # the images referenced by the page (relative img/... paths)
+  └── img/             # the images referenced by the page
 ```
 
-The codelab *build sources* — the exported Google Codelab `index.html` and
-`codelab.json` — live **outside** `docs/`, under `codelab-sources/<area>/<name>/`,
-so Jekyll never serves them. They are only inputs to the generator:
-
-```
-codelab-sources/<area>/<name>/
-  ├── index.html
-  └── codelab.json
-```
-
-To regenerate the Markdown from a codelab's `index.html`, run:
-
-```bash
-python3 codelab2md.py
-```
-
-The script reads the frontmatter metadata (title, parent, nav order, etc.) from
-its internal `META` table and rewrites each `docs/<area>/<name>/<name>.md`. It
-is idempotent — it never touches the `codelab-sources/` inputs or `img/`
-folders, so it can be re-run safely.
-
-To add a new codelab:
-
-1. Export the Google Doc as a codelab into `codelab-sources/<area>/<name>/`
-   (its `index.html` + `codelab.json`).
-2. Create `docs/<area>/<name>/` with an `img/` folder for the images.
-3. Add an entry for it to the `META` table in `codelab2md.py`.
-4. Run `python3 codelab2md.py` to generate `docs/<area>/<name>/<name>.md`.
-
-For more information about building individual Codelabs, [visit the
-Codelabs documentation](https://github.com/googlecodelabs/tools#ok-how-do-i-use-it).
+> **Temporary:** the `codelab-sources/` directory and `codelab2md.py` are
+> migration scaffolding only. `codelab-sources/<area>/<name>/` holds the
+> original exported Codelab (`index.html` + `codelab.json`) kept as a reference
+> for the conversion, and `codelab2md.py` is the one-off script that produced
+> the Markdown from those sources. Codelabs are being **deprecated** — once the
+> conversion is merged and validated, both will be removed and the `.md` pages
+> will be maintained directly.

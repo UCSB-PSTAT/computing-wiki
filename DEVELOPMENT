@@ -1,26 +1,35 @@
 General doc URL structure
 
-Tutorial (codelab) pages are plain Markdown generated from each codelab's
-exported `index.html` by `codelab2md.py`. The per-page frontmatter (title,
-parent, grand_parent, nav_order, permalink, read_time) is driven by the `META`
-table at the top of `codelab2md.py`.
+Docs are standard just-the-docs Markdown. A tutorial page lives in its own
+folder:
 
-To regenerate all tutorial pages from their `index.html` sources:
+    docs/<area>/<name>/
+      <name>.md       # the page that is served
+      img/            # images referenced by the page (relative img/... paths)
 
-    python3 codelab2md.py
-
-The codelab *source* files (`index.html`, `codelab.json`) live under
-codelab-sources/<area>/<name>/ (outside docs/), so Jekyll never publishes them.
-Only the generated <name>.md page and its img/ folder are served.
+Per-page frontmatter (title, parent, grand_parent, nav_order, permalink) is
+maintained directly in each <name>.md.
 
 Notes:
-- The script is idempotent and never deletes the source `index.html`,
-  `codelab.json`, or `img/` files.
-- Parents/Grandparents for *NEW* tutorials require manual updates to their
-  `yaml` heading in order to properly include the tutorial. Specifically
-  `parent`/`grand_parent` (and `has_children: true` on the parent page) must be
-  included. See `/docs/computing/jetstream2/redirect.md`,
-  `/docs/computing/computing.md`, and `/docs/computing/external-sources.md` for
-  details.
-- The script only handles automated generation of the tutorial page body and
-  not upper-level management of links.
+- Parents/Grandparents for *NEW* pages require manual updates to their `yaml`
+  heading in order to properly include the page. Specifically `parent`/
+  `grand_parent` (and `has_children: true` on the parent page) must be included.
+  See `docs/computing/jetstream2/jetstream2.md`, `docs/computing/computing.md`,
+  and `docs/computing/external-sources.md` for details.
+
+Codelab migration (temporary)
+-----------------------------
+
+The tutorial pages were converted from Google Codelabs. Two pieces of
+scaffolding exist only for that one-time conversion and are slated for removal
+once it is merged:
+
+- `codelab-sources/<area>/<name>/` — the original exported Codelab
+  (`index.html` + `codelab.json`), kept as a reference.
+- `codelab2md.py` — the one-off script that generated the Markdown from those
+  sources (requires Python 3). Re-running it:
+
+        python3 codelab2md.py
+
+  is idempotent, but it should not be needed for normal editing — after the
+  migration, edit the `.md` pages directly.

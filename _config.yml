@@ -2,43 +2,6 @@ title: Computing Wiki
 description: Department of Statistics & Applied Probability Computing Wiki
 theme: just-the-docs
 
-# Codelab source files (the exported Google Codelab HTML + codelab.json) are
-# kept in the repo as the source of truth for regenerating the markdown pages
-# via `codelab2md.py`, but must NOT be published by Jekyll — the generated
-# .md page is what gets served at each codelab's URL. Excluding them stops
-# Jekyll from copying the old codelab index.html into _site.
-exclude:
-  - docs/computing/jetstream2/index.html
-  - docs/computing/jetstream2/codelab.json
-  - docs/container-workshop/index.html
-  - docs/container-workshop/codelab.json
-  - docs/container-workshop-w2025/index.html
-  - docs/container-workshop-w2025/codelab.json
-  - docs/department/printer-driver-win/index.html
-  - docs/department/printer-driver-win/codelab.json
-  - docs/department/printer-driver-mac/index.html
-  - docs/department/printer-driver-mac/codelab.json
-  - docs/department/printer-use/index.html
-  - docs/department/printer-use/codelab.json
-  - docs/devcontainer/new-accounts/index.html
-  - docs/devcontainer/new-accounts/codelab.json
-  - docs/devcontainer/new-devices/index.html
-  - docs/devcontainer/new-devices/codelab.json
-  - docs/devcontainer/basic-usage/index.html
-  - docs/devcontainer/basic-usage/codelab.json
-  - docs/devcontainer/container-management/index.html
-  - docs/devcontainer/container-management/codelab.json
-  - docs/devcontainer/file-management/index.html
-  - docs/devcontainer/file-management/codelab.json
-  - docs/devcontainer/job-management/index.html
-  - docs/devcontainer/job-management/codelab.json
-  - docs/devcontainer/editing-dockerfile/index.html
-  - docs/devcontainer/editing-dockerfile/codelab.json
-  - docs/devcontainer/github-codespaces/index.html
-  - docs/devcontainer/github-codespaces/codelab.json
-  - docs/devcontainer/troubleshooting/index.html
-  - docs/devcontainer/troubleshooting/codelab.json
-
 baseurl: "/computing-wiki"
 url: "https://ucsb-pstat.github.io"
 
