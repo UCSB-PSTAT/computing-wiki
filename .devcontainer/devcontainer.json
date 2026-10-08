@@ -1,36 +1,23 @@
 {
-    "name": "ruby-computing-wiki",
+    "name": "computing-wiki",
+
     "build": {
         "dockerfile": "Dockerfile",
-        // "options": ["--format=docker"],        // required for Podman, remove line if using Docker
+        // "options": ["--format=docker"],   // required for Podman, remove for Docker
         "context": ".."
     },
 
-    "runArgs": [
-        "--name=ruby-computing-wiki" // needs to be unique
-    ],
+    "runArgs": ["--name=computing-wiki"],
 
-    // Auto-start Jekyll on (re)connect. `setsid` + full I/O redirection
-    // detaches the server into its own session so the Dev Containers
-    // extension does not kill it when the command's process group is cleaned
-    // up (the cause of the previous exit-code 143 / SIGTERM).
-    "postStartCommand": "pkill -f 'jekyll serve' 2>/dev/null; setsid bundle exec jekyll serve --host 0.0.0.0 > /tmp/jekyll.log 2>&1 < /dev/null & sleep 1; exit 0",
-    "forwardPorts": [4000, 35729],
+    // Start Jekyll on (re)connect. `--baseurl ""` serves the site at the local
+    // root (localhost:4000/) instead of /computing-wiki/, which is what you want
+    // for testing. `setsid` + full I/O redirection detaches the server so the
+    // Dev Containers extension doesn't kill it when the command returns.
+    // If it doesn't come up, check /tmp/jekyll.log inside the container.
+    "postStartCommand": "pkill -f 'jekyll serve' 2>/dev/null; setsid bundle exec jekyll serve --host 0.0.0.0 --baseurl \"\" > /tmp/jekyll.log 2>&1 < /dev/null & sleep 1; exit 0",
+
+    "forwardPorts": [4000],
     "portsAttributes": {
-        "4000": {
-            // Naming the Jupyterlab port
-            "label": "Preview"
-        },
-        "35729": {
-            "label": "Livereload"
-        }
-    },
-    
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-python.python"
-            ]
-        }
+        "4000": { "label": "Preview" }
     }
 }

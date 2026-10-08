@@ -1,33 +1,21 @@
-# Use an official Ruby runtime as a parent image
+# Minimal Ruby image for building/serving the Jekyll (just-the-docs) site.
+# The codelab markdown is already committed, so no codelab build step is
+# needed here — this container is for previewing the site.
 FROM docker.io/library/ruby:3.1
 
-# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Install dependencies
+# Build toolchain needed by native gems (nokogiri, etc.)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    nodejs \
-    && \
-    apt-get clean -y && \
-    rm -rf /var/lib/apt/lists/* /tmp/library-scripts
+        build-essential \
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Copy the Gemfile and Gemfile.lock into the image
-COPY Gemfile ./
-
-# Install Bundler and Jekyll dependencies
+# Install the Ruby/Jekyll dependencies first (cached layer).
+COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.5.10 && bundle install
 
-# Copy the rest of the application code
+# Copy the site.
 COPY . .
 
-# Generate codelab markdown from the codelab HTML sources (idempotent;
-# the converted .md pages are already committed, so this is a no-op that
-# simply keeps the converter available inside the container).
-RUN python3 codelab2md.py
-
-# Expose port 4000 to view the site
+# Port for `jekyll serve`.
 EXPOSE 4000
-
-# Expose port 35729 for livereload
-EXPOSE 35729
