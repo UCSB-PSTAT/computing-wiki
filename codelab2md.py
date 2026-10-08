@@ -8,67 +8,72 @@ import re
 import os
 import html as htmllib
 import html as hm
-import subprocess
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
 ROOT = Path(".")
 
+# Codelab *sources* (exported index.html + codelab.json) live outside docs/ so
+# Jekyll never serves them. Each codelab's page is a <name>.md file inside its
+# own docs/ folder, e.g. docs/devcontainer/new-accounts/new-accounts.md, with
+# its images in a sibling img/ folder.
+SRC_ROOT = Path("codelab-sources")
+
 # --- Codelab metadata -------------------------------------------------------
 # dir -> (title, parent, grand_parent, nav_order, redirect target,
 #         intro (or None), duration_minutes (or None))
 META = {
-    "docs/computing/jetstream2": (
+    "computing/jetstream2": (
         "ACCESS via Jetstream2", "External Sources", "Computing Resources", 1,
         "/docs/computing/external-sources#nsf-access-program",
         "Follow this tutorial to learn how to use the Jetstream2 supercomputing "
         "facilities with your ACCESS credits. Learn to navigate Jetstream2's "
         "interface, set up VS Code, and use development containers inside "
         "Jetstream2!", None),
-    "docs/devcontainer/new-accounts": (
+    "devcontainer/new-accounts": (
         "PSTAT User Account Sign-up", "Develop in Container", None, 0,
         "/docs/devcontainer#setup", None, None),
-    "docs/devcontainer/new-devices": (
+    "devcontainer/new-devices": (
         "New Device Access", "Develop in Container", None, 1,
         "/docs/devcontainer#setup", None, None),
-    "docs/devcontainer/basic-usage": (
+    "devcontainer/basic-usage": (
         "Basic Container Usage on a Server", "Develop in Container", None, 2,
         "/docs/devcontainer#setup", None, None),
-    "docs/devcontainer/container-management": (
+    "devcontainer/container-management": (
         "Container Management", "Develop in Container", None, 4,
         "/docs/devcontainer#management", None, None),
-    "docs/devcontainer/file-management": (
+    "devcontainer/file-management": (
         "File Management", "Develop in Container", None, 5,
         "/docs/devcontainer#management", None, None),
-    "docs/devcontainer/job-management": (
+    "devcontainer/job-management": (
         "Job Management", "Develop in Container", None, 6,
         "/docs/devcontainer#management", None, None),
-    "docs/devcontainer/editing-dockerfile": (
+    "devcontainer/editing-dockerfile": (
         "Editing Dockerfile", "Develop in Container", None, 7,
         "/docs/devcontainer#additional-features", None, None),
-    "docs/devcontainer/github-codespaces": (
+    "devcontainer/github-codespaces": (
         "GitHub Codespaces", "Develop in Container", None, 8,
         "/docs/devcontainer#additional-features", None, None),
-    "docs/devcontainer/troubleshooting": (
+    "devcontainer/troubleshooting": (
         "Troubleshooting Common Issues", "Develop in Container", None, 9,
         "/docs/devcontainer#setup", None, None),
-    "docs/department/printer-driver-win": (
+    "department/printer-driver-win": (
         "Installing Windows Printer Drivers", "Department Management", None, 1,
         "/docs/department#drivers",
         "Use this guide to install the Kyocera printer drivers on a Windows machine.", None),
-    "docs/department/printer-driver-mac": (
+    "department/printer-driver-mac": (
         "Installing MacOS Printer Drivers", "Department Management", None, 2,
         "/docs/department#drivers",
         "Use this guide to install the Kyocera printer drivers on a MacOS machine.", None),
-    "docs/department/printer-use": (
+    "department/printer-use": (
         "Using the Printer", "Department Management", None, 2,
         "/docs/department#printing", None, None),
-    "docs/container-workshop": (
+    "container-workshop": (
         "Container Workshop (June 2024)", "Container Workshop", None, 1,
         "https://ucsbcarpentry.github.io/workshop/2024/06/04/ucsb-containers.html",
         "Materials from the June 2024 Container-Driven Reproducible Research "
         "Computing workshop hosted by the PSTAT department.", 120),
-    "docs/container-workshop-w2025": (
+    "container-workshop-w2025": (
         "Container Workshop (February 2025)", "Container Workshop", None, 2,
         "https://ucsbcarpentry.github.io/workshop/2025/02/05/ucsb-containers.html",
         "Materials from the February 2025 Container-Driven Reproducible Research "
@@ -430,41 +435,14 @@ def step_to_md(body_el, body_raw: str, label: str, skip_label: bool) -> str:
     return "\n".join(parts)
 
 
-def restore(cdir: str) -> None:
-    """Restore any deleted codelab sources from git (idempotency for re-runs).
-
-    No-op when git is unavailable (e.g. inside the slim ruby:3.1 container),
-    which is fine because the codelab sources are already present in the build
-    context via `COPY . .`.
-    """
-    try:
-        r = subprocess.run(
-            ["git", "ls-files", "--", cdir], capture_output=True, text=True,
-            check=False, timeout=30,
-        )
-    except (OSError, subprocess.SubprocessError):
-        return
-    files = r.stdout.split()
-    if not files:
-        return
-    for f in files:
-        path = Path(f)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        if path.exists():
-            continue
-        out = subprocess.run(
-            ["git", "show", f"HEAD:{f}"], capture_output=True, check=False
-        )
-        if out.returncode == 0:
-            path.write_bytes(out.stdout)
-
-
 def convert(cdir: str) -> None:
     title, parent, grand_parent, nav_order, redirect, intro, duration = META[cdir]
-    p = Path(cdir)
-    restore(cdir)
-    html = (p / "index.html").read_text()
-    redirect_md = p / "redirect.md"
+    # cdir is relative to codelab-sources/, e.g. "devcontainer/new-accounts"
+    rel = Path(cdir)                 # <area>/<name>
+    src_dir = SRC_ROOT / rel         # codelab-sources/<area>/<name>
+    html = (src_dir / "index.html").read_text()
+    # output: docs/<area>/<name>/<name>.md
+    out_path = ROOT / "docs" / rel.parent / rel.name / f"{rel.name}.md"
 
     steps = re.findall(
         r'<google-codelab-step label="([^"]*)" duration="(\d+)">(.*?)</google-codelab-step>',
@@ -478,7 +456,7 @@ def convert(cdir: str) -> None:
     if grand_parent:
         out.append(f'grand_parent: "{grand_parent}"')
     out.append(f"nav_order: {nav_order}")
-    out.append(f"permalink: {p.as_posix()}/")
+    out.append(f"permalink: /docs/{rel.as_posix()}")
     if duration:
         out.append(f"read_time: {duration}")
     out.append("---")
@@ -528,12 +506,10 @@ def convert(cdir: str) -> None:
         text = text.replace(old, new)
     text = fix_urls(text)
 
-    target = p / (redirect_md.name if redirect_md.exists() else "index.md")
+    target = out_path
+    target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(text)
-    # NOTE: the source HTML (index.html), codelab.json, and img/ are all
-    # tracked in git and referenced by the generated markdown (img/... paths),
-    # so they are intentionally preserved rather than deleted here.
-    print(f"converted {cdir}")
+    print(f"converted {cdir} -> {target}")
 
 
 for cdir in META:

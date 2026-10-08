@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "Container Workshop (February 2025)"
+title: "Container Workshop (June 2024)"
 parent: "Container Workshop"
-nav_order: 2
-permalink: docs/container-workshop-w2025/
-read_time: 145
+nav_order: 1
+permalink: /docs/container-workshop
+read_time: 120
 ---
 
-Materials from the February 2025 Container-Driven Reproducible Research Computing workshop hosted by the PSTAT department.
+Materials from the June 2024 Container-Driven Reproducible Research Computing workshop hosted by the PSTAT department.
 
 ## Introduction
 
-![](img/7318e0625f1dd8c8.png)
-![](img/7318e0625f1dd8c8.png)
+![](img/a1871a1528befb6d.png)
+![](img/a1871a1528befb6d.png)
 
 ### Welcome to the Container-Driven Reproducible Research Computing Workshop!
 
@@ -36,7 +36,6 @@ In this workshop, we aim to solve common issues in data science like software in
 
 **IV. Remote Computing and Resource Management**
 
-- Basic management of Docker containers and images via the Docker extension.
 - Understand and utilize resources provided by NSF ACCESS and Jetstream2 for your research.
 
 **V. Distributing Research**
@@ -59,18 +58,8 @@ Before we begin, we will need to install Visual Studio Code (VS Code for short!)
 
 6. In the search bar search for "Dev Containers". Click on the extension authored by Microsoft and install:
 
-![](img/8f3d801169e82e27.png)
-![](img/8f3d801169e82e27.png)
-
-7. Next, search for "Remote – SSH". Click on the extension authored by Microsoft and install:
-
-![](img/64c0e47fa98a2ae1.png)
-![](img/64c0e47fa98a2ae1.png)
-
-8. Lastly, search for "Docker". Click on the extension authored by Microsoft and install:
-
-![](img/a4807198f0801072.png)
-![](img/a4807198f0801072.png)
+![](img/da52f6e1e423e351.png)
+![](img/da52f6e1e423e351.png)
 
 {: .note }
 VS Code will be used as the main interface for various elements of this workshop such as remote computing servers, development containers, and tools found inside the containers!
@@ -84,35 +73,13 @@ We have set up some computing instances for you to use on the Jetstream2 cluster
 **Note 1:** SSH works through public key cryptography which uses 2 keys - a public key which is given to a remote server and a private key which is kept locally on your laptop/desktop. To put simply, they are used to communicate between your laptop and server securely.
 
 {: .note }
-**Note 2:** For this workshop, you were sent a public (`container_workshop.pub`) and a private key (`container_workshop`). Click on the following buttons and save these keys in your **Downloads** folder to be used later on in this section: [Public Key](https://drive.google.com/file/d/1-P9Ev5OKT5uAiiSHoDFy1Ius1mRGLp-K/view?usp=drive_link) [Private Key](https://drive.google.com/file/d/1fCv2PmElOTAu54M1l2YA2Y7ALV08Z8DS/view?usp=drive_link)
+**Note 2:** For this workshop, you were sent a public (`container_workshop.pub`) and a private key (`container_workshop`). Click on the following buttons and save these keys in your **Downloads** folder to be used later on in this section: [Public Key](https://drive.google.com/file/d/1HyuCh6dM2FGSBLekYw5UmXGAzSQV7DSn/view?usp=sharing) [Private Key](https://drive.google.com/file/d/1sQF25kv7uwL1lyZMP3qodA2JA-g_lJRb/view?usp=sharing)
 
-### Getting your SSH Keys
+### Setting up SSH agent
 
-In order to even get started with connecting to a remote server, we need to get the SSH keys associated to that server.
+In order to even get started with connecting to a remote server, we first need to make sure that the tools necessary to do so are up and running. Namely, we need to enable the SSH agent which handles authentication to remote connections. Once we do this, you'll be able to add the SSH key you've been given in order to connect to your computing instance!
 
 There are 2 different sets of instructions to follow depending on your operating system but the end result will be the same!
-
-#### macOS/Linux
-
-9. Find your terminal application and open up a new shell:
-
-- macOS: `⌘` + `space`, then search "terminal"
-- Ubuntu: `ctrl` + `alt` + `t`
-
-10. Next, run the following code to create a directory called `.ssh` which will exist at the location found using the command `echo $HOME` in Terminal:
-
-```
-mkdir ~/.ssh/
-```
-
-{: .warning }
-**Note:** You may get an error saying that the location or file already exists. If you do, you can proceed to the next step since the directory is already there!
-
-11. You will need to download the `container_workshop.pub` public key and the `container_workshop` private key that were sent to you before the workshop. Save them in your "Downloads" folder. Once you've downloaded both of the keys, we will move them to the `.ssh` folder using the following command in terminal:
-
-```
-mv ~/Downloads/container_workshop.pub ~/.ssh/ mv ~/Downloads/container_workshop ~/.ssh/
-```
 
 #### Windows
 
@@ -120,24 +87,82 @@ mv ~/Downloads/container_workshop.pub ~/.ssh/ mv ~/Downloads/container_workshop 
 2. Next, run the following code to create a directory called `.ssh` which will exist at the location found using the command `echo $HOME` in Powershell:
 
 ```
-new-item %USERPROFILE%\.ssh -ItemType Directory
+new-item $HOME\.ssh -ItemType Directory
 ```
 
 {: .warning }
-**Note:** You may get an error saying that the location or file already exists. If you do, you can proceed to the next step since the directory is already there!
+**Note:** You may get an error saying "new-item : An item with the specified name ...\.ssh already exists.". If you do, you can proceed to the next step since the directory is already there!
 
-3. You will need to download the `container_workshop.pub` public key and the `container_workshop` private key that were sent to you before the workshop. Save them in your "Downloads" folder. Once you've downloaded both of the keys, we will move them to the `.ssh` folder using the following command in powershell:
+3. Verify that ssh-agent is running by searching for "Services" in the Start Menu:
+
+![](img/81a9a76344a782a1.png)
+![](img/81a9a76344a782a1.png)
+
+4. Search for "OpenSSH Agent" and make sure that the **Status is "Running"** and **Startup Type is "Automatic"**.
+
+![](img/68795008fe4ef0d.png)
+![](img/68795008fe4ef0d.png)
+
+5. If this is not the case, right-click on the "OpenSSH Authentication Agent" entry -> select "Properties" -> Under "Service Status" select "Start" -> From the "Startup Type" drop down menu, select "Automatic".
+
+![](img/445c733d1ca508ee.png)
+![](img/445c733d1ca508ee.png)
+
+![](img/6b4c549f6a405fa.png)
+![](img/6b4c549f6a405fa.png)
+
+6. In the penultimate step, you will need to download the `container_workshop.pub` public key and the `container_workshop` private key that were sent to you before the workshop. Save them in your "Downloads" folder. Once you've downloaded both of the keys, we will move them to the `.ssh` folder using the following command in powershell:
 
 ```
-Move-Item -Path %USERPROFILE%\Downloads\container_workshop.pub -Destination %USERPROFILE%\.ssh\ Move-Item -Path %USERPROFILE%\Downloads\container_workshop -Destination %USERPROFILE%\.ssh\
+Move-Item -Path $HOME\Downloads\container_workshop.pub -Destination $HOME\.ssh\ Move-Item -Path $HOME\Downloads\container_workshop -Destination $HOME\.ssh\
 ```
+
+7. Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in powershell:
+
+```
+ssh-add $HOME\.ssh\container_workshop
+```
+
+{: .warning }
+**Note:** The output for this command should simply be "Identity Added ...". If you receive anything else such as a permissions error, try to run the following: **Windows:** `icacls "$HOME\.ssh\container_workshop" /inheritance:r` `icacls "$HOME\.ssh\container_workshop" /grant:r "$($env:USERNAME):(R)"` `icacls "$HOME\.ssh\container_workshop" /remove "Authenticated Users" "BUILTIN\Users"`
+
+#### macOS/Linux
+
+1. Find your terminal application and open up a new shell:
+
+- macOS: `⌘` + `space`, then search "terminal"
+- Ubuntu: `ctrl` + `alt` + `t`
+
+2. Verify that your ssh-agent is running by using the following command:
+
+```
+eval "$(ssh-agent -s)"
+```
+
+{: .warning }
+**Note:** Depending on your shell, you may need to use a different command or use elevated privileges through `sudo`: `sudo eval "$(ssh-agent -s)"`
+
+4. In the penultimate step, you will need to download the `container_workshop.pub` public key and the `container_workshop` private key that were sent to you before the workshop. Save them in your "Downloads" folder. Once you've downloaded both of the keys, we will move them to the `.ssh` folder using the following command in terminal:
+
+```
+mv ~/Download/container_workshop.pub ~/.ssh/ mv ~/Download/container_workshop ~/.ssh/
+```
+
+5. Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in terminal:
+
+```
+ssh-add ~/.ssh/container_workshop
+```
+
+{: .warning }
+**Note:** The output for this command should simply be "Identity Added ...". If you receive anything else such as a permissions error, try to run the following: **macOS/Linux:** `chmod 600 ~/.ssh/container_workshop`
 
 
 ## Connecting to Remote Server
 
-Now that we have set up your SSH key, it's time to connect to your Jetstream2 instance!
+Now that we have set up your SSH key and agent, it's time to connect to your Jetstream2 instance!
 
-1. Before we begin, head over to this spreadsheet and claim a Jetstream2 instance by writing your name next to it... Keep the spreadsheet open as you will need to copy the instance information later!: [Jetstream2 Instances](https://docs.google.com/spreadsheets/d/1L_EaYaIyqHAuxGDxwwRQ6QZN2-_ewW44iSJtU_jbHX4/edit?usp=sharing)
+1. Before we begin, head over to this spreadsheet and claim a Jetstream2 instance by writing your name next to it... Keep the spreadsheet open as you will need to copy the instance information later!: [Jetstream2 Instances](https://docs.google.com/spreadsheets/d/11hU_z_t9LlG0Nyy34qpNsdAbR1SxPLB6T1DAwG6Yp9o/edit?usp=sharing)
 2. Your window should look like this to start. In the bottom left hand corner you should see a ![](img/b4ff20c678c044ef.png) button. This is your remote connections manager. Click on it.
 
 ![](img/3745d21f15691af6.png)
@@ -166,14 +191,11 @@ Now that we have set up your SSH key, it's time to connect to your Jetstream2 in
 7. Click on "Config" to modify the name of the "Host" to be more user friendly and save it. Name it whatever you like e.g. my-awesome-jetstream2-instance. In addition specify an `IdentityFile` which will be the name of the private key we saved ( `container_workshop`). Your final configuration should look similar to this: ). Your final configuration should look similar to this:
 
 ```
-Host my-awesome-jetstream2-instance HostName container-workshop.mth230010.projects.jetstream-cloud.org User exouser IdentityFile $HOME/.ssh/container_workshop
+Host my-awesome-jetstream2-instance HostName container-workshop.mth230010.projects.jetstream-cloud.org User exouser IdentityFile container_workshop
 ```
 
-This is the equivalent setup for Windows:
-
-```
-Host my-awesome-jetstream2-instance HostName container-workshop.mth230010.projects.jetstream-cloud.org User exouser IdentityFile %USERPROFILE%\.ssh\container_workshop
-```
+![](img/4280b9bd5c597ad.png)
+![](img/4280b9bd5c597ad.png)
 
 8. Click on the ![](img/b4ff20c678c044ef.png) button again for Remote Connections. Select "Connect Current Window to Host...". Your newly configured host will pop up. Select it and let your instance load up.
 
@@ -186,63 +208,6 @@ Host my-awesome-jetstream2-instance HostName container-workshop.mth230010.projec
 {: .warning }
 **Note:** You may get a pop-up box asking to choose whether you're using Linux, Windows, or Mac. **Select Linux**, since we are connecting to JetStream2 which uses the Linux operating system.
 
-### Troubleshooting Connections
-
-#### macOS/Linux
-
-1. First try the following command in terminal and reconnect. This will make sure that the SSH key has permissions that are permissible for the SSH agent:
-
-```
-chmod 600 ~/.ssh/container_workshop
-```
-
-2. If that doesn't work, verify that your ssh-agent is running by using the following command:
-
-```
-eval "$(ssh-agent -s)"
-```
-
-{: .warning }
-**Note:** Depending on your shell, you may need to use a different command or use elevated privileges through `sudo`: `sudo eval "$(ssh-agent -s)"`
-
-3. Verify that your private key is added to your ssh-agent keyring by typing the following commands in terminal:
-
-```
-ssh-add ~/.ssh/container_workshop ssh-add -l
-```
-
-#### Windows
-
-1. First try the following commands in Powershell and reconnect. This will make sure that the SSH key has permissions that are permissible for the SSH agent:
-
-```
-icacls "$HOME\.ssh\container_workshop" /inheritance:r icacls "$HOME\.ssh\container_workshop" /grant:r "$($env:USERNAME):(R)" icacls "$HOME\.ssh\container_workshop" /remove "Authenticated Users" "BUILTIN\Users"
-```
-
-2. If that doesn't work, verify that ssh-agent is running by searching for "Services" in the Start Menu:
-
-![](img/81a9a76344a782a1.png)
-![](img/81a9a76344a782a1.png)
-
-3. Search for "OpenSSH Agent" and make sure that the **Status is "Running"** and **Startup Type is "Automatic"**.
-
-![](img/68795008fe4ef0d.png)
-![](img/68795008fe4ef0d.png)
-
-4. If this is not the case, right-click on the "OpenSSH Authentication Agent" entry -> select "Properties" -> Under "Service Status" select "Start" -> From the "Startup Type" drop down menu, select "Automatic".
-
-![](img/445c733d1ca508ee.png)
-![](img/445c733d1ca508ee.png)
-
-![](img/6b4c549f6a405fa.png)
-![](img/6b4c549f6a405fa.png)
-
-5. Lastly, verify that your private key is added to your ssh-agent keyring by typing the following command in powershell:
-
-```
-ssh-add $HOME\.ssh\container_workshop
-```
-
 
 ## Creating First Project
 
@@ -253,13 +218,13 @@ Now that you are connected to a server, we can set up the development container!
 1. In your terminal, run the following code where you should replace `<project-name>` with the name of your project/directory you wish to create:
 
 ```
-copier copy --vcs-ref docker gh:UCSB-PSTAT/devcontainer-template <project-name>
+copier copy gh:UCSB-PSTAT/devcontainer-template <project-name>
 ```
 
 2. Answer the questions by selecting from the options provided. We will be using R in this workshop.
 
 ```
-🎤 What is the name of your project? (Must be unique!) my-awesome-project 🎤 What language(s) will you use in this project? R 🎤 Do you want to install Visual Studio Code extensions for Jupyter notebooks using Yes 🎤 Install RStudio Server? This is optional if using VS Code and R extensions for de Yes 🎤 Install Quarto? Quarto is optional publishing system compatible with R. Yes 🎤 Do you want to include example files? Yes Copying from template version 1.4.3.post5.dev0+f1baf92 create example-R.qmd create .copier-answers.yml create .devcontainer create .devcontainer/Dockerfile create .devcontainer/devcontainer.json create example.Rmd create README.md
+🎤 What is the name of your project? (Must be unique and use lowercase, dashes -, underscores _ ONLY) my-awesome-project 🎤 What language(s) will you use in this project? R 🎤 Do you want to install Visual Studio Code extensions for Jupyter notebooks using R? Yes 🎤 Install RStudio Server? This is optional if using VS Code and R extensions for development. Yes 🎤 Install Quarto? Quarto is optional publishing system compatible with R. Yes 🎤 Do you want to include example files? Yes Copying from template version 1.4.1 create . create .devcontainer create .devcontainer/Dockerfile create .devcontainer/devcontainer.json create README.md create example.Rmd create .copier-answers.yml
 ```
 
 3. Run the command below to view your new project folder (again, replace `<project-name>` with the name of your project/directory you created):
@@ -288,13 +253,13 @@ You're project is ready to go! In the next section we will show how to start up 
 
 2. Click OK. This will open up your project's folder (in the example, it will open "my-awesome-project".
 
-![](img/cc1509d80e47bbcf.png)
-![](img/cc1509d80e47bbcf.png)
+![](img/e27ebbeed625981c.png)
+![](img/e27ebbeed625981c.png)
 
 3. From here, you can click to "Reopen in Container" or click on the bottom left green button and select "Reopen in Container":
 
-![](img/886616fdac5127ec.png)
-![](img/886616fdac5127ec.png)
+![](img/b7e6d6e2ae249c4f.png)
+![](img/b7e6d6e2ae249c4f.png)
 
 4. Your container will be built. You can click on the bottom right hand dialogue to view the build process log file.
 
@@ -334,16 +299,16 @@ We can take a look at the 2 files and note that they can be non-trivial to put t
 
 By now, your VS Code instances should look a little something like this:
 
-![](img/277fd9fd060d7149.png)
-![](img/277fd9fd060d7149.png)
+![](img/506b73bb6a32b876.png)
+![](img/506b73bb6a32b876.png)
 
 Click on the "+" icon next to the "Dev Containers" dialogue to open up a new terminal instance which will have a "Jupyter Token" pop-up once launched:
 
 ![](img/c78d545f8eade2f1.png)
 ![](img/c78d545f8eade2f1.png)
 
-![](img/d318c2609e070b62.png)
-![](img/d318c2609e070b62.png)
+![](img/d23a262a0f2b9114.png)
+![](img/d23a262a0f2b9114.png)
 
 {: .note }
 Your container is now ready to use on Jetstream2! Note that the bottom left hand corner now says that you are working in a Dev Container.
@@ -353,22 +318,27 @@ Your container is now ready to use on Jetstream2! Note that the bottom left hand
 
 We can do most of our editing in VS Code with extensions for Python, R, and other languages; however, our container comes with additional tool options that can be more conducive for data analysis such as JupyterLab and RStudio. Here, we will show how to access these container tools.
 
-1. You will see the following pop up showing a Jupyter server token. Double click it and right-click to "Copy" the token:
+1. Open up a new VS Code Terminal by pressing the + button as seen below:
 
-![](img/aef797669d01aa33.png)
-![](img/aef797669d01aa33.png)
+![](img/6cc0c4714c23f1d1.png)
+![](img/6cc0c4714c23f1d1.png)
 
-2. Head into "Ports". Look for port 8888 (which will be labeled as "Jupyterlab"). Mouse over the "Forwarded Address" box and click on "Open in Browser":
+2. You will see the following pop up showing a Jupyter server token. Double click it and right-click to "Copy" the token:
+
+![](img/9954ad3db47318d.png)
+![](img/9954ad3db47318d.png)
+
+3. Head into "Ports". Look for port 8888 (which will be labeled as "Jupyterlab"). Mouse over the "Forwarded Address" box and click on "Open in Browser":
 
 ![](img/f01f6e0dab5738ab.png)
 ![](img/f01f6e0dab5738ab.png)
 
-3. You will be taken to the following login page. Here you can input your copied Jupyter token. You will only need to do this once, next time it will not ask you for the token!
+4. You will be taken to the following login page. Here you can input your copied Jupyter token. You will only need to do this once, next time it will not ask you for the token!
 
 ![](img/4370c659d6a83292.png)
 ![](img/4370c659d6a83292.png)
 
-4. From here, you will be taken to the JupyterLab landing page. You will see a number of options for coding but what we will be using is RStudio Server. You can click on the button to start up the server in a separate window which will have the familiar RStudio interface but inside your browser being run on your Jetstream2 instance!
+5. From here, you will be taken to the JupyterLab landing page. You will see a number of options for coding but what we will be using is RStudio Server. You can click on the button to start up the server in a separate window which will have the familiar RStudio interface but inside your browser being run on your Jetstream2 instance!
 
 ![](img/1352b78eade6cb65.png) ![](img/1b7314ae8a0f6ef8.png)
 ![](img/1352b78eade6cb65.png)
@@ -414,19 +384,19 @@ To show off the usage of development containers for reproducibility, we will do 
 8. Next, we will include this package version as part of the installation process of the container inside our Dockerfile. The Dockerfile created from our template has annotations for where we can place additional packages to install. Scroll down your Dockerfile and insert an additional package underneath the comment with package instructions:
 
 ```
-RUN R -q -e 'remotes::install_version("syuzhet", version="1.0.7", repos="cloud.r-project.org")'
+R -q -e 'remotes::install_version("syuzhet", version="1.0.7", repos="cloud.r-project.org")' && \
 ```
 
 {: .note }
-Let's break this down: RUN specifies a command to be executed during container setup R invokes an r-script to run -q quiets the R startup message -e specifies that an inline expression is going to be executed
+Let's break this down: R invokes an r-script to run -q quiets the R startup message -e specifies that an inline expression is going to be executed is a logical and used to chain installation statements together (bas) \ allows for statements to be chained together through separate lines
 
-![](img/cc21db6775153173.png)
-![](img/cc21db6775153173.png)
+![](img/c8f9517604706ef2.png)
+![](img/c8f9517604706ef2.png)
 
 9. Save your Dockerfile (`ctrl` + `s`). You may have a pop-up saying that your configuration files have changed and that you need to rebuild your container. Either click on "Rebuild" in the dialog OR click the bottom left green remotes button and select "Rebuild Container":
 
-![](img/ef17fec08eb2f6c8.png)
-![](img/ef17fec08eb2f6c8.png)
+![](img/eb18ee33c3bb97fe.png)
+![](img/eb18ee33c3bb97fe.png)
 
 {: .note }
 **Note:** Every time you modify your .devcontainer folder files, you will need to rebuild the container. Fortunately, these rebuilds will not take as long as the first one since VS Code caches certain build information.
@@ -491,49 +461,7 @@ labs(x="Line Number", y="Syuzhet Sentiment")
 This completes our little illustrative project! We can now build this R markdown file into a PDF that is saved as part of our project to further distribute elsewhere!
 
 
-## Basic Container Management
-
-Let's say you end up using Docker quite a bit whether on your own personal computer or a remote server. What happens when you have a lot of containers? What if you want to get rid of some to clear up space? This is where the VS Code Docker extension comes in.
-
-1. First, let's leave the container interface since we cannot manage the container while inside of it! Click on the "Remote Window" button and select "Reopen Folder in SSH":
-
-![](img/8c2703d89b9a80a4.png)
-![](img/8c2703d89b9a80a4.png)
-
-2. If you click on the extension menu in the activity bar, you may see that the Docker extension is not installed for usage on the server. You will want to select the option to "Install in SSH":
-
-![](img/b381326952dd33ce.png)
-![](img/b381326952dd33ce.png)
-
-3. From here, you can hit the new Docker button that appears in your Activity Bar. There you will find menus labeled "Containers" and "Images".
-
-![](img/653dbd8a3d49e8b0.png)
-![](img/653dbd8a3d49e8b0.png)
-
-4. Looking at "Individual Containers", we can see our project container listed there. If we scroll over the container, we will see additional information about the container.
-
-![](img/fdb95d4e23fee536.png)
-![](img/fdb95d4e23fee536.png)
-
-5. In an instances where you may be done with a project you're working on or have a container that is somehow misbehaving, you can stop the container from running. We can achieve this by right-clicking and selecting the "Stop" option.
-
-![](img/a88277dca5cf0727.png)
-![](img/a88277dca5cf0727.png)
-
-6. Once a container is stopped, we can then also remove it if we are done using it. Feel free to remove the container we built. This will not affect the project files and can be undone by simply going back and rebuilding the container from scratch.
-
-![](img/fd83ee27b83787aa.png)
-![](img/fd83ee27b83787aa.png)
-
-7. From here, since we are done with our container, we can also clean up and delete some of the container images. We should keep the guacamole images as they are part of the Jetstream2 infrastructure but we can remove the vsc and quay images. This will clear up additional space on our instance as we move on to work on a different project.
-
-![](img/6cb75cc3600611c7.png)
-![](img/6cb75cc3600611c7.png)
-
-Most of these actions can be replicated via terminal by using Docker CLI. However, using the Docker extension makes some of the basic day-to-day management simple to accomplish.
-
-
-## Remote Computing
+## Remote computing
 
 ![](img/cd4177ba1253d87c.png)
 ![](img/cd4177ba1253d87c.png)
@@ -599,7 +527,26 @@ Here is a [demo repository](https://github.com/UCSB-PSTAT/devcontainer-demo) wit
 ![](img/ec99acf0b097d4ed.png)
 ![](img/ec99acf0b097d4ed.png)
 
-It should be noted that to use GitHub Codespaces, you need a [GitHub Pro](https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-pro) account. Fortunately, GitHub offers GitHub Pro for free to educators, which makes this a cost-effective solution for academic research.
+It should be noted that there are 2 caveats to this:
+
+- To use GitHub Codespaces, you need a [GitHub Pro](https://docs.github.com/en/get-started/learning-about-github/githubs-plans#github-pro) account. Fortunately, GitHub offers GitHub Pro for free to educators, which makes this a cost-effective solution for academic research.
+- `devcontainer.json` has to modified slightly to function correctly with Codespaces, namely we need to remove the following 3 bits of information:
+
+```
+"build": {
+"dockerfile": "Dockerfile",
+"options": ["--format=docker"] // remove for Codespaces (or Docker)
+}
+...
+// change `type=bind,z` to `type=bind` for Codespaces (or Docker)
+"workspaceMount": "source=${localWorkspaceFolder},target=/home/jovyan/work,type=bind,z",
+...
+"runArgs": [
+...
+"--userns=keep-id:uid=1000,gid=100", // remove for Codespaces (or Docker)
+...
+]
+```
 
 ### Archiving with Zenodo
 
@@ -625,4 +572,4 @@ The combination of GitHub and Zenodo provides a powerful ecosystem for distribut
 This integrated approach not only enhances the reproducibility of your research but also ensures that your work is accessible and can be built upon by the wider research community. By leveraging these tools, you contribute to a more open and collaborative research environment, ultimately advancing scientific discovery.
 
 
-**Next up:** continue on to [the related wiki page](https://ucsbcarpentry.github.io/workshop/2025/02/05/ucsb-containers.html).
+**Next up:** continue on to [the related wiki page](https://ucsbcarpentry.github.io/workshop/2024/06/04/ucsb-containers.html).

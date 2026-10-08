@@ -3,7 +3,7 @@ layout: default
 title: "PSTAT User Account Sign-up"
 parent: "Develop in Container"
 nav_order: 0
-permalink: docs/devcontainer/new-accounts/
+permalink: /docs/devcontainer/new-accounts
 ---
 
 ## Introduction

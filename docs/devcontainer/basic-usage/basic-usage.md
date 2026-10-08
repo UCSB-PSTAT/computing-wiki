@@ -3,7 +3,7 @@ layout: default
 title: "Basic Container Usage on a Server"
 parent: "Develop in Container"
 nav_order: 2
-permalink: docs/devcontainer/basic-usage/
+permalink: /docs/devcontainer/basic-usage
 ---
 
 ## Introduction

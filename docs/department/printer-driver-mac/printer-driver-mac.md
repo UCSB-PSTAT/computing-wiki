@@ -3,7 +3,7 @@ layout: default
 title: "Installing MacOS Printer Drivers"
 parent: "Department Management"
 nav_order: 2
-permalink: docs/department/printer-driver-mac/
+permalink: /docs/department/printer-driver-mac
 ---
 
 Use this guide to install the Kyocera printer drivers on a MacOS machine.

@@ -3,7 +3,7 @@ layout: default
 title: "Installing Windows Printer Drivers"
 parent: "Department Management"
 nav_order: 1
-permalink: docs/department/printer-driver-win/
+permalink: /docs/department/printer-driver-win
 ---
 
 Use this guide to install the Kyocera printer drivers on a Windows machine.

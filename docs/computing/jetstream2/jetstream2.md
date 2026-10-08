@@ -4,7 +4,7 @@ title: "ACCESS via Jetstream2"
 parent: "External Sources"
 grand_parent: "Computing Resources"
 nav_order: 1
-permalink: docs/computing/jetstream2/
+permalink: /docs/computing/jetstream2
 ---
 
 Follow this tutorial to learn how to use the Jetstream2 supercomputing facilities with your ACCESS credits. Learn to navigate Jetstream2's interface, set up VS Code, and use development containers inside Jetstream2!

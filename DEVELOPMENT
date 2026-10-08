@@ -9,9 +9,9 @@ To regenerate all tutorial pages from their `index.html` sources:
 
     python3 codelab2md.py
 
-The codelab source files (`index.html`, `codelab.json`) are kept in the repo
-for regeneration but are listed under `exclude:` in `_config.yml` so Jekyll
-does not publish them — only the generated `.md` page is served.
+The codelab *source* files (`index.html`, `codelab.json`) live under
+codelab-sources/<area>/<name>/ (outside docs/), so Jekyll never publishes them.
+Only the generated <name>.md page and its img/ folder are served.
 
 Notes:
 - The script is idempotent and never deletes the source `index.html`,
