@@ -5,26 +5,28 @@ This is the PSTAT department computing wiki, built with Jekyll and the
 
 ## Build Steps
 
-### Build website
+### Run the website (for testing)
 
-#### Container
+#### Dev container (recommended)
 
-Simply build the Dockerfile via Docker/Podman (or using VS Code). Once built, run the following inside the container:
-
-```sh
-bundle exec jekyll serve --livereload
-```
+Open the folder in VS Code and use **Dev Containers: Reopen in Container**.
+The container installs the dependencies and starts `jekyll serve` automatically —
+click the `4000 (Preview)` entry in the **PORTS** panel to open the site.
 
 #### Manual
 
-Requires Ruby, Jekyll, and Bundler installed. From the root directory, run the following commands:
+Requires Ruby, Jekyll, and Bundler. From the root directory:
 
 ```sh
 bundle install
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --baseurl ""
 ```
 
 Access the website through [http://localhost:4000/](http://localhost:4000/)
+
+> Note: `--baseurl ""` serves the site at the local root. The site's real
+> `baseurl` is `/computing-wiki` (for GitHub Pages), so without this flag a
+> local build is served under `http://localhost:4000/computing-wiki/`.
 
 ### Codelab (tutorial) pages
 
