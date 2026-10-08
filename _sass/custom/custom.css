@@ -7,6 +7,13 @@
     background-color: #EEF0F2;
 }
 
+/* Keep content images (codelab screenshots, 1600-2048px wide) from overflowing
+   the ~700px content column. Scales them down to fit; height stays proportional. */
+.page-content img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* body {
     color: #3d4952;
     font-family: Avenir, "Century Gothic", sans-serif;

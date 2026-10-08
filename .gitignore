@@ -17,3 +17,6 @@ test/
 .*
 !.devcontainer
 !.github/*
+
+# macOS
+.DS_Store
